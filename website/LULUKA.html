@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LULUKA</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --gold-dark: #9A7A45;
+    --cream: #FAF7F2;
+    --ink: #1A1612;
+    --ink-soft: #3D3529;
+    --muted: #8A7F72;
+    --border: rgba(201,169,110,0.25);
+    --white: #FFFFFF;
+    --font-serif: 'Playfair Display', 'Noto Serif TC', serif;
+    --font-sans: 'Noto Sans TC', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    letter-spacing: 0.25em;
+    color: var(--ink);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-toggle {
+    display: none; background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px; padding: 4px;
+  }
+  .nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: all 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    padding-top: 64px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(3rem, 8vw, 7rem) clamp(2rem, 5vw, 5rem);
+    background: var(--cream);
+    position: relative;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute; right: 0; top: 10%; bottom: 10%;
+    width: 1px; background: var(--border);
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.15;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 360px;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--ink); color: var(--cream);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: background 0.25s, transform 0.2s;
+    width: fit-content;
+  }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+  .btn-primary svg { transition: transform 0.2s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+
+  .hero-right {
+    background: var(--ink-soft);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    overflow: hidden;
+  }
+  .hero-img-cell { overflow: hidden; position: relative; }
+  .hero-img-cell img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: brightness(0.88) saturate(0.9);
+  }
+  .hero-img-cell:hover img { transform: scale(1.04); filter: brightness(0.95) saturate(1); }
+  .hero-img-cell:first-child { grid-row: 1 / 3; }
+
+  /* ── SECTION COMMON ── */
+  .section-pad { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); }
+  .section-header { text-align: center; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .divider { width: 40px; height: 1px; background: var(--gold); margin: 1.25rem auto 0; }
+
+  /* ── WORKS SECTION ── */
+  #works { background: var(--white); }
+
+  /* Category label */
+  .cat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .cat-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ── GIF SECTION ── */
+  /* Square GIF: 1:1 */
+  .gif-square-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 3rem;
+  }
+  .gif-square-grid .work-item { aspect-ratio: 1 / 1; }
+
+  /* Wide GIF: 16:9 */
+  .gif-wide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+    margin-bottom: 3rem;
+  }
+  .gif-wide-grid .work-item { aspect-ratio: 4 / 5; }
+
+  /* Tall GIF: 3:4 */
+  .gif-tall-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 3rem;
+  }
+  .gif-tall-grid .work-item { aspect-ratio: 3 / 4; }
+
+  /* ── POSTER SECTION: 2:3 直式 ── */
+  .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 3rem;
+  }
+  .poster-grid .work-item { aspect-ratio: 2 / 3; }
+
+  /* ── SQUARE SECTION: 1:1 ── */
+  .square-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 3rem;
+  }
+  .square-grid .work-item { aspect-ratio: 1 / 1; }
+
+  /* ── WORK ITEM COMMON ── */
+  .work-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #ece7df;
+  }
+  .work-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
+    transition: transform 0.5s ease;
+    filter: brightness(1) saturate(1);
+  }
+  .work-item:hover img { transform: scale(1.05); filter: brightness(1) saturate(1); }
+  .work-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,22,18,0.78) 0%, transparent 55%);
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 1rem;
+  }
+  .work-item:hover .work-overlay { opacity: 1; }
+  .work-overlay-title {
+    font-family: var(--font-serif);
+    font-size: 0.9rem; color: var(--cream);
+    line-height: 1.3; margin-bottom: 0.3rem;
+  }
+  .work-overlay-tag {
+    font-size: 0.62rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold-light);
+  }
+
+  /* GIF badge */
+  .gif-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(201,169,110,0.9);
+    color: var(--ink);
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    font-weight: 500;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+  }
+  .about-img-wrap { position: relative; overflow: hidden; }
+  .about-img-wrap img {
+    width: 100%; height: clamp(350px, 50vw, 560px);
+    object-fit: cover; display: block;
+    filter: brightness(0.88) saturate(0.9);
+  }
+  .about-img-frame {
+    position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px;
+    border: 1px solid var(--gold);
+    pointer-events: none; z-index: 1;
+  }
+  .about-content .section-header { text-align: left; }
+  .about-content .divider { margin-left: 0; }
+  .about-body { font-size: 0.88rem; color: var(--muted); line-height: 2; margin: 1.5rem 0 2rem; }
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; margin: 2rem 0;
+  }
+  .stat { text-align: center; padding: 1rem 0.5rem; border-top: 1px solid var(--border); }
+  .stat-num { font-family: var(--font-serif); font-size: 1.8rem; color: var(--gold); display: block; }
+  .stat-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+
+  /* ── PARTNERS ── */
+  #partners { background: var(--ink); text-align: center; }
+  #partners .section-eyebrow { color: var(--gold-light); }
+  #partners .section-title { color: var(--cream); }
+  #partners .divider { background: var(--gold); }
+  .partners-grid {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    margin: 3rem auto 0;
+    max-width: 1200px;
+  }
+  .partner-item {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.6rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid rgba(201,169,110,0.2);
+    min-width: 120px;
+    transition: border-color 0.2s, background 0.2s;
+    text-decoration: none;
+  }
+  .partner-item:hover { border-color: var(--gold); background: rgba(201,169,110,0.07); }
+  .partner-name {
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold-light);
+    text-align: center; line-height: 1.6;
+  }
+  .partner-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--cream); text-align: center; }
+  .contact-inner { max-width: 540px; margin: 0 auto; }
+  .contact-desc { font-size: 0.88rem; color: var(--muted); line-height: 2; margin-bottom: 2.5rem; }
+  .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    border: 1px solid var(--ink); color: var(--ink);
+    text-decoration: none;
+    padding: 0.8rem 1.75rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+  footer {
+    background: var(--ink);
+    text-align: center;
+    padding: 2rem clamp(1.5rem, 5vw, 4rem);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left::after { display: none; }
+    .hero-right { height: 55vw; min-height: 260px; grid-template-rows: 1fr; }
+    .hero-img-cell:first-child { grid-row: unset; }
+    #about { grid-template-columns: 1fr; }
+    .about-img-wrap { display: none; }
+    .poster-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: fixed; top: 64px; left: 0; right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem; gap: 1.25rem; z-index: 99;
+    }
+    .nav-toggle { display: flex; }
+    .hero-title { font-size: 2.2rem; }
+    .hero-right { height: 64vw; }
+    .gif-wide-grid { grid-template-columns: 1fr; }
+    .gif-square-grid { grid-template-columns: repeat(2, 1fr); }
+    .gif-tall-grid { grid-template-columns: repeat(2, 1fr); }
+    .poster-grid { grid-template-columns: repeat(2, 1fr); }
+    .square-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-num { font-size: 1.4rem; }
+    .partner-item { min-width: 100px; padding: 0.9rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">LULUKA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#works">作品</a></li>
+    <li><a href="#about">關於</a></li>
+    <li><a href="#partners">合作夥伴</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="開關選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- WORKS -->
+<section id="works" class="section-pad">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Portfolio</span>
+    <h2 class="section-title">精選作品</h2>
+    <div class="divider"></div>
+  </div>
+
+  <!-- ═══ GIF 動態作品 ═══ -->
+  <div style="max-width:1200px;margin:0 auto 1rem;">
+    <p class="cat-label reveal">Montion Graphic <span style="color:var(--muted);font-size:0.6rem;"></span></p>
+    <div class="gif-wide-grid" style="margin-bottom:3rem;">
+      <div class="work-item reveal"
+        data-src="https://static.wixstatic.com/media/8f4347_25411a1dede14ad8b39a622c3524316a~mv2.gif">
+        <img src="https://static.wixstatic.com/media/8f4347_25411a1dede14ad8b39a622c3524316a~mv2.gif" alt="PON">
+        <span class="gif-badge">GA</span>
+        <div class="work-overlay">
+          <p class="work-overlay-title">PON</p>
+          <span class="work-overlay-tag">動態設計</span>
+        </div>
+      </div>
+      <div class="work-item reveal"
+        data-src="https://static.wixstatic.com/media/8f4347_fb1718b2ae45436eb4a1de716aa8222a~mv2.gif">
+        <img src="https://static.wixstatic.com/media/8f4347_fb1718b2ae45436eb4a1de716aa8222a~mv2.gif" alt="靜 GIF">
+        <span class="gif-badge">GA</span>
+        <div class="work-overlay">
+          <p class="work-overlay-title">靜</p>
+          <span class="work-overlay-tag">動態設計</span>
+        </div>
+      </div>
+      <div class="work-item reveal"
+        data-src="https://static.wixstatic.com/media/8f4347_70b1febe24ef4b71b86a21e4ac08306a~mv2.gif">
+        <img src="https://static.wixstatic.com/media/8f4347_70b1febe24ef4b71b86a21e4ac08306a~mv2.gif" alt="LANDERHUA GIF">
+        <span class="gif-badge">GA</span>
+        <div class="work-overlay">
+          <p class="work-overlay-title">LANDERHUA</p>
+          <span class="work-overlay-tag">動態設計</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto 1rem;">
+    <p class="cat-label reveal">平面 <span style="color:var(--muted);font-size:0.6rem;"></span></p>
+    <div class="poster-grid">
+
+      <div class="work-item reveal"
+        data-src="C:\Users\sunra\Desktop\web\640x800\旅城驛鎮640x800.png">
+        <img src="C:\Users\sunra\Desktop\web\640x800\旅城驛鎮640x800.png" alt="旅城驛鎮">
+        <div class="work-overlay">
+          <p class="work-overlay-title">旅城驛鎮</p>
+          <span class="work-overlay-tag">標誌視覺</span>
+        </div>
+      </div>
+       <div class="work-item reveal"
+        data-src="https://static.wixstatic.com/media/8f4347_acc40802f2f84cf1bf2489a9dde00772~mv2.png/v1/fill/w_800,h_1200,al_c,q_90,enc_avif/image.png">
+        <img src="https://static.wixstatic.com/media/8f4347_acc40802f2f84cf1bf2489a9dde00772~mv2.png/v1/fill/w_480,h_720,al_c,q_85,enc_avif/image.png" alt="文化小學堂">
+        <div class="work-overlay">
+          <p class="work-overlay-title">文化小學堂</p>
+          <span class="work-overlay-tag">活動海報</span>
+        </div>
+      </div>
+      <div class="work-item reveal"
+        data-src="C:\Users\sunra\Desktop\web\640x800\森村640x800.png">
+        <img src="C:\Users\sunra\Desktop\web\640x800\森村640x800.png" alt="森村">
+        <div class="work-overlay">
+          <p class="work-overlay-title">森村</p>
+          <span class="work-overlay-tag">標誌視覺</span>
+        </div>
+      </div>
+      <div class="work-item reveal reveal-delay-1"
+        data-src="https://static.wixstatic.com/media/8f4347_674a520ab373403180d72d03c47f4c0d~mv2.jpg/v1/fill/w_800,h_1200,al_c,q_90,enc_avif/image.jpg">
+        <img src="https://static.wixstatic.com/media/8f4347_674a520ab373403180d72d03c47f4c0d~mv2.jpg/v1/fill/w_480,h_720,al_c,q_85,enc_avif/image.jpg" alt="圖書館學會海報">
+        <div class="work-overlay">
+          <p class="work-overlay-title">圖書館學會70週年演講</p>
+          <span class="work-overlay-tag">活動海報</span>
+        </div>
+      </div>
+      <div class="work-item reveal reveal-delay-1"
+        data-src="C:\Users\sunra\Desktop\web\640x800\miuzi640x800.png">
+        <img src="C:\Users\sunra\Desktop\web\640x800\miuzi640x800.png" alt="MiuZi">
+        <div class="work-overlay">
+          <p class="work-overlay-title">MiuZi</p>
+          <span class="work-overlay-tag">標誌視覺</span>
+        </div>
+      </div>
+      <div class="work-item reveal"
+        data-src="https://static.wixstatic.com/media/8f4347_d095ecefc954468ea9d5edb8f5d52d86~mv2.jpg/v1/fill/w_800,h_1200,al_c,q_90,enc_avif/image.jpg">
+        <img src="https://static.wixstatic.com/media/8f4347_d095ecefc954468ea9d5edb8f5d52d86~mv2.jpg/v1/fill/w_480,h_720,al_c,q_85,enc_avif/image.jpg" alt="嘿色幽默">
+        <div class="work-overlay">
+          <p class="work-overlay-title">嘿色幽默 KV</p>
+          <span class="work-overlay-tag">活動海報</span>
+        </div>
+      </div>
+      <div class="work-item reveal reveal-delay-2"
+        data-src="https://static.wixstatic.com/media/8f4347_042d230a32294bf1af3d6a36be5ec2c5~mv2.jpg/v1/fill/w_800,h_1200,al_c,q_90,enc_avif/image.jpg">
+        <img src="https://static.wixstatic.com/media/8f4347_042d230a32294bf1af3d6a36be5ec2c5~mv2.jpg/v1/fill/w_480,h_720,al_c,q_85,enc_avif/image.jpg" alt="傑師19">
+        <div class="work-overlay">
+          <p class="work-overlay-title">傑師 19 正封</p>
+          <span class="work-overlay-tag">書籍封面</span>
+        </div>
+      </div>
+      <div class="work-item reveal reveal-delay-1"
+        data-src="https://static.wixstatic.com/media/8f4347_f96dd005287844a28650ba205b2aa144~mv2.png/v1/fill/w_800,h_1200,al_c,q_90,enc_avif/image.png">
+        <img src="https://static.wixstatic.com/media/8f4347_f96dd005287844a28650ba205b2aa144~mv2.png/v1/fill/w_480,h_720,al_c,q_85,enc_avif/image.png" alt="超大嫩雞腿排">
+        <div class="work-overlay">
+          <p class="work-overlay-title">超大嫩雞腿排 DM</p>
+          <span class="work-overlay-tag">廣告視覺</span>
+        </div>
+      </div>
+      <div class="work-item reveal reveal-delay-2"
+        data-src="https://static.wixstatic.com/media/8f4347_e83ec49cd1f446ab9e7face164429cd0~mv2.png/v1/fill/w_800,h_1200,al_c,q_90,enc_avif/image.png">
+        <img src="https://static.wixstatic.com/media/8f4347_e83ec49cd1f446ab9e7face164429cd0~mv2.png/v1/fill/w_480,h_720,al_c,q_85,enc_avif/image.png" alt="籃球DM">
+        <div class="work-overlay">
+          <p class="work-overlay-title">籃球賽 DM</p>
+          <span class="work-overlay-tag">廣告視覺</span>
+        </div>
+      </div>
+     <div class="work-item reveal reveal-delay-2">
+      <div class="work-item reveal"
+        data-src="C:\Users\sunra\Desktop\web\640x800\台灣水溝蓋640x800.png">
+        <img src="C:\Users\sunra\Desktop\web\640x800\台灣水溝蓋640x800.png" alt="臺灣">
+        <div class="work-overlay">
+          <p class="work-overlay-title">臺灣文化視覺</p>
+          <span class="work-overlay-tag">標誌視覺</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-content">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">About</span>
+      <h2 class="section-title">關於  LULUKA </h2>
+      <div class="divider"></div>
+    </div>
+    <p class="about-body reveal">
+      我們是一個專注於視覺敘事的設計工作室，橫跨婚禮美學、文化活動、
+      教育出版、餐飲品牌等多元領域。每一個作品都以細膩的情感與精準的視覺語言，
+      為每段獨特的故事量身打造屬於它的模樣。
+      長期合作，深耕在地文化，連結設計與生活。
+    </p>
+    <div class="stats reveal">
+      <div class="stat">
+        <span class="stat-num">8+</span>
+        <span class="stat-label">年資歷</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">合作案件</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">合作夥伴</span>
+      </div>
+    </div>
+    <a href="#contact" class="btn-primary reveal">
+      與我們合作
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners" class="section-pad">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Partners</span>
+    <h2 class="section-title" style="color:var(--cream)">合作夥伴</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="partners-grid">
+    <a href="https://www.gov.taipei/" target="_blank" class="partner-item reveal">
+      <div class="partner-dot"></div>
+      <span class="partner-name">臺北市政府</span>
+    </a>
+    <a href="https://culture.gov.taipei/" target="_blank" class="partner-item reveal reveal-delay-1">
+      <div class="partner-dot"></div>
+      <span class="partner-name">臺北市政府文化局<br></span>
+    </a>
+    <a href="https://sites.google.com/view/newtaiwanese/" target="_blank" class="partner-item reveal reveal-delay-2">
+      <div class="partner-dot"></div>
+      <span class="partner-name">新台灣人文教基金會<br></span>
+    </a>
+    <a href="https://www.lac.org.tw/" target="_blank" class="partner-item reveal">
+      <div class="partner-dot"></div>
+      <span class="partner-name">中華民國圖書館學會<br></span>
+    </a>
+    <a href="https://www.zhehong.tw/" target="_blank" class="partner-item reveal reveal-delay-1">
+      <div class="partner-dot"></div>
+      <span class="partner-name">喆閎人文<br></span>
+      </span>
+    </a>
+    <a href="https://journeytowninn.zbiz.tw/" target="_blank" class="partner-item reveal reveal-delay-2">
+      <div class="partner-dot"></div>
+      <span class="partner-name">旅城驛鎮</span>
+    </a>
+    <a href="https://muknowledge.com/" target="_blank" class="partner-item reveal">
+      <div class="partner-dot"></div>
+      <span class="partner-name">沐寧相聲</span>
+    </a>
+    <a href="https://trf.ncl.edu.tw/" target="_blank" class="partner-item reveal reveal-delay-1">
+      <div class="partner-dot"></div>
+      <span class="partner-name">國家圖書館<br></span>
+    </a>
+        <a href="http://www.sincere-group.com.tw/" target="_blank" class="partner-item reveal reveal-delay-1">
+      <div class="partner-dot"></div>
+      <span class="partner-name">信實集團<br></span>
+    </a>
+    <a href="https://www.facebook.com/p/%E5%8E%9F%E5%B1%B1%E7%89%A9%E8%AA%9E%E6%B0%91%E5%AE%BF-61560456669866/" target="_blank" class="partner-item reveal reveal-delay-1">
+      <div class="partner-dot"></div>
+      <span class="partner-name">原山物語<br></span>
+    </a>
+    <a href="https://www.ptrecording.com/" target="_blank" class="partner-item reveal reveal-delay-1">
+      <div class="partner-dot"></div>
+      <span class="partner-name">錄播客<br></span>
+    </a>
+     <a href="https://www.facebook.com/fang00516/?locale=zh_TW" target="_blank" class="partner-item reveal reveal-delay-1">
+      <div class="partner-dot"></div>
+      <span class="partner-name">仙貝映像<br></span>
+    </a>
+         <a href="https://www.instagram.com/frvl_official/" target="_blank" class="partner-item reveal reveal-delay-1">
+      <div class="partner-dot"></div>
+      <span class="partner-name">森村<br></span>
+    </a>
+         <a href="https://www.instagram.com/tarotaro_room/" target="_blank" class="partner-item reveal reveal-delay-1">
+      <div class="partner-dot"></div>
+      <span class="partner-name">TaroTaroRoom芋室<br></span>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-pad">
+  <div class="contact-inner">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Contact</span>
+      <h2 class="section-title">開始合作</h2>
+      <div class="divider"></div>
+    </div>
+    <p class="contact-desc reveal">
+      無論是婚禮設計、品牌識別、活動海報或出版物，<br>
+      歡迎告訴我們您的故事，我們來為它找到最美的形狀。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© LULUKA &nbsp;·&nbsp; 版權所有 &nbsp;·&nbsp;
+    <a href="#home">回到頂部 ↑</a>
+  </p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lb-close" aria-label="關閉">×</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+// Nav toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(el => revealObs.observe(el));
+
+// Lightbox
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+document.getElementById('lb-close').addEventListener('click', () => lb.classList.remove('open'));
+lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+document.querySelectorAll('.work-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const src = item.dataset.src || item.querySelector('img').src;
+    lbImg.src = src;
+    lb.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
