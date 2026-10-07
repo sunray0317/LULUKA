@@ -66,3 +66,9 @@ GitHub 上曾公開的資料無法保證從他人已保存的副本中收回。
 ## 首頁黑金背景
 
 依品牌視覺需求，首頁採用原有黑金光點背景。備份中的 `website/bg.jpg` 保持私有；另以無損 PNG 格式建立公開的首頁展示副本，儲存於 Supabase `luluka-public-media`，已以匿名下載比對 SHA-256。背景檔案不進入 Git 或部署素材清單。目前公開素材為原先五份社群圖與圖示，加上一份經指定公開的背景。
+
+## Noto Sans 字型
+
+一般文字使用 Noto Sans TC，標題保留原字體。Noto Sans CJK TC Regular 取自環境中的 `/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc`（TC face 3），以 fontTools 產生涵蓋目前公開 HTML 字元與 ASCII 的 WOFF 子集。字型與完整 SIL OFL 1.1 授權存於 Supabase `luluka-public-fonts` 公開 bucket；匿名下載已驗證雜湊與 CORS，字型二進位不進入 Git。新增文字若使用子集外字元，需要重新產生與上傳子集。
+
+授權：https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-fonts/f776c08b93f08cacbe001699b40099a3e9de6f9378fff7f716b7216f8365d643/OFL.txt
