@@ -22,46 +22,13 @@ if (toggle && nav) {
 
 const cards = [...document.querySelectorAll('.brand-card')];
 const track = document.querySelector('.brand-cards');
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const carouselLayout = window.matchMedia('(max-width: 900px)');
 if (track && cards.length) {
-  let frame = 0;
   let pointerOrigin = null;
   let dragged = false;
-  const pointerOffsets = new Map();
-  const clamp = (value, limit) => Math.max(-limit, Math.min(limit, value));
-  const updateLayers = () => {
-    frame = 0;
-    if (reducedMotion.matches) return;
-    const trackBounds = track.getBoundingClientRect();
-    cards.forEach((card) => {
-      const bounds = card.getBoundingClientRect();
-      const pointer = pointerOffsets.get(card) || { x: 0, y: 0 };
-      const scrollX = carouselLayout.matches ? clamp((bounds.x + bounds.width / 2 - trackBounds.x - trackBounds.width / 2) / bounds.width, 1) * 9 : 0;
-      const scrollY = clamp((bounds.y + bounds.height / 2 - innerHeight / 2) / innerHeight, 1) * 8;
-      card.style.setProperty('--motion-x', `${(scrollX + pointer.x).toFixed(2)}px`);
-      card.style.setProperty('--motion-y', `${(scrollY + pointer.y).toFixed(2)}px`);
-    });
-  };
-  const scheduleLayers = () => {
-    if (!frame && !reducedMotion.matches) frame = requestAnimationFrame(updateLayers);
-  };
   const clearPressed = () => cards.forEach((card) => card.classList.remove('is-pressed'));
   cards.forEach((card) => {
     card.addEventListener('pointerdown', () => card.classList.add('is-pressed'));
-    card.addEventListener('pointermove', (event) => {
-      if (event.pointerType !== 'mouse' || reducedMotion.matches) return;
-      const bounds = card.getBoundingClientRect();
-      pointerOffsets.set(card, {
-        x: clamp((event.clientX - bounds.x) / bounds.width - .5, .5) * 14,
-        y: clamp((event.clientY - bounds.y) / bounds.height - .5, .5) * 14,
-      });
-      scheduleLayers();
-    });
-    card.addEventListener('pointerleave', () => {
-      pointerOffsets.delete(card);
-      scheduleLayers();
-    });
   });
   track.addEventListener('pointerdown', (event) => {
     pointerOrigin = { x: event.clientX, y: event.clientY };
@@ -79,38 +46,45 @@ if (track && cards.length) {
       dragged = false;
     }
   });
-  track.addEventListener('keydown', (event) => {
-    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-    event.preventDefault();
-    const focused = cards.indexOf(document.activeElement);
+  const previous = document.querySelector('.previous-card');
+  const next = document.querySelector('.next-card');
+  const nearestIndex = () => {
     const center = track.getBoundingClientRect().x + track.clientWidth / 2;
-    const nearest = cards.reduce((best, card, index) => {
+    return cards.reduce((best, card, index) => {
       const bounds = card.getBoundingClientRect();
       const distance = Math.abs(bounds.x + bounds.width / 2 - center);
       return distance < best.distance ? { index, distance } : best;
     }, { index: 0, distance: Infinity }).index;
-    const current = focused >= 0 ? focused : nearest;
-    const index = Math.max(0, Math.min(cards.length - 1, current + (event.key === 'ArrowRight' ? 1 : -1)));
+  };
+  const updateControls = () => {
+    const index = nearestIndex();
+    if (previous) previous.disabled = index === 0;
+    if (next) next.disabled = index === cards.length - 1;
+  };
+  const selectCard = (requestedIndex, focus = false) => {
+    const index = Math.max(0, Math.min(cards.length - 1, requestedIndex));
     const card = cards[index];
-    card.focus({ preventScroll: true });
+    if (focus) card.focus({ preventScroll: true });
     if (carouselLayout.matches) {
+      const center = track.getBoundingClientRect().x + track.clientWidth / 2;
       const bounds = card.getBoundingClientRect();
-      track.scrollBy({ left: bounds.x + bounds.width / 2 - center, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+      track.scrollBy({ left: bounds.x + bounds.width / 2 - center, behavior: 'instant' });
     }
+    updateControls();
+  };
+  previous?.addEventListener('click', () => selectCard(nearestIndex() - 1));
+  next?.addEventListener('click', () => selectCard(nearestIndex() + 1));
+  track.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    const focused = cards.indexOf(document.activeElement);
+    const current = focused >= 0 ? focused : nearestIndex();
+    selectCard(current + (event.key === 'ArrowRight' ? 1 : -1), true);
   });
-  track.addEventListener('scroll', scheduleLayers, { passive: true });
-  window.addEventListener('scroll', scheduleLayers, { passive: true });
-  window.addEventListener('resize', scheduleLayers, { passive: true });
+  track.addEventListener('scroll', updateControls, { passive: true });
+  window.addEventListener('resize', updateControls, { passive: true });
+  updateControls();
   document.addEventListener('pointerup', () => { pointerOrigin = null; clearPressed(); });
   document.addEventListener('pointercancel', () => { pointerOrigin = null; dragged = false; clearPressed(); });
   window.addEventListener('blur', () => { pointerOrigin = null; clearPressed(); });
-  reducedMotion.addEventListener('change', () => {
-    if (reducedMotion.matches) {
-      cards.forEach((card) => {
-        card.style.removeProperty('--motion-x');
-        card.style.removeProperty('--motion-y');
-      });
-    } else scheduleLayers();
-  });
-  scheduleLayers();
 }
