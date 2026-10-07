@@ -34,6 +34,7 @@ if (track && cards.length) {
   let settling;
   let layoutFrame;
   let arranging = false;
+  let targetLeft = null;
   let pointerOrigin = null;
   let dragged = false;
   let touching = false;
@@ -54,7 +55,8 @@ if (track && cards.length) {
   };
   const physicalIndex = () => Math.round(track.scrollLeft / track.clientWidth);
   const position = (physical, animate = false) => {
-    track.scrollTo({ left: physical * track.clientWidth, behavior: animate && !reducedMotion.matches ? 'smooth' : 'auto' });
+    targetLeft = physical * track.clientWidth;
+    track.scrollTo({ left: targetLeft, behavior: animate && !reducedMotion.matches ? 'smooth' : 'auto' });
   };
   const normalize = () => {
     const physical = physicalIndex();
@@ -63,10 +65,13 @@ if (track && cards.length) {
   };
   const settle = () => {
     if (!looping) return;
+    if (targetLeft !== null && Math.abs(track.scrollLeft - targetLeft) > 1) return;
+    const manual = targetLeft === null;
+    targetLeft = null;
     index = wrap(physicalIndex() - 1);
     normalize();
     update();
-    schedule();
+    if (manual) schedule();
   };
   const select = (requested, focus = false) => {
     stop();
@@ -84,6 +89,7 @@ if (track && cards.length) {
     index = wrap(physical - 1 + direction);
     position(physical + direction, true);
     update();
+    schedule();
   }
   const clone = (card) => {
     const copy = card.cloneNode(true);
@@ -116,7 +122,7 @@ if (track && cards.length) {
   pause?.addEventListener('click', () => { paused = !paused; update(); schedule(); });
   track.addEventListener('scroll', () => {
     if (!looping || arranging) return;
-    stop();
+    if (targetLeft === null) stop();
     index = wrap(physicalIndex() - 1);
     update();
     clearTimeout(settling);
@@ -133,7 +139,7 @@ if (track && cards.length) {
   });
   section.addEventListener('pointerdown', (event) => {
     stop();
-    if (track.contains(event.target)) { pointerOrigin = { x: event.clientX, y: event.clientY }; dragged = false; }
+    if (track.contains(event.target)) { targetLeft = null; pointerOrigin = { x: event.clientX, y: event.clientY }; dragged = false; }
   });
   track.addEventListener('pointermove', (event) => {
     if (pointerOrigin && Math.hypot(event.clientX - pointerOrigin.x, event.clientY - pointerOrigin.y) > 10) dragged = true;
@@ -144,7 +150,7 @@ if (track && cards.length) {
   const release = () => { pointerOrigin = null; schedule(); };
   document.addEventListener('pointerup', release);
   document.addEventListener('pointercancel', release);
-  track.addEventListener('touchstart', () => { touching = true; stop(); }, { passive: true });
+  track.addEventListener('touchstart', () => { targetLeft = null; touching = true; stop(); }, { passive: true });
   const endTouch = () => { touching = false; schedule(); };
   document.addEventListener('touchend', endTouch, { passive: true });
   document.addEventListener('touchcancel', endTouch, { passive: true });
