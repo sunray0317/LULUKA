@@ -72,3 +72,7 @@ GitHub 上曾公開的資料無法保證從他人已保存的副本中收回。
 標題使用 Adobe Source Han Serif TC（思源宋體）Regular 與 Bold；小麥廚坊保留真正的 700 粗體。原檔與授權來自 Adobe 官方 `adobe-fonts/source-han-serif` repository 的 release 分支，以 fontTools 產生目前公開 HTML 字元與 ASCII 的 WOFF 子集。Adobe OFL 保留字名 Source，因此修改過的子集內部更名為 LULUKA Songti TC，字形維持思源宋體。兩個字重與完整授權存放於 Supabase `luluka-public-fonts`，匿名下載 SHA-256 與 CORS 已验证。新增子集外的標題文字需重新產生子集；字型二進位不放入 GitHub。
 
 授權：https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-fonts/9ff5bb567e1b92c801fc1069e5fbf992ff8efccacb9db94e5959a5b3ba9bb903/source-han-serif-OFL.txt
+
+## 兩個分類入口
+
+首頁與導覽改為飲食生活（Culinary & Retail，`/culinary-retail/`）與文化視覺（Arts & Media，`/arts-media/`）。新分類保留 Coming Soon，小麥廚坊舊網址轉到飲食生活，其餘舊品牌網址轉到文化視覺；舊路徑不列入 sitemap。公開分享圖與思源宋體子集已依新文字更新，均存放於 Supabase。

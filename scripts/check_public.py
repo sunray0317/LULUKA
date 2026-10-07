@@ -76,7 +76,7 @@ def check():
             assert target.is_file(), f'{path.name}: missing {link}'
             if url.fragment and target in pages:
                 assert url.fragment in pages[target].ids, f'Broken anchor: {link}'
-    for slug in ['xiaomai', 'chaotrel', 'yongbindata']:
+    for slug in ['culinary-retail', 'arts-media']:
         p = pages[SITE / slug / 'index.html']
         canonical = f'https://luluka.org/{slug}/'
         assert p.canonical == canonical == p.meta['og:url']
