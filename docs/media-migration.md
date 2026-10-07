@@ -76,3 +76,7 @@ GitHub 上曾公開的資料無法保證從他人已保存的副本中收回。
 ## 兩個分類入口
 
 首頁與導覽改為飲食生活（Culinary & Retail，`/culinary-retail/`）與文化視覺（Arts & Media，`/arts-media/`）。新分類保留 Coming Soon，小麥廚坊舊網址轉到飲食生活，其餘舊品牌網址轉到文化視覺；舊路徑不列入 sitemap。公開分享圖與思源宋體子集已依新文字更新，均存放於 Supabase。
+
+## 統一 Coming Soon 字體
+
+目前全站文字統一使用現有 Coming Soon 標題的思源宋體子集，包括首頁標誌、分類標題與英文副標、選單、頁尾、Coming Soon 頁，以及隱私頁。字型已依目前 HTML 字元重新產生與上傳，保留黑金配色、置中排版、較寬字距與毛玻璃互動。
