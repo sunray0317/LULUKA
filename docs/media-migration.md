@@ -58,5 +58,5 @@ python3 scripts/check_public.py
 
 刪除工作目錄並提交後，媒體仍可能存在於 Git 歷史、分支、fork 與外部快取。
 清理歷史需另做歷史重寫、處理所有相關 refs 並 force push，會影響既有 clone。
-Git bundle 已保存供復原。歷史重寫尚未執行；目前原檔的清理不會刪除舊提交中的媒體。
+Git bundle 已保存供復原。經使用者明確授權，main 已以相同的乾淨網站檔案重建 root commit，並使用 force-with-lease 推送。重新從 GitHub clone 驗證，舊媒體不再位於 main 可達歷史；新 clone 沒有媒體檔。既有 clone 請重新 clone，勿把舊分支重新合併或推回 main。GitHub 尚未回收的舊 SHA、fork 與外部快取不在這次可達歷史清理的保證範圍。
 GitHub 上曾公開的資料無法保證從他人已保存的副本中收回。
