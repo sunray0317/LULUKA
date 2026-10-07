@@ -16,5 +16,5 @@ nav{display:none;position:absolute;right:6vw;top:calc(100% + 8px);min-width:220p
 @media(max-width:600px){.brands{padding:32px 24px 48px}.brand-cards{grid-template-columns:minmax(0,300px);gap:24px}.brand-card{padding:24px}.brand-card h2{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.brand-card::before{transition:none}}
 
-.culinary-card::before{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/f8a73fcfb0bed13d1a3689c1ec5a7dcc1f584c1b8556170bf6e95397908bb198/culinary-card.png')}
-.arts-card::before{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/d512930dfd4dca1963f091acee6e6515aa31d8c26dd4a3f6f37b00b59f50e537/arts-card.png')}
+.culinary-card::before{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/362eadec00d95bf0ef869b26edcf99f71293e70454c65b5d02eeec82ab830e74/culinary-nouveau-card.png')}
+.arts-card::before{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/91dfa629f53691d2493955613c48021d2aca5240990d31df714db32bfeaaacdd/arts-nouveau-card.png')}
