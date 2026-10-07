@@ -16,5 +16,10 @@ nav{display:none;position:absolute;right:6vw;top:calc(100% + 8px);min-width:220p
 @media(max-width:600px){.brands{padding:32px 24px 48px}.brand-cards{grid-template-columns:minmax(0,300px);gap:24px}.brand-card{padding:24px}.brand-card h2{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.brand-card::before{transition:none}}
 
-.culinary-card::before{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/362eadec00d95bf0ef869b26edcf99f71293e70454c65b5d02eeec82ab830e74/culinary-nouveau-card.png')}
-.arts-card::before{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/91dfa629f53691d2493955613c48021d2aca5240990d31df714db32bfeaaacdd/arts-nouveau-card.png')}
+.culinary-card::before{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/7553f76971eb20b4766d3369ab904d70ac715e1e74ce2d699be7885286eb1e03/culinary-matte-card.png')}
+.arts-card::before{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/11e64a1697e531097223fc6a90970a0f76bc718918bc06ed13d5a0146b676937/arts-matte-card.png')}
+
+/* Matte game-card composition: title at top left, art in lower-right two thirds. */
+.brand-card{text-align:left;background:#0b0b09}.brand-content{align-items:flex-start;justify-content:flex-start;padding:8px 0 0;text-align:left}.brand-card::before{inset:auto 0 0 auto;width:66.6667%;height:66.6667%;background-size:150% 150%;background-position:right bottom;mask-image:linear-gradient(135deg,transparent,#000 28%);-webkit-mask-image:linear-gradient(135deg,transparent,#000 28%);opacity:.8}.brand-card::after{background:linear-gradient(135deg,#0b0b0918,transparent 55%,#0b0b0918)}.brand-card p{font-size:13px;letter-spacing:.08em}
+
+.brand-card::before{-webkit-mask-image:linear-gradient(to right,transparent,#000 18%),linear-gradient(to bottom,transparent,#000 18%);mask-image:linear-gradient(to right,transparent,#000 18%),linear-gradient(to bottom,transparent,#000 18%);-webkit-mask-composite:source-in;mask-composite:intersect}
