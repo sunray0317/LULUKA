@@ -22,7 +22,7 @@ if (toggle && nav) {
 
 const cards = [...document.querySelectorAll('.brand-card')];
 const track = document.querySelector('.brand-cards');
-const carouselLayout = window.matchMedia('(max-width: 900px)');
+const carouselLayout = window.matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)');
 if (track && cards.length) {
   let pointerOrigin = null;
   let dragged = false;
@@ -70,7 +70,7 @@ if (track && cards.length) {
     if (carouselLayout.matches) {
       const center = track.getBoundingClientRect().x + track.clientWidth / 2;
       const bounds = card.getBoundingClientRect();
-      track.scrollTo({ left: track.scrollLeft + bounds.x + bounds.width / 2 - center, behavior: 'instant' });
+      track.scrollTo({ left: track.scrollLeft + bounds.x + bounds.width / 2 - center, behavior: 'auto' });
     }
     updateControls();
   };
