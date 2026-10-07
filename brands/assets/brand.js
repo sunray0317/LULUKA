@@ -19,3 +19,14 @@ if (toggle && nav) {
     }
   });
 }
+
+const cards = document.querySelectorAll('.brand-card');
+if (cards.length) {
+  const clearPressed = () => cards.forEach((card) => card.classList.remove('is-pressed'));
+  cards.forEach((card) => {
+    card.addEventListener('pointerdown', () => card.classList.add('is-pressed'));
+  });
+  document.addEventListener('pointerup', clearPressed);
+  document.addEventListener('pointercancel', clearPressed);
+  window.addEventListener('blur', clearPressed);
+}
