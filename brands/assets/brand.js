@@ -58,17 +58,19 @@ if (track && cards.length) {
   };
   const updateControls = () => {
     const index = nearestIndex();
-    if (previous) previous.disabled = index === 0;
-    if (next) next.disabled = index === cards.length - 1;
+    if (previous) previous.disabled = !carouselLayout.matches && index === 0;
+    if (next) next.disabled = !carouselLayout.matches && index === cards.length - 1;
   };
   const selectCard = (requestedIndex, focus = false) => {
-    const index = Math.max(0, Math.min(cards.length - 1, requestedIndex));
+    const index = carouselLayout.matches
+      ? ((requestedIndex % cards.length) + cards.length) % cards.length
+      : Math.max(0, Math.min(cards.length - 1, requestedIndex));
     const card = cards[index];
     if (focus) card.focus({ preventScroll: true });
     if (carouselLayout.matches) {
       const center = track.getBoundingClientRect().x + track.clientWidth / 2;
       const bounds = card.getBoundingClientRect();
-      track.scrollBy({ left: bounds.x + bounds.width / 2 - center, behavior: 'instant' });
+      track.scrollTo({ left: track.scrollLeft + bounds.x + bounds.width / 2 - center, behavior: 'instant' });
     }
     updateControls();
   };
