@@ -75,7 +75,8 @@ body{height:auto;min-height:100svh}header,footer{flex-shrink:0}header{min-height
 
 /* A narrow gold sheen crosses the surface without adding another frame. */
 .brand-card{background-color:#160f0b}
-.brand-card::before{background:repeating-linear-gradient(60deg,transparent 0 44px,#bc95640c 44px 45px,transparent 45px 88px),repeating-linear-gradient(120deg,transparent 0 44px,#bc95640c 44px 45px,transparent 45px 88px),radial-gradient(ellipse at 70% 75%,#59351f38,transparent 75%),linear-gradient(#39261924,#39261924),linear-gradient(90deg,#080807b8 0%,#0808075c 23%,transparent 58%),linear-gradient(0deg,#08080735,transparent 40%)}
+/* Quiet geometric ornaments sit in the background's open spaces and corners. */
+.brand-card::before{inset:0;background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/0abcd3ebeaf34e04165d05ff1b9f8dd23f9ff2458c7eaaab094484984daea025/card-dark-geometric-totem.svg'),radial-gradient(ellipse at 70% 75%,#59351f38,transparent 75%),linear-gradient(#39261924,#39261924),linear-gradient(90deg,#080807b8 0%,#0808075c 23%,transparent 58%),linear-gradient(0deg,#08080735,transparent 40%);background-size:100% 100%,auto,auto,auto,auto;background-repeat:no-repeat}
 .brand-card::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border:0;background:linear-gradient(110deg,transparent 38%,#e9bd6920 44%,#fff0c273 49%,#fff9e6a6 50%,#ffe3a74d 52%,transparent 60%);mix-blend-mode:screen;opacity:0;transform:translateX(-130%);animation:card-sheen-idle 6.4s ease-in-out infinite;animation-delay:var(--sheen-delay,0s)}
 .visual-design-card{--sheen-delay:0s}
 .brand-incubation-card{--sheen-delay:1.1s}
