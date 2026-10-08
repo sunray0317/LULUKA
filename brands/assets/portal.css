@@ -10,22 +10,22 @@ body{height:auto;min-height:100svh}header,footer{flex-shrink:0}header{min-height
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card-art,.brand-card,.brand-card::before,.brand-content{transition:none}.card-art{transform:scale(1.025);will-change:auto}.brand-card::before,.brand-content{transform:none}.brand-cards{scroll-behavior:auto}}
 
-.visual-design-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/a03ec69b47a4509d93e4ae283b5ea78971881ac7f77c76eae2735b559d5d065a/visual-design-idle-medium-symbol.svg')}
-.brand-incubation-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/5e0698460f8fd202aaab538d78c9c1577b8be0020579f75b511e7b7e1debf2fc/brand-incubation-idle-medium-symbol.svg')}
-.advertising-publishing-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/63c56835b1d5a661fbf1e5abdfa13b4cdc83fc628d9db2983fb5a6842c2925fe/advertising-publishing-idle-medium-symbol.svg')}
-.resident-dining-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/0a050d69f526f89bcc36efe275bb0c578174ad45281b19436f12fa9feea00c3d/resident-dining-idle-medium-symbol.svg')}
-.fashion-lifestyle-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/ccd7b518a05aa191e3ebd20ac13f4236fcc94926c6011c860f9a6216b190a3d6/fashion-closed-idle-medium-symbol.svg')}
+.visual-design-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/67b6967e061de44a6631520852fe008eac49ced6aa3fe0eaf39c88fec87fdbe8/visual-design-idle-geometric-totem.png')}
+.brand-incubation-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/5c069768f21172974f1cd94e5aac7246640a21f6ad95cf9efd17b37d5fc099e4/brand-incubation-idle-geometric-totem.png')}
+.advertising-publishing-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/67d2104ae6a68cba5be5be190880cb0a0db391efd936eb0a5dc05de253211cda/advertising-publishing-idle-geometric-totem.png')}
+.resident-dining-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/0813c36be73f8e21d042cc0461057dcb58ea6227c2c09fd131883992a520238e/resident-dining-idle-geometric-totem.png')}
+.fashion-lifestyle-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/561e1de383cfe19632afa7dde7e0a874affeff38759b56e33274c69f4a0ad83a/fashion-closed-idle-geometric-totem.png')}
 
 .brand-card .card-art::after{content:"";position:absolute;inset:0;background-position:right center;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity .35s ease;pointer-events:none}
 .brand-card.is-pressed .card-art::after,.brand-card.is-revealed .card-art::after,.brand-card:focus-visible .card-art::after{opacity:1}
 @media(hover:hover){.brand-card:hover .card-art::after{opacity:1}}
 @media(prefers-reduced-motion:reduce){.brand-card .card-art::after{transition:none}}
 
-.visual-design-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/c498885cd82bfb6e1185f43a34d33a4d00454a5330e7d942ea132845a87fd9b1/visual-design-active-medium-symbol.svg")}
-.brand-incubation-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/bfeca3d79ffb94741741d0c6545726745afd8aa08aceff435f5860b507a1b41d/brand-incubation-active-medium-symbol.svg")}
-.advertising-publishing-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/9dadad7faa94277949fafa3c0801614abf5b83875fa2b6eec14dc5ce7631ef61/advertising-publishing-active-medium-symbol.svg")}
-.resident-dining-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/35e3961fd842e6492075d793671ad3a8f72ff520c6aea042b694b54b6c55a9a7/resident-dining-active-medium-symbol.svg")}
-.fashion-lifestyle-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/66bb3ba456b886bea5689497d6fec960a2a2b21f2b89f844fa0fb40ab5efb742/fashion-closed-active-medium-symbol.svg")}
+.visual-design-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/980bebe6008a523941acebaf1c1982d219f66645902db857a26edaf388fd35c9/visual-design-active-geometric-totem.png")}
+.brand-incubation-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/11617b248817c816d71e5e19a993eb45d33474ed3f8cabf032fb2ba6313e5f53/brand-incubation-active-geometric-totem.png")}
+.advertising-publishing-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/65fcdbfc6678703df860a1295ae0f05b553b888a53b426cf03ed6e17950bf038/advertising-publishing-active-geometric-totem.png")}
+.resident-dining-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/b2f2aecaaf1ff4a6625c17284ddc3cb10c19fafa29edd7e2a354c0e68d0ab40c/resident-dining-active-geometric-totem.png")}
+.fashion-lifestyle-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/510856a6c4241807d9556995f54c1e768d2f7a783e7b2eead05604958eb33e3c/fashion-closed-active-geometric-totem.png")}
 .carousel-hint{display:none}
 @media(max-width:900px),(hover:none) and (pointer:coarse){.brand-cards{container-type:inline-size}.brand-card h2{font-size:12.5cqw}.brand-card p{font-size:clamp(14px,4.8cqw,18px)}.carousel-hint{display:block;margin:0;text-align:center;color:#b5a98e;font-size:12px;letter-spacing:.06em}.brand-card.is-revealed .card-art{opacity:.98}.brand-card.is-revealed::after{border-color:#f1d79c;box-shadow:0 0 7px #d5b67655,inset 0 0 4px #d5b67620}}
 
