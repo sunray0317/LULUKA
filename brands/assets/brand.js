@@ -109,7 +109,11 @@ if (track && cards.length) {
   const select = (requested, focus = false) => {
     stop();
     index = wrap(requested);
-    if (looping) position(index + 1, true);
+    if (looping) {
+      swipeStartLeft = track.scrollLeft;
+      showSwipeFeedback(index + 1);
+      position(index + 1, true);
+    }
     if (focus) cards[index].focus({ preventScroll: true });
     update();
     schedule();
@@ -120,6 +124,8 @@ if (track && cards.length) {
     normalize();
     const physical = physicalIndex();
     index = wrap(physical - 1 + direction);
+    swipeStartLeft = track.scrollLeft;
+    showSwipeFeedback(physical + direction);
     position(physical + direction, true);
     update();
     schedule();
@@ -150,13 +156,22 @@ if (track && cards.length) {
       schedule();
     });
   };
-  section.querySelector('.previous-card')?.addEventListener('click', () => move(-1));
-  section.querySelector('.next-card')?.addEventListener('click', () => move(1));
+  section.querySelectorAll('.carousel-arrow').forEach((arrow) => {
+    let feedbackTimer;
+    arrow.addEventListener('click', () => {
+      clearTimeout(feedbackTimer);
+      arrow.classList.add('is-activated');
+      feedbackTimer = setTimeout(() => arrow.classList.remove('is-activated'), 320);
+      move(arrow.classList.contains('next-card') ? 1 : -1);
+    });
+  });
   dots.forEach((dot, i) => dot.addEventListener('click', () => select(i)));
   track.addEventListener('scroll', () => {
     if (!looping || arranging) return;
     if (targetLeft === null) stop();
-    if (targetLeft === null || track.classList.contains('is-swipe-feedback')) showSwipeFeedback();
+    if (targetLeft === null || track.classList.contains('is-swipe-feedback')) {
+      showSwipeFeedback(targetLeft === null ? null : Math.round(targetLeft / track.clientWidth));
+    }
     index = wrap(physicalIndex() - 1);
     update();
     clearTimeout(settling);
