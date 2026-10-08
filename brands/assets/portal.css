@@ -28,3 +28,5 @@ body{height:auto;min-height:100svh}header,footer{flex-shrink:0}header{min-height
 .fashion-lifestyle-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/129e4b9ffec7484ad573d51e7b4d5d2675e0523ea7acabeb67a54fd3b5928dcc/fashion-closed-active-stable-symbol.svg")}
 .carousel-hint{display:none}
 @media(max-width:900px),(hover:none) and (pointer:coarse){.brand-cards{container-type:inline-size}.brand-card h2{font-size:12.5cqw}.brand-card p{font-size:clamp(14px,4.8cqw,18px)}.carousel-hint{display:block;margin:0;text-align:center;color:#b5a98e;font-size:12px;letter-spacing:.06em}.brand-card.is-revealed .card-art{opacity:.98}.brand-card.is-revealed::after{border-color:#f1d79c;box-shadow:0 0 7px #d5b67655,inset 0 0 4px #d5b67620}}
+
+.brand-card .card-art{inset:0;transform:none}
