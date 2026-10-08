@@ -167,29 +167,46 @@ if (track && cards.length) {
   layout();
 }
 
-// A mobile tap reveals the artwork; two consecutive taps enter the theme.
-let previousThemeTap = null;
+// Mobile taps show the active image for one second before entering the theme.
+let pendingThemeNavigation = null;
+let themeTapOrigin = null;
+const cancelThemeNavigation = () => {
+  if (pendingThemeNavigation) clearTimeout(pendingThemeNavigation.timer);
+  pendingThemeNavigation = null;
+  track?.querySelectorAll('.is-revealed').forEach((card) => card.classList.remove('is-revealed'));
+};
 track?.addEventListener('click', (event) => {
   const card = event.target.closest('.brand-card');
   if (!card || !carouselLayout.matches || event.detail === 0) return;
-  if (event.defaultPrevented) { previousThemeTap = null; return; }
+  if (event.defaultPrevented) { cancelThemeNavigation(); return; }
   if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
-  const now = performance.now();
-  const secondTap = previousThemeTap?.href === card.href && now - previousThemeTap.time <= 450;
-  if (secondTap) {
-    previousThemeTap = null;
-    window.location.assign(card.href);
-    return;
-  }
-  const reveal = !card.classList.contains('is-revealed');
+  if (pendingThemeNavigation?.href === card.href) return;
+  cancelThemeNavigation();
   track.querySelectorAll('.brand-card').forEach((other) => {
-    other.classList.toggle('is-revealed', reveal && other.href === card.href);
+    other.classList.toggle('is-revealed', other.href === card.href);
   });
-  previousThemeTap = { href: card.href, time: now };
+  const href = card.href;
+  const timer = setTimeout(() => {
+    pendingThemeNavigation = null;
+    window.location.assign(href);
+  }, 1000);
+  pendingThemeNavigation = { href, timer };
 });
-track?.addEventListener('pointercancel', () => { previousThemeTap = null; }, { passive: true });
-document.addEventListener('visibilitychange', () => { if (document.hidden) previousThemeTap = null; });
+track?.addEventListener('pointerdown', (event) => {
+  themeTapOrigin = { x: event.clientX, y: event.clientY };
+}, { passive: true });
+track?.addEventListener('pointermove', (event) => {
+  if (themeTapOrigin && Math.hypot(event.clientX - themeTapOrigin.x, event.clientY - themeTapOrigin.y) > 10) cancelThemeNavigation();
+}, { passive: true });
+document.addEventListener('pointerup', () => { themeTapOrigin = null; }, { passive: true });
+document.addEventListener('pointercancel', () => { themeTapOrigin = null; cancelThemeNavigation(); }, { passive: true });
+track?.closest('.brands')?.addEventListener('click', (event) => {
+  if (event.target.closest('.carousel-arrow, .carousel-dot')) cancelThemeNavigation();
+});
+carouselLayout.addEventListener('change', cancelThemeNavigation);
+window.addEventListener('blur', cancelThemeNavigation);
+document.addEventListener('visibilitychange', () => { if (document.hidden) cancelThemeNavigation(); });
 
 // Delegation also handles the mobile carousel's cloned cards.
 let pressedFashionCard = null;
