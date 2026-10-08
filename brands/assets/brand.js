@@ -20,150 +20,347 @@ if (toggle && nav) {
   });
 }
 
-const cards = [...document.querySelectorAll('.brand-card')];
-const track = document.querySelector('.brand-cards');
 const carouselLayout = window.matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)');
-if (track && cards.length) {
-  const section = track.closest('.brands');
-  const dots = [...section.querySelectorAll('.carousel-dot')];
-  const pause = section.querySelector('.carousel-pause');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let index = 0;
-  let looping = false;
-  let timer;
-  let settling;
-  let layoutFrame;
-  let arranging = false;
-  let targetLeft = null;
-  let pointerOrigin = null;
-  let dragged = false;
-  let touching = false;
-  let foreground = true;
-  let paused = reducedMotion.matches;
-  const wrap = (value) => ((value % cards.length) + cards.length) % cards.length;
-  const stop = () => clearTimeout(timer);
-  const canPlay = () => looping && !paused && !document.hidden && foreground && !pointerOrigin && !touching
-    && !nav?.classList.contains('open') && !track.contains(document.activeElement);
-  const schedule = () => {
-    stop();
-    if (canPlay()) timer = setTimeout(() => move(1), 3000);
-  };
-  const update = () => {
-    dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
-    pause?.setAttribute('aria-pressed', String(paused));
-    pause?.setAttribute('aria-label', paused ? '繼續自動輪播' : '暫停自動輪播');
-  };
-  const physicalIndex = () => Math.round(track.scrollLeft / track.clientWidth);
-  const position = (physical, animate = false) => {
-    targetLeft = physical * track.clientWidth;
-    track.scrollTo({ left: targetLeft, behavior: animate && !reducedMotion.matches ? 'smooth' : 'auto' });
-  };
-  const normalize = () => {
-    const physical = physicalIndex();
-    if (physical === 0) position(cards.length);
-    else if (physical === cards.length + 1) position(1);
-  };
-  const settle = () => {
-    if (!looping) return;
-    if (targetLeft !== null && Math.abs(track.scrollLeft - targetLeft) > 1) return;
-    const manual = targetLeft === null;
-    targetLeft = null;
-    index = wrap(physicalIndex() - 1);
-    normalize();
-    update();
-    if (manual) schedule();
-  };
-  const select = (requested, focus = false) => {
-    stop();
-    index = wrap(requested);
-    if (looping) position(index + 1, true);
-    if (focus) cards[index].focus({ preventScroll: true });
-    update();
-    schedule();
-  };
-  function move(direction) {
-    if (!looping) return;
-    stop();
-    normalize();
-    const physical = physicalIndex();
-    index = wrap(physical - 1 + direction);
-    position(physical + direction, true);
-    update();
-    schedule();
+let pendingThemeNavigation = null;
+const cancelThemeNavigation = () => {
+  if (pendingThemeNavigation) clearTimeout(pendingThemeNavigation.timer);
+  pendingThemeNavigation = null;
+  document.querySelectorAll('.brand-cards').forEach((track) => {
+    track.classList.remove('is-tap-feedback');
+    track.querySelectorAll('.is-revealed').forEach((card) => card.classList.remove('is-revealed'));
+  });
+};
+const brushCard = (card) => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (card.classList.contains('is-brushing')) return;
+  card.classList.add('is-brushing');
+};
+// Pointer entry is one contact; remaining over the same card never repeats the sheen.
+document.addEventListener('pointerover', (event) => {
+  if (event.pointerType === 'touch' || carouselLayout.matches) return;
+  const card = event.target.closest('.brand-card');
+  if (card && !card.contains(event.relatedTarget)) { prepareActiveArt(card); brushCard(card); }
+});
+document.addEventListener('focusin', (event) => {
+  if (event.target.matches('.brand-card') && event.target.matches(':focus-visible')) {
+    prepareActiveArt(event.target);
+    if (!carouselLayout.matches) brushCard(event.target);
   }
-  const clone = (card) => {
-    const copy = card.cloneNode(true);
-    copy.classList.add('carousel-clone');
-    copy.setAttribute('aria-hidden', 'true');
-    copy.tabIndex = -1;
-    return copy;
+});
+document.addEventListener('animationend', (event) => {
+  if (event.animationName === 'card-sheen-touch') event.target.classList.remove('is-brushing');
+});
+// Load only cards near the viewport, then warm the visible feedback state.
+const loadedImages = new WeakSet();
+const loadCardImage = (image) => {
+  if (!image || loadedImages.has(image)) return;
+  loadedImages.add(image);
+  const ready = () => {
+    if (image.classList.contains('art-active') && image.naturalWidth) image.closest('.brand-card').classList.add('has-active-art');
   };
-  const layout = () => {
-    stop();
-    clearTimeout(settling);
-    cancelAnimationFrame(layoutFrame);
-    arranging = true;
-    track.querySelectorAll('.carousel-clone').forEach((card) => card.remove());
-    looping = carouselLayout.matches;
-    if (looping) {
-      track.prepend(clone(cards[cards.length - 1]));
-      track.append(clone(cards[0]));
-    } else track.scrollLeft = 0;
-    layoutFrame = requestAnimationFrame(() => {
-      if (looping) position(index + 1);
-      arranging = false;
+  image.addEventListener('load', ready, { once: true });
+  if (image.dataset.srcset) image.srcset = image.dataset.srcset;
+  if (image.dataset.src) image.src = image.dataset.src;
+  if (image.complete) ready();
+};
+const loadCardIdle = (card) => loadCardImage(card.querySelector('.art-idle'));
+const prepareActiveArt = (card) => loadCardImage(card.querySelector('.art-active'));
+const warmVisibleFeedback = (card) => {
+  if (!card.isConnected || !card.classList.contains('is-in-view')) return;
+  const track = card.closest('.brand-cards'),rect = card.getBoundingClientRect(),view = track.getBoundingClientRect();
+  if (!carouselLayout.matches || Math.abs(rect.left + rect.width / 2 - view.left - view.width / 2) < rect.width * .4) prepareActiveArt(card);
+};
+const mediaObserver = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    const card = entry.target;
+    card.classList.toggle('is-in-view', entry.isIntersecting);
+    if (!entry.isIntersecting) continue;
+    loadCardIdle(card);
+    const idle = card.querySelector('.art-idle');
+    const warm = () => setTimeout(() => warmVisibleFeedback(card), 200);
+    if (idle.complete && idle.naturalWidth) warm();
+    else idle.addEventListener('load', warm, { once: true });
+  }
+}, { rootMargin: '120px 0px', threshold: .01 });
+const observeCardMedia = (card) => {
+  const active = card.querySelector('.art-active');
+  if (active?.complete && active.naturalWidth) card.classList.add('has-active-art');
+  mediaObserver.observe(card);
+};
+document.querySelectorAll('.brand-card').forEach(observeCardMedia);
+function initializeThemeCarousel(track) {
+  const cards = [...track.querySelectorAll('.brand-card')];
+  if (track && cards.length) {
+    const section = track.closest('.brands');
+    const dots = [...section.querySelectorAll('.carousel-dot')];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let cardStep = 0;
+    const stepWidth = () => cardStep || cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
+    let index = 0;
+    let looping = false;
+    let timer;
+    let settling;
+    let swipeFeedbackTimer;
+    let swipeStartLeft = null;
+    let layoutFrame;
+    let arranging = false;
+    let targetLeft = null;
+    let pointerOrigin = null;
+    let dragged = false;
+    let touching = false;
+    let foreground = true;
+    let inView = false;
+    let paused = reducedMotion.matches;
+    const wrap = (value) => ((value % cards.length) + cards.length) % cards.length;
+    const stop = () => clearTimeout(timer);
+    const canPlay = () => looping && !paused && !document.hidden && foreground && inView && !pointerOrigin && !touching
+      && !nav?.classList.contains('open') && !track.contains(document.activeElement);
+    const schedule = () => {
+      stop();
+      if (canPlay()) timer = setTimeout(() => move(1), 3000);
+    };
+    const update = () => {
+      dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+      section.querySelectorAll('.brand-card.is-revealed').forEach((card) => {
+        if (card.href !== cards[index].href) card.classList.remove('is-revealed');
+      });
+    };
+    const clearSwipeFeedback = () => {
+      clearTimeout(swipeFeedbackTimer);
+      track.classList.remove('is-swipe-feedback');
+      track.querySelectorAll('.is-swipe-feedback').forEach((card) => card.classList.remove('is-swipe-feedback'));
+    };
+    const showSwipeFeedback = (destination = null) => {
+      if (!looping) return;
+      const items = [...track.querySelectorAll('.brand-card')];
+      if (destination === null) {
+        const origin = swipeStartLeft ?? (index + 1) * stepWidth();
+        const delta = track.scrollLeft - origin;
+        if (Math.abs(delta) < 2) return;
+        const fraction = track.scrollLeft / stepWidth();
+        destination = delta > 0 ? Math.ceil(fraction - .001) : Math.floor(fraction + .001);
+      }
+      destination = Math.max(0, Math.min(items.length - 1, destination));
+      loadCardIdle(items[destination]);
+      prepareActiveArt(items[destination]);
+      track.classList.add('is-swipe-feedback');
+      items.forEach((card, physical) => {
+        card.classList.toggle('is-swipe-feedback', physical === destination);
+        if (physical !== destination) card.classList.remove('is-pressed', 'is-revealed', 'is-brushing');
+      });
+      clearTimeout(swipeFeedbackTimer);
+      swipeFeedbackTimer = setTimeout(clearSwipeFeedback, 650);
+    };
+    const physicalIndex = () => Math.round(track.scrollLeft / stepWidth());
+    const position = (physical, animate = false) => {
+      targetLeft = physical * stepWidth();
+      track.scrollTo({ left: targetLeft, behavior: animate && !reducedMotion.matches ? 'smooth' : 'auto' });
+    };
+    const normalize = () => {
+      const physical = physicalIndex();
+      const destination = physical === 0 ? cards.length : physical === cards.length + 1 ? 1 : null;
+      if (destination !== null) {
+        position(destination);
+        swipeStartLeft = destination * stepWidth();
+        if (track.classList.contains('is-swipe-feedback')) showSwipeFeedback(destination);
+      }
+    };
+    const settle = () => {
+      if (!looping) return;
+      if (targetLeft !== null && Math.abs(track.scrollLeft - targetLeft) > 1) return;
+      const manual = targetLeft === null;
+      targetLeft = null;
+      index = wrap(physicalIndex() - 1);
+      normalize();
+      update();
+      swipeStartLeft = track.scrollLeft;
+      const active = track.querySelector('.brand-card.is-swipe-feedback');
+      if (active && active.href !== cards[index].href) clearSwipeFeedback();
+      if (manual) schedule();
+    };
+    const select = (requested, focus = false) => {
+      stop();
+      index = wrap(requested);
+      if (looping) {
+        swipeStartLeft = track.scrollLeft;
+        showSwipeFeedback(index + 1);
+        position(index + 1, true);
+      }
+      if (focus) cards[index].focus({ preventScroll: true });
       update();
       schedule();
-    });
-  };
-  section.querySelector('.previous-card')?.addEventListener('click', () => move(-1));
-  section.querySelector('.next-card')?.addEventListener('click', () => move(1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => select(i)));
-  pause?.addEventListener('click', () => { paused = !paused; update(); schedule(); });
-  track.addEventListener('scroll', () => {
-    if (!looping || arranging) return;
-    if (targetLeft === null) stop();
-    index = wrap(physicalIndex() - 1);
-    update();
-    clearTimeout(settling);
-    settling = setTimeout(settle, 160);
-  }, { passive: true });
-  track.addEventListener('keydown', (event) => {
-    if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
-    event.preventDefault();
-    if (looping) { move(event.key === 'ArrowRight' ? 1 : -1); cards[index].focus({ preventScroll: true }); }
-    else {
-      const current = cards.indexOf(document.activeElement);
-      select((current >= 0 ? current : index) + (event.key === 'ArrowRight' ? 1 : -1), true);
+    };
+    function move(direction) {
+      if (!looping) return;
+      stop();
+      normalize();
+      const physical = physicalIndex();
+      index = wrap(physical - 1 + direction);
+      swipeStartLeft = track.scrollLeft;
+      showSwipeFeedback(physical + direction);
+      position(physical + direction, true);
+      update();
+      schedule();
     }
+    const clone = (card) => {
+      const copy = card.cloneNode(true);
+      copy.classList.remove('is-revealed', 'is-pressed', 'is-swipe-feedback', 'is-brushing', 'is-in-view');
+      copy.classList.add('carousel-clone');
+      copy.setAttribute('aria-hidden', 'true');
+      copy.tabIndex = -1;
+      return copy;
+    };
+    const layout = () => {
+      stop();
+      clearTimeout(settling);
+      cancelAnimationFrame(layoutFrame);
+      clearSwipeFeedback();
+      arranging = true;
+      track.querySelectorAll('.carousel-clone').forEach((card) => card.remove());
+      looping = carouselLayout.matches;
+      if (looping) {
+        track.prepend(clone(cards[cards.length - 1]));
+        track.append(clone(cards[0]));
+        track.querySelectorAll('.carousel-clone').forEach(observeCardMedia);
+      } else track.scrollLeft = 0;
+      layoutFrame = requestAnimationFrame(() => {
+        cardStep = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
+        if (looping) position(index + 1);
+        arranging = false;
+        update();
+        schedule();
+      });
+    };
+    section.querySelectorAll('.carousel-arrow').forEach((arrow) => {
+      let feedbackTimer;
+      arrow.addEventListener('click', () => {
+        clearTimeout(feedbackTimer);
+        arrow.classList.add('is-activated');
+        feedbackTimer = setTimeout(() => arrow.classList.remove('is-activated'), 320);
+        move(arrow.classList.contains('next-card') ? 1 : -1);
+      });
+    });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => select(i)));
+    track.addEventListener('scroll', () => {
+      if (!looping || arranging) return;
+      if (targetLeft === null) stop();
+      if (targetLeft === null || track.classList.contains('is-swipe-feedback')) {
+        showSwipeFeedback(targetLeft === null ? null : Math.round(targetLeft / stepWidth()));
+      }
+      index = wrap(physicalIndex() - 1);
+      update();
+      clearTimeout(settling);
+      settling = setTimeout(settle, 160);
+    }, { passive: true });
+    track.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+      event.preventDefault();
+      if (looping) { move(event.key === 'ArrowRight' ? 1 : -1); cards[index].focus({ preventScroll: true }); }
+      else {
+        const current = cards.indexOf(document.activeElement);
+        select((current >= 0 ? current : index) + (event.key === 'ArrowRight' ? 1 : -1), true);
+      }
+    });
+    section.addEventListener('pointerdown', (event) => {
+      stop();
+      if (track.contains(event.target)) { targetLeft = null; swipeStartLeft = track.scrollLeft; pointerOrigin = { x: event.clientX, y: event.clientY }; dragged = false; }
+    });
+    track.addEventListener('pointermove', (event) => {
+      if (pointerOrigin && Math.hypot(event.clientX - pointerOrigin.x, event.clientY - pointerOrigin.y) > 10) { dragged = true; showSwipeFeedback(); }
+    }, { passive: true });
+    track.addEventListener('click', (event) => {
+      if (dragged && event.detail !== 0) { event.preventDefault(); dragged = false; }
+    });
+    const release = () => { pointerOrigin = null; schedule(); };
+    document.addEventListener('pointerup', release);
+    document.addEventListener('pointercancel', release);
+    track.addEventListener('touchstart', () => { targetLeft = null; swipeStartLeft = track.scrollLeft; touching = true; stop(); }, { passive: true });
+    const endTouch = () => { touching = false; schedule(); };
+    document.addEventListener('touchend', endTouch, { passive: true });
+    document.addEventListener('touchcancel', endTouch, { passive: true });
+    track.addEventListener('focusin', stop);
+    track.addEventListener('focusout', () => setTimeout(schedule, 0));
+    toggle?.addEventListener('click', schedule);
+    nav?.addEventListener('click', schedule);
+    document.addEventListener('click', schedule);
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') schedule(); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) clearSwipeFeedback(); schedule(); });
+    window.addEventListener('blur', () => { foreground = false; stop(); clearSwipeFeedback(); });
+    window.addEventListener('focus', () => { foreground = true; schedule(); });
+    window.addEventListener('resize', layout);
+    reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; update(); schedule(); });
+    layout();
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      schedule();
+    }, { threshold: .1 });
+    observer.observe(track);
+  }
+
+  // Mobile taps show the active image for half a second before entering the theme.
+  let themeTapOrigin = null;
+  track?.addEventListener('click', (event) => {
+    const card = event.target.closest('.brand-card');
+    if (!card || event.detail === 0) return;
+    if (event.defaultPrevented) { cancelThemeNavigation(); return; }
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    loadCardIdle(card);
+    prepareActiveArt(card);
+    brushCard(card);
+    if (!carouselLayout.matches) return;
+    event.preventDefault();
+    if (pendingThemeNavigation?.href === card.href) return;
+    cancelThemeNavigation();
+    track.classList.add('is-tap-feedback');
+    track.querySelectorAll('.brand-card').forEach((other) => {
+      other.classList.toggle('is-revealed', other === card);
+    });
+    const href = card.href;
+    const timer = setTimeout(() => {
+      pendingThemeNavigation = null;
+      window.location.assign(href);
+    }, 500);
+    pendingThemeNavigation = { href, timer };
   });
-  section.addEventListener('pointerdown', (event) => {
-    stop();
-    if (track.contains(event.target)) { targetLeft = null; pointerOrigin = { x: event.clientX, y: event.clientY }; dragged = false; }
-  });
-  track.addEventListener('pointermove', (event) => {
-    if (pointerOrigin && Math.hypot(event.clientX - pointerOrigin.x, event.clientY - pointerOrigin.y) > 10) dragged = true;
+  track?.addEventListener('pointerdown', (event) => {
+    themeTapOrigin = { x: event.clientX, y: event.clientY };
   }, { passive: true });
-  track.addEventListener('click', (event) => {
-    if (dragged && event.detail !== 0) { event.preventDefault(); dragged = false; }
+  track?.addEventListener('pointermove', (event) => {
+    if (themeTapOrigin && Math.hypot(event.clientX - themeTapOrigin.x, event.clientY - themeTapOrigin.y) > 10) cancelThemeNavigation();
+  }, { passive: true });
+  document.addEventListener('pointerup', () => { themeTapOrigin = null; }, { passive: true });
+  document.addEventListener('pointercancel', () => { themeTapOrigin = null; cancelThemeNavigation(); }, { passive: true });
+  track?.closest('.brands')?.addEventListener('click', (event) => {
+    if (event.target.closest('.carousel-arrow, .carousel-dot')) cancelThemeNavigation();
   });
-  const release = () => { pointerOrigin = null; schedule(); };
-  document.addEventListener('pointerup', release);
-  document.addEventListener('pointercancel', release);
-  track.addEventListener('touchstart', () => { targetLeft = null; touching = true; stop(); }, { passive: true });
-  const endTouch = () => { touching = false; schedule(); };
-  document.addEventListener('touchend', endTouch, { passive: true });
-  document.addEventListener('touchcancel', endTouch, { passive: true });
-  track.addEventListener('focusin', stop);
-  track.addEventListener('focusout', () => setTimeout(schedule, 0));
-  toggle?.addEventListener('click', schedule);
-  nav?.addEventListener('click', schedule);
-  document.addEventListener('click', schedule);
-  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') schedule(); });
-  document.addEventListener('visibilitychange', schedule);
-  window.addEventListener('blur', () => { foreground = false; stop(); });
-  window.addEventListener('focus', () => { foreground = true; schedule(); });
-  window.addEventListener('resize', layout);
-  reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; update(); schedule(); });
-  layout();
 }
+
+
+document.querySelectorAll('.brand-cards').forEach(initializeThemeCarousel);
+carouselLayout.addEventListener('change', cancelThemeNavigation);
+window.addEventListener('blur', cancelThemeNavigation);
+document.addEventListener('visibilitychange', () => { if (document.hidden) cancelThemeNavigation(); });
+
+// Delegation also handles the mobile carousel's cloned cards.
+let pressedFashionCard = null;
+let fashionPressOrigin = null;
+const releaseFashionCard = () => {
+  pressedFashionCard?.classList.remove('is-pressed');
+  pressedFashionCard = null;
+  fashionPressOrigin = null;
+};
+document.addEventListener('pointerdown', (event) => {
+  releaseFashionCard();
+  const card = event.target.closest('.fashion-lifestyle-card');
+  if (!card || event.button !== 0 || carouselLayout.matches) return;
+  pressedFashionCard = card;
+  fashionPressOrigin = { x: event.clientX, y: event.clientY };
+  card.classList.add('is-pressed');
+}, { passive: true });
+document.addEventListener('pointermove', (event) => {
+  if (fashionPressOrigin && Math.hypot(event.clientX - fashionPressOrigin.x, event.clientY - fashionPressOrigin.y) > 10) releaseFashionCard();
+}, { passive: true });
+document.addEventListener('pointerup', releaseFashionCard, { passive: true });
+document.addEventListener('pointercancel', releaseFashionCard, { passive: true });
+window.addEventListener('blur', releaseFashionCard);
+document.addEventListener('visibilitychange', () => { if (document.hidden) releaseFashionCard(); });
