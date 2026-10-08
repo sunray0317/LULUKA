@@ -32,28 +32,70 @@ const cancelThemeNavigation = () => {
 };
 const brushCard = (card) => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  card.classList.remove('is-brushing');
-  void card.offsetWidth;
+  if (card.classList.contains('is-brushing')) return;
   card.classList.add('is-brushing');
 };
 // Pointer entry is one contact; remaining over the same card never repeats the sheen.
 document.addEventListener('pointerover', (event) => {
   if (event.pointerType === 'touch' || carouselLayout.matches) return;
   const card = event.target.closest('.brand-card');
-  if (card && !card.contains(event.relatedTarget)) brushCard(card);
+  if (card && !card.contains(event.relatedTarget)) { prepareActiveArt(card); brushCard(card); }
 });
 document.addEventListener('focusin', (event) => {
-  if (event.target.matches('.brand-card') && event.target.matches(':focus-visible')) brushCard(event.target);
+  if (event.target.matches('.brand-card') && event.target.matches(':focus-visible')) {
+    prepareActiveArt(event.target);
+    if (!carouselLayout.matches) brushCard(event.target);
+  }
 });
 document.addEventListener('animationend', (event) => {
   if (event.animationName === 'card-sheen-touch') event.target.classList.remove('is-brushing');
 });
+// Load only cards near the viewport, then warm the visible feedback state.
+const loadedImages = new WeakSet();
+const loadCardImage = (image) => {
+  if (!image || loadedImages.has(image)) return;
+  loadedImages.add(image);
+  const ready = () => {
+    if (image.classList.contains('art-active') && image.naturalWidth) image.closest('.brand-card').classList.add('has-active-art');
+  };
+  image.addEventListener('load', ready, { once: true });
+  if (image.dataset.srcset) image.srcset = image.dataset.srcset;
+  if (image.dataset.src) image.src = image.dataset.src;
+  if (image.complete) ready();
+};
+const loadCardIdle = (card) => loadCardImage(card.querySelector('.art-idle'));
+const prepareActiveArt = (card) => loadCardImage(card.querySelector('.art-active'));
+const warmVisibleFeedback = (card) => {
+  if (!card.isConnected || !card.classList.contains('is-in-view')) return;
+  const track = card.closest('.brand-cards'),rect = card.getBoundingClientRect(),view = track.getBoundingClientRect();
+  if (!carouselLayout.matches || Math.abs(rect.left + rect.width / 2 - view.left - view.width / 2) < rect.width * .4) prepareActiveArt(card);
+};
+const mediaObserver = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    const card = entry.target;
+    card.classList.toggle('is-in-view', entry.isIntersecting);
+    if (!entry.isIntersecting) continue;
+    loadCardIdle(card);
+    const idle = card.querySelector('.art-idle');
+    const warm = () => setTimeout(() => warmVisibleFeedback(card), 200);
+    if (idle.complete && idle.naturalWidth) warm();
+    else idle.addEventListener('load', warm, { once: true });
+  }
+}, { rootMargin: '120px 0px', threshold: .01 });
+const observeCardMedia = (card) => {
+  const active = card.querySelector('.art-active');
+  if (active?.complete && active.naturalWidth) card.classList.add('has-active-art');
+  mediaObserver.observe(card);
+};
+document.querySelectorAll('.brand-card').forEach(observeCardMedia);
 function initializeThemeCarousel(track) {
   const cards = [...track.querySelectorAll('.brand-card')];
   if (track && cards.length) {
     const section = track.closest('.brands');
     const dots = [...section.querySelectorAll('.carousel-dot')];
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let cardStep = 0;
+    const stepWidth = () => cardStep || cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
     let index = 0;
     let looping = false;
     let timer;
@@ -92,13 +134,15 @@ function initializeThemeCarousel(track) {
       if (!looping) return;
       const items = [...track.querySelectorAll('.brand-card')];
       if (destination === null) {
-        const origin = swipeStartLeft ?? (index + 1) * track.clientWidth;
+        const origin = swipeStartLeft ?? (index + 1) * stepWidth();
         const delta = track.scrollLeft - origin;
         if (Math.abs(delta) < 2) return;
-        const fraction = track.scrollLeft / track.clientWidth;
+        const fraction = track.scrollLeft / stepWidth();
         destination = delta > 0 ? Math.ceil(fraction - .001) : Math.floor(fraction + .001);
       }
       destination = Math.max(0, Math.min(items.length - 1, destination));
+      loadCardIdle(items[destination]);
+      prepareActiveArt(items[destination]);
       track.classList.add('is-swipe-feedback');
       items.forEach((card, physical) => {
         card.classList.toggle('is-swipe-feedback', physical === destination);
@@ -107,9 +151,9 @@ function initializeThemeCarousel(track) {
       clearTimeout(swipeFeedbackTimer);
       swipeFeedbackTimer = setTimeout(clearSwipeFeedback, 650);
     };
-    const physicalIndex = () => Math.round(track.scrollLeft / track.clientWidth);
+    const physicalIndex = () => Math.round(track.scrollLeft / stepWidth());
     const position = (physical, animate = false) => {
-      targetLeft = physical * track.clientWidth;
+      targetLeft = physical * stepWidth();
       track.scrollTo({ left: targetLeft, behavior: animate && !reducedMotion.matches ? 'smooth' : 'auto' });
     };
     const normalize = () => {
@@ -117,7 +161,7 @@ function initializeThemeCarousel(track) {
       const destination = physical === 0 ? cards.length : physical === cards.length + 1 ? 1 : null;
       if (destination !== null) {
         position(destination);
-        swipeStartLeft = destination * track.clientWidth;
+        swipeStartLeft = destination * stepWidth();
         if (track.classList.contains('is-swipe-feedback')) showSwipeFeedback(destination);
       }
     };
@@ -160,7 +204,7 @@ function initializeThemeCarousel(track) {
     }
     const clone = (card) => {
       const copy = card.cloneNode(true);
-      copy.classList.remove('is-revealed', 'is-pressed', 'is-swipe-feedback', 'is-brushing');
+      copy.classList.remove('is-revealed', 'is-pressed', 'is-swipe-feedback', 'is-brushing', 'is-in-view');
       copy.classList.add('carousel-clone');
       copy.setAttribute('aria-hidden', 'true');
       copy.tabIndex = -1;
@@ -177,8 +221,10 @@ function initializeThemeCarousel(track) {
       if (looping) {
         track.prepend(clone(cards[cards.length - 1]));
         track.append(clone(cards[0]));
+        track.querySelectorAll('.carousel-clone').forEach(observeCardMedia);
       } else track.scrollLeft = 0;
       layoutFrame = requestAnimationFrame(() => {
+        cardStep = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
         if (looping) position(index + 1);
         arranging = false;
         update();
@@ -199,7 +245,7 @@ function initializeThemeCarousel(track) {
       if (!looping || arranging) return;
       if (targetLeft === null) stop();
       if (targetLeft === null || track.classList.contains('is-swipe-feedback')) {
-        showSwipeFeedback(targetLeft === null ? null : Math.round(targetLeft / track.clientWidth));
+        showSwipeFeedback(targetLeft === null ? null : Math.round(targetLeft / stepWidth()));
       }
       index = wrap(physicalIndex() - 1);
       update();
@@ -258,6 +304,8 @@ function initializeThemeCarousel(track) {
     if (!card || event.detail === 0) return;
     if (event.defaultPrevented) { cancelThemeNavigation(); return; }
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    loadCardIdle(card);
+    prepareActiveArt(card);
     brushCard(card);
     if (!carouselLayout.matches) return;
     event.preventDefault();
@@ -265,7 +313,7 @@ function initializeThemeCarousel(track) {
     cancelThemeNavigation();
     track.classList.add('is-tap-feedback');
     track.querySelectorAll('.brand-card').forEach((other) => {
-      other.classList.toggle('is-revealed', other.href === card.href);
+      other.classList.toggle('is-revealed', other === card);
     });
     const href = card.href;
     const timer = setTimeout(() => {
