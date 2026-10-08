@@ -10,13 +10,13 @@ body{height:auto;min-height:100svh}header,footer{flex-shrink:0}header{min-height
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card-art,.brand-card,.brand-card::before,.brand-content{transition:none}.card-art{transform:scale(1.025);will-change:auto}.brand-card::before,.brand-content{transform:none}.brand-cards{scroll-behavior:auto}}
 
-.visual-design-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/e9b26ea7b8991919df805c7c2a68ba6c6db44801833dd8fc9b7fba189386e6d4/visual-design-modern-linocut.png')}
-.brand-incubation-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/3a0ded6ca3403e7420ac2ef86341cc5c6b8c854b4d97ca4519ad135d0b5de0bc/brand-incubation-modern-linocut.png')}
-.advertising-publishing-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/b6bc8b131df889af7d1eb8146c7fea8fcf13e0c5a73f3750e1b37416446a3942/advertising-publishing-modern-linocut.png')}
-.resident-dining-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/75162f07bec56b7aab2fe18b0f97de6133db3fbb4fb2c8f8713adcabbd251e30/resident-dining-modern-linocut.png')}
-.fashion-lifestyle-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/5fde89f49d84cf3b03dbb83114aa7f4462f1e6f40866405bc111f599309e73ca/fashion-closed-modern-linocut.png')}
+.visual-design-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/f45507248a4fcbbc5e47e8efcc757dce63809f91fa4fc7de638d0fe579c21312/visual-design-clean-emblem.png')}
+.brand-incubation-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/ee7478750a87ed6e7e56df2d35137e8bff0c953b7278807e24439122556978c3/brand-incubation-clean-emblem.png')}
+.advertising-publishing-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/e5138fb60799d386a457ed882085c70986c158fce6a3aebab8e8d9cf8e56b574/advertising-publishing-clean-emblem.png')}
+.resident-dining-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/1fbf02173bb4855d36c19bc346f0bef0ef6d147369915fe7eab0b0491fbea61b/resident-dining-clean-emblem.png')}
+.fashion-lifestyle-card .card-art{background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/c8272b66ba214a91f7fa58501165b085a0854e5750416b230ccd6371efede733/fashion-closed-clean-emblem.png')}
 
-.fashion-lifestyle-card .card-art::after{content:"";position:absolute;inset:0;background:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/699141d746c04c626b1a9bbd387d42f46c6acf55f44137ce92eea99db06a6275/fashion-open-modern-linocut.png") right center/cover no-repeat;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.fashion-lifestyle-card .card-art::after{content:"";position:absolute;inset:0;background:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/d73af656c201fff04d865e0261f6d969ab0e01d63ee1d675e7ecb2a9f2e763a9/fashion-open-clean-emblem.png") right center/cover no-repeat;opacity:0;transition:opacity .35s ease;pointer-events:none}
 .fashion-lifestyle-card.is-pressed .card-art::after,.fashion-lifestyle-card:focus-visible .card-art::after{opacity:1}
 @media(hover:hover){.fashion-lifestyle-card:hover .card-art::after{opacity:1}}
 @media(prefers-reduced-motion:reduce){.fashion-lifestyle-card .card-art::after{transition:none}}
