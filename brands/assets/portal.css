@@ -25,7 +25,7 @@ body{height:auto;min-height:100svh}header,footer{flex-shrink:0}header{min-height
 .brand-incubation-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/5acc3d242f9077268c58c82eeedc5e4caa98a3040487cdb7177d39a1937f7315/brand-incubation-active-contained-totem.png")}
 .advertising-publishing-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/53742108f5515dd29d09cfc58dfa98f19b823169b719b4fe757611fb24f31304/advertising-publishing-active-contained-totem.png")}
 .resident-dining-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/23bf825c07f541ee86d0bcfe1cd9147af3ecbe86dcc0704b5af0ac1da25a8ee5/resident-dining-active-geometric-wave-noodles.png")}
-.fashion-lifestyle-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/981a26c135e3d3d848bfd139f4c599392ddd866351006ce4a8d6f1a01e38e0fb/fashion-closed-active-contained-totem.png")}
+.fashion-lifestyle-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/bffa869b9bafb72c5e63bc41cea101b1d68fa2969118a4d3cfac6706f24c709a/fashion-active-carved-surprises.png")}
 @media(max-width:900px),(hover:none) and (pointer:coarse){.brand-cards{container-type:inline-size}.brand-card h2{font-size:12.5cqw}.brand-card p{font-size:clamp(14px,4.8cqw,18px)}.brand-card.is-revealed .card-art{opacity:.98}}
 
 .brand-card .card-art{inset:0;transform:none}
@@ -77,18 +77,42 @@ body{height:auto;min-height:100svh}header,footer{flex-shrink:0}header{min-height
 .brand-card{background-color:#160f0b}
 /* Quiet geometric ornaments sit in the background's open spaces and corners. */
 .brand-card::before{inset:0;background-image:url('https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/0abcd3ebeaf34e04165d05ff1b9f8dd23f9ff2458c7eaaab094484984daea025/card-dark-geometric-totem.svg'),radial-gradient(ellipse at 70% 75%,#59351f38,transparent 75%),linear-gradient(#39261924,#39261924),linear-gradient(90deg,#080807b8 0%,#0808075c 23%,transparent 58%),linear-gradient(0deg,#08080735,transparent 40%);background-size:100% 100%,auto,auto,auto,auto;background-repeat:no-repeat}
-.brand-card::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border:0;background:linear-gradient(110deg,transparent 38%,#e9bd6920 44%,#fff0c273 49%,#fff9e6a6 50%,#ffe3a74d 52%,transparent 60%);mix-blend-mode:screen;opacity:0;transform:translateX(-130%);animation:card-sheen-idle 6.4s ease-in-out infinite;animation-delay:var(--sheen-delay,0s)}
-.visual-design-card{--sheen-delay:0s}
-.brand-incubation-card{--sheen-delay:1.1s}
-.advertising-publishing-card{--sheen-delay:2.2s}
-.resident-dining-card{--sheen-delay:3.3s}
-.fashion-lifestyle-card{--sheen-delay:4.4s}
-.brand-card:is(.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible)::after{animation:card-sheen-feedback 2.4s ease-out infinite}
-@media(hover:hover){.brand-card:hover::after{animation:card-sheen-feedback 2.4s ease-out infinite}}
-@keyframes card-sheen-idle{0%{opacity:0;transform:translateX(-130%)}2%{opacity:.36}10%{opacity:.36}12%,100%{opacity:0;transform:translateX(130%)}}
-@keyframes card-sheen-feedback{0%{opacity:0;transform:translateX(-130%)}3%{opacity:.9}16%{opacity:.9}20%,100%{opacity:0;transform:translateX(130%)}}
-@media(max-width:900px),(hover:none) and (pointer:coarse){
-.brand-card::after{animation-delay:0s}
-.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback)::after{animation:none;opacity:0}
-}
-@media(prefers-reduced-motion:reduce){.brand-card::after{animation:none!important;opacity:0}}
+.brand-card::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border:0;background:linear-gradient(110deg,transparent 38%,#e9bd6920 44%,#fff0c273 49%,#fff9e6a6 50%,#ffe3a74d 52%,transparent 60%);mix-blend-mode:screen;opacity:0;transform:translateX(-130%);animation:none}
+/* One surface sheen per contact; idle cards only breathe softly. */
+.brand-card.is-brushing::after{animation:card-sheen-touch .46s ease-out 1}
+@keyframes card-sheen-touch{0%{opacity:0;transform:translateX(-130%)}15%{opacity:.9}75%{opacity:.9}100%{opacity:0;transform:translateX(130%)}}
+.brand-card .card-art{animation:card-art-breathe 4.8s ease-in-out infinite}
+@keyframes card-art-breathe{0%,100%{filter:brightness(.98)}50%{filter:brightness(1.09)}}
+.brand-card:is(.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible) .card-art{animation:none;filter:none}
+@media(hover:hover){.brand-card:hover .card-art{animation:none;filter:none}}
+@media(max-width:900px),(hover:none) and (pointer:coarse){.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback)::after{animation:none;opacity:0}}
+
+/* The second row keeps the same card dimensions with full-bleed woodblock scenes. */
+.ukiyo-row{padding-top:8px}
+.ukiyo-card .card-art{opacity:.96}
+.ukiyo-card::before{background:linear-gradient(90deg,#110d0ba6,transparent 48%),linear-gradient(0deg,#110d0b22,transparent 45%)}
+.ukiyo-card .brand-content{height:fit-content;padding:8px 5px;background:linear-gradient(90deg,#160f0bef,#160f0b96 80%,#160f0b00);border-radius:3px}
+.ukiyo-card h2{color:#f4e8ce;text-shadow:0 1px 3px #080807,0 0 6px #080807}
+.ukiyo-card p{color:#dbc8a2}
+@media(max-width:900px),(hover:none) and (pointer:coarse){.ukiyo-card .brand-content{padding:2.2cqw 1.4cqw}.ukiyo-row .carousel-controls{top:22px}}
+@media(prefers-reduced-motion:reduce){.brand-card::after,.brand-card .card-art{animation:none!important}.brand-card .card-art{filter:none}.brand-card::after{opacity:0}}
+
+.ukiyo-card.visual-design-card .card-art{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/0e7c360f73b9e8ed38228507006b012bd7e9e3e744c11b683ede1681f7712f0e/visual-design-idle-ukiyo-flat-woodblock.png")}
+
+.ukiyo-card.brand-incubation-card .card-art{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/cb0420b542a4464fdcd9a6c7fd7875d6524d9e192147c5cd4fb404ec58547173/brand-incubation-idle-ukiyo-flat-woodblock.png")}
+
+.ukiyo-card.advertising-publishing-card .card-art{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/65985b9f7f253cfd48cdf5cfc1a7ce6ca5cbc849ca42a19899a80641fc870225/advertising-publishing-idle-ukiyo-flat-woodblock.png")}
+
+.ukiyo-card.resident-dining-card .card-art{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/d4071111ba7799948b900a182b2e4b809690903249eaed1bcefebb6f8048ccec/resident-dining-idle-ukiyo-flat-woodblock.png")}
+
+.ukiyo-card.fashion-lifestyle-card .card-art{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/aadf676e214ca50adfc8404dc60f507ed8ab2f82011e7b746b8d01ca20fac082/fashion-lifestyle-idle-ukiyo-flat-woodblock.png")}
+
+.ukiyo-card.visual-design-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/ebacfb6708aa212949655f2fc510087221b82f4b119143ac5a99656769a9264a/visual-design-active-ukiyo-flat-woodblock.png")}
+
+.ukiyo-card.brand-incubation-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/f3c9d03cd836723f2ced87acf8b7f5df151a5e6e4815203aa57abd841a318922/brand-incubation-active-ukiyo-flat-woodblock.png")}
+
+.ukiyo-card.advertising-publishing-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/d879d9df9744e1d478026a402040e8a2eb2bc6f2be2d059f25d3f502a5a4f908/advertising-publishing-active-ukiyo-flat-woodblock.png")}
+
+.ukiyo-card.resident-dining-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/aff5a9a5f8e6e616ce4f159022d87a24c6f1183611a34fb113701cc5f0135596/resident-dining-active-ukiyo-flat-woodblock.png")}
+
+.ukiyo-card.fashion-lifestyle-card .card-art::after{background-image:url("https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/d79c80b03e9a3d044e625d3da6e7a11cafa86c98349478476494a5ad60b0fe6f/fashion-lifestyle-active-ukiyo-flat-woodblock.png")}
