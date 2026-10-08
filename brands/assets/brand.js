@@ -32,6 +32,7 @@ if (track && cards.length) {
   let timer;
   let settling;
   let swipeFeedbackTimer;
+  let swipeStartLeft = null;
   let layoutFrame;
   let arranging = false;
   let targetLeft = null;
@@ -59,15 +60,22 @@ if (track && cards.length) {
     track.classList.remove('is-swipe-feedback');
     track.querySelectorAll('.is-swipe-feedback').forEach((card) => card.classList.remove('is-swipe-feedback'));
   };
-  const showSwipeFeedback = () => {
+  const showSwipeFeedback = (destination = null) => {
     if (!looping) return;
+    const items = [...track.querySelectorAll('.brand-card')];
+    if (destination === null) {
+      const origin = swipeStartLeft ?? (index + 1) * track.clientWidth;
+      const delta = track.scrollLeft - origin;
+      if (Math.abs(delta) < 2) return;
+      const fraction = track.scrollLeft / track.clientWidth;
+      destination = delta > 0 ? Math.ceil(fraction - .001) : Math.floor(fraction + .001);
+    }
+    destination = Math.max(0, Math.min(items.length - 1, destination));
     track.classList.add('is-swipe-feedback');
-    const viewport = track.getBoundingClientRect();
-    const visible = new Set([...track.querySelectorAll('.brand-card')].filter((card) => {
-      const bounds = card.getBoundingClientRect();
-      return bounds.right > viewport.left + 1 && bounds.left < viewport.right - 1;
-    }).map((card) => card.href));
-    track.querySelectorAll('.brand-card').forEach((card) => card.classList.toggle('is-swipe-feedback', visible.has(card.href)));
+    items.forEach((card, physical) => {
+      card.classList.toggle('is-swipe-feedback', physical === destination);
+      if (physical !== destination) card.classList.remove('is-pressed', 'is-revealed');
+    });
     clearTimeout(swipeFeedbackTimer);
     swipeFeedbackTimer = setTimeout(clearSwipeFeedback, 650);
   };
@@ -78,8 +86,12 @@ if (track && cards.length) {
   };
   const normalize = () => {
     const physical = physicalIndex();
-    if (physical === 0) position(cards.length);
-    else if (physical === cards.length + 1) position(1);
+    const destination = physical === 0 ? cards.length : physical === cards.length + 1 ? 1 : null;
+    if (destination !== null) {
+      position(destination);
+      swipeStartLeft = destination * track.clientWidth;
+      if (track.classList.contains('is-swipe-feedback')) showSwipeFeedback(destination);
+    }
   };
   const settle = () => {
     if (!looping) return;
@@ -89,6 +101,9 @@ if (track && cards.length) {
     index = wrap(physicalIndex() - 1);
     normalize();
     update();
+    swipeStartLeft = track.scrollLeft;
+    const active = track.querySelector('.brand-card.is-swipe-feedback');
+    if (active && active.href !== cards[index].href) clearSwipeFeedback();
     if (manual) schedule();
   };
   const select = (requested, focus = false) => {
@@ -158,7 +173,7 @@ if (track && cards.length) {
   });
   section.addEventListener('pointerdown', (event) => {
     stop();
-    if (track.contains(event.target)) { targetLeft = null; pointerOrigin = { x: event.clientX, y: event.clientY }; dragged = false; }
+    if (track.contains(event.target)) { targetLeft = null; swipeStartLeft = track.scrollLeft; pointerOrigin = { x: event.clientX, y: event.clientY }; dragged = false; }
   });
   track.addEventListener('pointermove', (event) => {
     if (pointerOrigin && Math.hypot(event.clientX - pointerOrigin.x, event.clientY - pointerOrigin.y) > 10) { dragged = true; showSwipeFeedback(); }
@@ -169,7 +184,7 @@ if (track && cards.length) {
   const release = () => { pointerOrigin = null; schedule(); };
   document.addEventListener('pointerup', release);
   document.addEventListener('pointercancel', release);
-  track.addEventListener('touchstart', () => { targetLeft = null; touching = true; stop(); }, { passive: true });
+  track.addEventListener('touchstart', () => { targetLeft = null; swipeStartLeft = track.scrollLeft; touching = true; stop(); }, { passive: true });
   const endTouch = () => { touching = false; schedule(); };
   document.addEventListener('touchend', endTouch, { passive: true });
   document.addEventListener('touchcancel', endTouch, { passive: true });
@@ -241,7 +256,7 @@ const releaseFashionCard = () => {
 document.addEventListener('pointerdown', (event) => {
   releaseFashionCard();
   const card = event.target.closest('.fashion-lifestyle-card');
-  if (!card || event.button !== 0) return;
+  if (!card || event.button !== 0 || carouselLayout.matches) return;
   pressedFashionCard = card;
   fashionPressOrigin = { x: event.clientX, y: event.clientY };
   card.classList.add('is-pressed');
