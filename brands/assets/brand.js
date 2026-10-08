@@ -49,6 +49,9 @@ if (track && cards.length) {
   };
   const update = () => {
     dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+    section.querySelectorAll('.brand-card.is-revealed').forEach((card) => {
+      if (card.href !== cards[index].href) card.classList.remove('is-revealed');
+    });
   };
   const physicalIndex = () => Math.round(track.scrollLeft / track.clientWidth);
   const position = (physical, animate = false) => {
@@ -163,6 +166,30 @@ if (track && cards.length) {
   reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; update(); schedule(); });
   layout();
 }
+
+// A mobile tap reveals the artwork; two consecutive taps enter the theme.
+let previousThemeTap = null;
+track?.addEventListener('click', (event) => {
+  const card = event.target.closest('.brand-card');
+  if (!card || !carouselLayout.matches || event.detail === 0) return;
+  if (event.defaultPrevented) { previousThemeTap = null; return; }
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  const now = performance.now();
+  const secondTap = previousThemeTap?.href === card.href && now - previousThemeTap.time <= 450;
+  if (secondTap) {
+    previousThemeTap = null;
+    window.location.assign(card.href);
+    return;
+  }
+  const reveal = !card.classList.contains('is-revealed');
+  track.querySelectorAll('.brand-card').forEach((other) => {
+    other.classList.toggle('is-revealed', reveal && other.href === card.href);
+  });
+  previousThemeTap = { href: card.href, time: now };
+});
+track?.addEventListener('pointercancel', () => { previousThemeTap = null; }, { passive: true });
+document.addEventListener('visibilitychange', () => { if (document.hidden) previousThemeTap = null; });
 
 // Delegation also handles the mobile carousel's cloned cards.
 let pressedFashionCard = null;
