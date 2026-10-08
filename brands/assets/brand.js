@@ -163,3 +163,27 @@ if (track && cards.length) {
   reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; update(); schedule(); });
   layout();
 }
+
+// Delegation also handles the mobile carousel's cloned cards.
+let pressedFashionCard = null;
+let fashionPressOrigin = null;
+const releaseFashionCard = () => {
+  pressedFashionCard?.classList.remove('is-pressed');
+  pressedFashionCard = null;
+  fashionPressOrigin = null;
+};
+document.addEventListener('pointerdown', (event) => {
+  releaseFashionCard();
+  const card = event.target.closest('.fashion-lifestyle-card');
+  if (!card || event.button !== 0) return;
+  pressedFashionCard = card;
+  fashionPressOrigin = { x: event.clientX, y: event.clientY };
+  card.classList.add('is-pressed');
+}, { passive: true });
+document.addEventListener('pointermove', (event) => {
+  if (fashionPressOrigin && Math.hypot(event.clientX - fashionPressOrigin.x, event.clientY - fashionPressOrigin.y) > 10) releaseFashionCard();
+}, { passive: true });
+document.addEventListener('pointerup', releaseFashionCard, { passive: true });
+document.addEventListener('pointercancel', releaseFashionCard, { passive: true });
+window.addEventListener('blur', releaseFashionCard);
+document.addEventListener('visibilitychange', () => { if (document.hidden) releaseFashionCard(); });
