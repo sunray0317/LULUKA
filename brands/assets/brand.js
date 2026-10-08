@@ -26,7 +26,6 @@ const carouselLayout = window.matchMedia('(max-width: 900px), (hover: none) and 
 if (track && cards.length) {
   const section = track.closest('.brands');
   const dots = [...section.querySelectorAll('.carousel-dot')];
-  const pause = section.querySelector('.carousel-pause');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let index = 0;
   let looping = false;
@@ -50,8 +49,6 @@ if (track && cards.length) {
   };
   const update = () => {
     dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
-    pause?.setAttribute('aria-pressed', String(paused));
-    pause?.setAttribute('aria-label', paused ? '繼續自動輪播' : '暫停自動輪播');
   };
   const physicalIndex = () => Math.round(track.scrollLeft / track.clientWidth);
   const position = (physical, animate = false) => {
@@ -119,7 +116,6 @@ if (track && cards.length) {
   section.querySelector('.previous-card')?.addEventListener('click', () => move(-1));
   section.querySelector('.next-card')?.addEventListener('click', () => move(1));
   dots.forEach((dot, i) => dot.addEventListener('click', () => select(i)));
-  pause?.addEventListener('click', () => { paused = !paused; update(); schedule(); });
   track.addEventListener('scroll', () => {
     if (!looping || arranging) return;
     if (targetLeft === null) stop();
