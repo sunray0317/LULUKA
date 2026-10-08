@@ -31,6 +31,7 @@ if (track && cards.length) {
   let looping = false;
   let timer;
   let settling;
+  let swipeFeedbackTimer;
   let layoutFrame;
   let arranging = false;
   let targetLeft = null;
@@ -52,6 +53,23 @@ if (track && cards.length) {
     section.querySelectorAll('.brand-card.is-revealed').forEach((card) => {
       if (card.href !== cards[index].href) card.classList.remove('is-revealed');
     });
+  };
+  const clearSwipeFeedback = () => {
+    clearTimeout(swipeFeedbackTimer);
+    track.classList.remove('is-swipe-feedback');
+    track.querySelectorAll('.is-swipe-feedback').forEach((card) => card.classList.remove('is-swipe-feedback'));
+  };
+  const showSwipeFeedback = () => {
+    if (!looping) return;
+    track.classList.add('is-swipe-feedback');
+    const viewport = track.getBoundingClientRect();
+    const visible = new Set([...track.querySelectorAll('.brand-card')].filter((card) => {
+      const bounds = card.getBoundingClientRect();
+      return bounds.right > viewport.left + 1 && bounds.left < viewport.right - 1;
+    }).map((card) => card.href));
+    track.querySelectorAll('.brand-card').forEach((card) => card.classList.toggle('is-swipe-feedback', visible.has(card.href)));
+    clearTimeout(swipeFeedbackTimer);
+    swipeFeedbackTimer = setTimeout(clearSwipeFeedback, 650);
   };
   const physicalIndex = () => Math.round(track.scrollLeft / track.clientWidth);
   const position = (physical, animate = false) => {
@@ -102,6 +120,7 @@ if (track && cards.length) {
     stop();
     clearTimeout(settling);
     cancelAnimationFrame(layoutFrame);
+    clearSwipeFeedback();
     arranging = true;
     track.querySelectorAll('.carousel-clone').forEach((card) => card.remove());
     looping = carouselLayout.matches;
@@ -122,6 +141,7 @@ if (track && cards.length) {
   track.addEventListener('scroll', () => {
     if (!looping || arranging) return;
     if (targetLeft === null) stop();
+    if (targetLeft === null || track.classList.contains('is-swipe-feedback')) showSwipeFeedback();
     index = wrap(physicalIndex() - 1);
     update();
     clearTimeout(settling);
@@ -141,7 +161,7 @@ if (track && cards.length) {
     if (track.contains(event.target)) { targetLeft = null; pointerOrigin = { x: event.clientX, y: event.clientY }; dragged = false; }
   });
   track.addEventListener('pointermove', (event) => {
-    if (pointerOrigin && Math.hypot(event.clientX - pointerOrigin.x, event.clientY - pointerOrigin.y) > 10) dragged = true;
+    if (pointerOrigin && Math.hypot(event.clientX - pointerOrigin.x, event.clientY - pointerOrigin.y) > 10) { dragged = true; showSwipeFeedback(); }
   }, { passive: true });
   track.addEventListener('click', (event) => {
     if (dragged && event.detail !== 0) { event.preventDefault(); dragged = false; }
@@ -159,8 +179,8 @@ if (track && cards.length) {
   nav?.addEventListener('click', schedule);
   document.addEventListener('click', schedule);
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') schedule(); });
-  document.addEventListener('visibilitychange', schedule);
-  window.addEventListener('blur', () => { foreground = false; stop(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) clearSwipeFeedback(); schedule(); });
+  window.addEventListener('blur', () => { foreground = false; stop(); clearSwipeFeedback(); });
   window.addEventListener('focus', () => { foreground = true; schedule(); });
   window.addEventListener('resize', layout);
   reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; update(); schedule(); });
@@ -173,6 +193,7 @@ let themeTapOrigin = null;
 const cancelThemeNavigation = () => {
   if (pendingThemeNavigation) clearTimeout(pendingThemeNavigation.timer);
   pendingThemeNavigation = null;
+  track?.classList.remove('is-tap-feedback');
   track?.querySelectorAll('.is-revealed').forEach((card) => card.classList.remove('is-revealed'));
 };
 track?.addEventListener('click', (event) => {
@@ -183,6 +204,7 @@ track?.addEventListener('click', (event) => {
   event.preventDefault();
   if (pendingThemeNavigation?.href === card.href) return;
   cancelThemeNavigation();
+  track.classList.add('is-tap-feedback');
   track.querySelectorAll('.brand-card').forEach((other) => {
     other.classList.toggle('is-revealed', other.href === card.href);
   });
