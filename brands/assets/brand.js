@@ -167,7 +167,7 @@ if (track && cards.length) {
   layout();
 }
 
-// Mobile taps show the active image for one second before entering the theme.
+// Mobile taps show the active image for half a second before entering the theme.
 let pendingThemeNavigation = null;
 let themeTapOrigin = null;
 const cancelThemeNavigation = () => {
@@ -190,7 +190,7 @@ track?.addEventListener('click', (event) => {
   const timer = setTimeout(() => {
     pendingThemeNavigation = null;
     window.location.assign(href);
-  }, 1000);
+  }, 500);
   pendingThemeNavigation = { href, timer };
 });
 track?.addEventListener('pointerdown', (event) => {
