@@ -68,16 +68,9 @@ header{min-height:72px;padding:14px 0}.logo{font-size:32px}.footer-logo{font-siz
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) h2{color:#e5dcc9;text-shadow:0 1px 3px #080807,0 0 8px #080807;transition:none}.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) p{color:#c5b494;text-shadow:0 1px 4px #000,0 0 5px #000;transition:none}
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback)::after{animation:none;opacity:0}
 }
-/* Retro game inventory sprites keep their white field and indexed pixel edges. */
-.pixel-card{background:#fff;color:#493419}
-.pixel-card::before{background:none}
-.pixel-card .card-art{opacity:1}
-.pixel-card .card-art img{inset:auto 0 0 auto;width:90%;height:90%;object-fit:contain;object-position:right bottom;image-rendering:pixelated}
+/* Bronze pixel scenes share the dark card palette and direct gold typography. */
+.pixel-card::before{background:linear-gradient(90deg,#100c09d9,#100c0960 22%,transparent 48%)}
+.pixel-card .card-art{opacity:.96}
+.pixel-card .card-art img{image-rendering:pixelated}
 .pixel-card .art-active{filter:none}
-.pixel-card h2{color:#493419;text-shadow:none}
-.pixel-card p{color:#725b37;text-shadow:none}
-.pixel-card:is(.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible) h2{color:#513209;text-shadow:0 0 2px #e4aa3d,0 0 8px #ffc957,0 0 18px #f3b337b3}
-.pixel-card:is(.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible) p{color:#634118;text-shadow:0 0 5px #ecc26c,0 0 12px #e6b14399}
-@media(hover:hover) and (pointer:fine){.pixel-card:hover h2{color:#513209;text-shadow:0 0 2px #e4aa3d,0 0 8px #ffc957,0 0 18px #f3b337b3}.pixel-card:hover p{color:#634118;text-shadow:0 0 5px #ecc26c,0 0 12px #e6b14399}}
-@media(max-width:900px),(hover:none) and (pointer:coarse){.brand-cards.is-swipe-feedback .pixel-card:not(.is-swipe-feedback) .card-art{opacity:1}.brand-cards.is-swipe-feedback .pixel-card:not(.is-swipe-feedback) h2{color:#493419;text-shadow:none}.brand-cards.is-swipe-feedback .pixel-card:not(.is-swipe-feedback) p{color:#725b37;text-shadow:none}}
 @media(prefers-reduced-motion:reduce){.brand-card,.brand-card h2,.brand-card p,.carousel-arrow,.carousel-arrow svg{transition:none}.brand-card::after,.brand-card .card-art{animation:none!important}.brand-card .card-art{filter:none}.brand-card::after{opacity:0}}
