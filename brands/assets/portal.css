@@ -1,10 +1,11 @@
 *{box-sizing:border-box}
 html{scroll-behavior:auto;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{min-height:100svh;display:flex;flex-direction:column;margin:0;background:#080807;color:#e8e0d1;font-family:'LULUKA Songti TC','Noto Serif CJK TC',serif;line-height:1.8}
+body{min-height:100svh;display:flex;flex-direction:column;margin:0;position:relative;isolation:isolate;background:#080807;color:#e8e0d1;font-family:'LULUKA Songti TC','Noto Serif CJK TC',serif;line-height:1.8}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:#080807 url('/brands/assets/bg.jpg') center/cover no-repeat}
 a{color:inherit;text-decoration:none}button{font:inherit}a,button{-webkit-tap-highlight-color:transparent}
 header,main,footer{width:100%;margin:0 auto}main{flex:1}
-header{position:relative;z-index:5;min-height:52px;padding:10px 0;display:flex;align-items:center;justify-content:center;background:#080807f5;border-bottom:.5px solid #b8995c40}
-.logo{font-size:24px;line-height:1.2;letter-spacing:.24em;padding-left:.24em;font-weight:400;color:#c4b38c}
+header{position:relative;z-index:5;min-height:96px;padding:22px 0;display:flex;align-items:center;justify-content:center;background:#080807c7;border-bottom:.5px solid #b8995c40;backdrop-filter:blur(3px)}
+.logo{font-size:40px;line-height:1.2;letter-spacing:.24em;padding-left:.24em;font-weight:400;color:#d2c097;text-shadow:0 0 18px #d7b66e40}
 footer{padding:12px 0;border-top:.5px solid #b8995c30;display:flex;align-items:center;justify-content:center}
 .footer-logo{color:#c4b38c;letter-spacing:.22em;font-size:14px;line-height:1.3}
 .skip{position:absolute;left:20px;top:-100px;background:#e3c98c;color:#080807;padding:10px;z-index:10}.skip:focus{top:10px}
@@ -47,7 +48,7 @@ footer{padding:12px 0;border-top:.5px solid #b8995c30;display:flex;align-items:c
 @media(hover:hover) and (pointer:fine){.brand-card.is-in-view:hover .card-art{animation:none}}
 .carousel-controls,.carousel-pagination{display:none}
 @media(max-width:900px),(hover:none) and (pointer:coarse){
-header{min-height:72px;padding:14px 0}.logo{font-size:32px}.footer-logo{font-size:16px}
+header{min-height:92px;padding:18px 0}.logo{font-size:38px}.footer-logo{font-size:16px}
 .brands{--carousel-card-width:min(72vw,360px);width:100%;padding:16px 0 8px;display:flex;flex-direction:column;gap:12px}.brands+.brands{padding-top:16px}
 .brand-cards{width:100%;display:flex;flex-wrap:nowrap;gap:20px;padding:14px calc((100vw - var(--carousel-card-width))/2);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:calc((100vw - var(--carousel-card-width))/2);overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none}
 .brand-cards::-webkit-scrollbar{display:none}
