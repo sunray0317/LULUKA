@@ -43,8 +43,8 @@ footer{padding:12px 0;border-top:.5px solid #b8995c30;display:flex;align-items:c
 .brand-card::after{content:'';position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(110deg,transparent 38%,#e9bd6920 44%,#fff0c273 49%,#fff9e6a6 50%,#ffe3a74d 52%,transparent 60%);mix-blend-mode:screen;opacity:0;transform:translateX(-130%)}
 .brand-card.is-brushing::after{animation:card-sheen-touch .46s ease-out 1}
 @keyframes card-sheen-touch{0%{opacity:0;transform:translateX(-130%)}15%,75%{opacity:.9}100%{opacity:0;transform:translateX(130%)}}
-.brand-card.is-in-view:not(:is(.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible)){animation:card-idle-breathe 9.6s ease-in-out infinite}
-@keyframes card-idle-breathe{0%,100%{border-color:#c9aa70;box-shadow:0 10px 30px #0007,0 0 4px #e9c98a70,0 0 12px #cba65d42,inset 0 0 4px #e8c67d20}25%,75%{border-color:#ddc184;box-shadow:0 10px 30px #0007,0 0 6px #f1d79a9c,0 0 18px #d8b56c66,inset 0 0 6px #efd18b30}50%{border-color:#f7dda4;box-shadow:0 10px 30px #0007,0 0 9px #ffe5abcf,0 0 25px #dfba7290,0 0 36px #bd91433d,inset 0 0 9px #f5d59642}}
+.brand-card.is-idle-breathing:not(:is(.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible)){animation:card-idle-breathe 8s ease-in-out 1}
+@keyframes card-idle-breathe{0%,100%{border-color:#e2c186;box-shadow:0 10px 30px #0006,0 0 5px #f5d69b9c,0 0 15px #d5b67655,0 0 36px #bd914300,inset 0 0 4px #f3cd8526}50%{border-color:#ffe9b7;box-shadow:0 10px 30px #0006,0 0 10px #ffe5abeb,0 0 27px #dfba72b0,0 0 36px #bd91436b,inset 0 0 9px #f5d59655}}
 .carousel-controls,.carousel-pagination{display:none}
 @media(max-width:900px),(hover:none) and (pointer:coarse){
 header{min-height:92px;padding:18px 0}.logo{font-size:38px}.footer-logo{font-size:16px}

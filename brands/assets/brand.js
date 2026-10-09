@@ -337,6 +337,40 @@ function initializeThemeCarousel(track) {
 
 
 document.querySelectorAll('.brand-cards').forEach(initializeThemeCarousel);
+// One visible idle card at a time: four seconds up, four seconds down.
+let breathingCard = null;
+let breathingUntil = 0;
+let breathingCursor = -1;
+function advanceIdleBreathing() {
+  const all = [...document.querySelectorAll('.brand-card')];
+  const eligible = (card) => {
+    if (document.hidden || reducedMotion.matches || !card.isConnected) return false;
+    if (card.matches('.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible')) return false;
+    const track = card.closest('.brand-cards');
+    if (track?.matches('.is-swipe-feedback,.is-tap-feedback')) return false;
+    const rect = card.getBoundingClientRect(), view = track.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < innerHeight && rect.right > Math.max(0, view.left) && rect.left < Math.min(innerWidth, view.right);
+  };
+  const now = performance.now();
+  if (breathingCard && (now >= breathingUntil || !eligible(breathingCard))) {
+    breathingCard.classList.remove('is-idle-breathing');
+    breathingCard = null;
+    breathingUntil = now + 250;
+  }
+  if (!breathingCard && now >= breathingUntil) {
+    for (let offset = 1; offset <= all.length; offset++) {
+      const index = (breathingCursor + offset) % all.length;
+      if (!eligible(all[index])) continue;
+      breathingCursor = index;
+      breathingCard = all[index];
+      breathingCard.classList.add('is-idle-breathing');
+      breathingUntil = now + 8000;
+      break;
+    }
+  }
+  setTimeout(advanceIdleBreathing, 100);
+}
+advanceIdleBreathing();
 carouselLayout.addEventListener('change', cancelThemeNavigation);
 window.addEventListener('blur', cancelThemeNavigation);
 document.addEventListener('visibilitychange', () => { if (document.hidden) cancelThemeNavigation(); });
