@@ -341,10 +341,11 @@ document.querySelectorAll('.brand-cards').forEach(initializeThemeCarousel);
 let breathingCard = null;
 let breathingUntil = 0;
 let breathingCursor = -1;
+const breathingReducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 function advanceIdleBreathing() {
   const all = [...document.querySelectorAll('.brand-card')];
   const eligible = (card) => {
-    if (document.hidden || reducedMotion.matches || !card.isConnected) return false;
+    if (document.hidden || breathingReducedMotion.matches || !card.isConnected) return false;
     if (card.matches('.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible')) return false;
     const track = card.closest('.brand-cards');
     if (track?.matches('.is-swipe-feedback,.is-tap-feedback')) return false;
