@@ -63,6 +63,10 @@ header{min-height:92px;padding:18px 0}.logo{font-size:38px}.footer-logo{font-siz
 .carousel-dot::before{content:'';width:11px;height:11px;border:1px solid #b49d7166;border-radius:50%;background:#b49d7122;transition:background .2s,border-color .2s}
 .carousel-dot[aria-current=true]::before{background:#c1ab7f;border-color:#c1ab7f;box-shadow:0 0 8px #c1ab7f22}
 .brand-cards.is-swipe-feedback .brand-card{animation:none}.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback){border-color:#e2c186;box-shadow:0 10px 30px #0006,0 0 5px #f5d69b9c,0 0 15px #d5b67655,inset 0 0 4px #f3cd8526;transition:none}
+.brand-cards.is-swipe-feedback .brand-card.is-swipe-feedback{border-color:#fff1c2;box-shadow:0 10px 30px #0008,0 0 8px #ffe8bdb3,0 0 20px #eac47780,inset 0 0 8px #f3cd8540;animation:card-idle-breathe 3s ease-in-out infinite}
+.brand-cards.is-swipe-feedback .brand-card:is(.is-swipe-feedback,.is-revealed,.is-pressed) .card-art{opacity:.86}
+.brand-cards.is-swipe-feedback .brand-card:is(.is-swipe-feedback,.is-revealed,.is-pressed) .art-active{visibility:hidden}
+.brand-cards.is-swipe-feedback .brand-card:is(.is-swipe-feedback,.is-revealed,.is-pressed) .art-idle{visibility:visible}
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) .card-art{opacity:.86}
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) .art-active{visibility:hidden}.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) .art-idle{visibility:visible}
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) h2{color:#e5dcc9;text-shadow:0 1px 3px #080807,0 0 8px #080807;transition:none}.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) p{color:#c5b494;text-shadow:0 1px 4px #000,0 0 5px #000;transition:none}
