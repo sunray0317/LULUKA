@@ -204,7 +204,7 @@ function initializeThemeCarousel(track) {
     }
     const clone = (card) => {
       const copy = card.cloneNode(true);
-      copy.classList.remove('is-revealed', 'is-pressed', 'is-swipe-feedback', 'is-brushing', 'is-in-view');
+      copy.classList.remove('is-revealed', 'is-pressed', 'is-swipe-feedback', 'is-brushing', 'is-in-view', 'is-idle-breathing');
       copy.classList.add('carousel-clone');
       copy.setAttribute('aria-hidden', 'true');
       copy.tabIndex = -1;
