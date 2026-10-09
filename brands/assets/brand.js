@@ -142,10 +142,10 @@ function initializeThemeCarousel(track) {
       }
       destination = Math.max(0, Math.min(items.length - 1, destination));
       loadCardIdle(items[destination]);
-      prepareActiveArt(items[destination]);
       track.classList.add('is-swipe-feedback');
       items.forEach((card, physical) => {
         card.classList.toggle('is-swipe-feedback', physical === destination);
+        card.classList.toggle('is-carousel-current', physical === destination);
         if (physical !== destination) card.classList.remove('is-pressed', 'is-revealed', 'is-brushing');
       });
       clearTimeout(swipeFeedbackTimer);
@@ -172,6 +172,8 @@ function initializeThemeCarousel(track) {
       targetLeft = null;
       index = wrap(physicalIndex() - 1);
       normalize();
+      track.querySelectorAll('.is-carousel-current').forEach((card) => card.classList.remove('is-carousel-current'));
+      track.querySelectorAll('.brand-card')[physicalIndex()]?.classList.add('is-carousel-current');
       update();
       swipeStartLeft = track.scrollLeft;
       const active = track.querySelector('.brand-card.is-swipe-feedback');
@@ -204,7 +206,7 @@ function initializeThemeCarousel(track) {
     }
     const clone = (card) => {
       const copy = card.cloneNode(true);
-      copy.classList.remove('is-revealed', 'is-pressed', 'is-swipe-feedback', 'is-brushing', 'is-in-view', 'is-idle-breathing');
+      copy.classList.remove('is-revealed', 'is-pressed', 'is-swipe-feedback', 'is-carousel-current', 'is-brushing', 'is-in-view', 'is-idle-breathing');
       copy.classList.add('carousel-clone');
       copy.setAttribute('aria-hidden', 'true');
       copy.tabIndex = -1;
@@ -227,6 +229,8 @@ function initializeThemeCarousel(track) {
         cardStep = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
         if (looping) position(index + 1);
         arranging = false;
+        track.querySelectorAll('.is-carousel-current').forEach((card) => card.classList.remove('is-carousel-current'));
+        if (looping) track.querySelectorAll('.brand-card')[index + 1]?.classList.add('is-carousel-current');
         update();
         schedule();
       });
@@ -305,7 +309,7 @@ function initializeThemeCarousel(track) {
     if (event.defaultPrevented) { cancelThemeNavigation(); return; }
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     loadCardIdle(card);
-    prepareActiveArt(card);
+    if (!carouselLayout.matches) prepareActiveArt(card);
     brushCard(card);
     if (!carouselLayout.matches) return;
     event.preventDefault();
@@ -346,9 +350,14 @@ function advanceIdleBreathing() {
   const all = [...document.querySelectorAll('.brand-card')];
   const eligible = (card) => {
     if (document.hidden || breathingReducedMotion.matches || !card.isConnected) return false;
-    if (card.matches('.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible')) return false;
     const track = card.closest('.brand-cards');
-    if (track?.matches('.is-swipe-feedback,.is-tap-feedback')) return false;
+    if (track && carouselLayout.matches) {
+      const active = track.querySelector('.brand-card.is-carousel-current, .brand-card.is-swipe-feedback, .brand-card.is-revealed');
+      if (!active || active !== card) return false;
+      const rect = card.getBoundingClientRect(), view = track.getBoundingClientRect();
+      return rect.right > view.left && rect.left < view.right;
+    }
+    if (card.matches('.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible')) return false;
     const rect = card.getBoundingClientRect(), view = track.getBoundingClientRect();
     return rect.bottom > 0 && rect.top < innerHeight && rect.right > Math.max(0, view.left) && rect.left < Math.min(innerWidth, view.right);
   };
@@ -365,6 +374,7 @@ function advanceIdleBreathing() {
       breathingCursor = index;
       breathingCard = all[index];
       breathingCard.classList.add('is-idle-breathing');
+      const track = breathingCard.closest('.brand-cards');
       breathingUntil = now + 3000;
       break;
     }

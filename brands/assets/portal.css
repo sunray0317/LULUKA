@@ -71,6 +71,14 @@ header{min-height:92px;padding:18px 0}.logo{font-size:38px}.footer-logo{font-siz
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) .art-active{visibility:hidden}.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) .art-idle{visibility:visible}
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) h2{color:#e5dcc9;text-shadow:0 1px 3px #080807,0 0 8px #080807;transition:none}.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) p{color:#c5b494;text-shadow:0 1px 4px #000,0 0 5px #000;transition:none}
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback)::after{animation:none;opacity:0}
+/* On touch carousels, the centered card keeps its original art while it breathes. */
+.brand-cards.is-tap-feedback .brand-card .art-active,.brand-cards.is-swipe-feedback .brand-card .art-active{visibility:hidden!important}
+.brand-cards.is-tap-feedback .brand-card .art-idle,.brand-cards.is-swipe-feedback .brand-card .art-idle{visibility:visible!important}
+.brand-cards.is-tap-feedback .brand-card .card-art,.brand-cards.is-swipe-feedback .brand-card .card-art{opacity:.86!important;animation:none!important}
+.brand-cards.is-tap-feedback .brand-card.is-revealed,.brand-cards.is-swipe-feedback .brand-card.is-swipe-feedback,.brand-cards .brand-card.is-carousel-current{animation:card-idle-breathe 3s ease-in-out infinite!important}
+.brand-cards.is-tap-feedback .brand-card.is-revealed,.brand-cards.is-swipe-feedback .brand-card.is-swipe-feedback,.brand-cards .brand-card.is-carousel-current{border-color:#e2c186;box-shadow:0 10px 30px #0006,0 0 5px #f5d69b9c,0 0 15px #d5b67655,0 0 36px #bd914300,inset 0 0 4px #f3cd8526}
+.brand-cards.is-tap-feedback .brand-card.is-revealed h2,.brand-cards.is-swipe-feedback .brand-card.is-swipe-feedback h2{color:#e5dcc9;text-shadow:0 1px 3px #080807,0 0 8px #080807}
+.brand-cards.is-tap-feedback .brand-card.is-revealed p,.brand-cards.is-swipe-feedback .brand-card.is-swipe-feedback p{color:#c5b494;text-shadow:0 1px 4px #000,0 0 5px #000}
 }
 /* Bronze pixel scenes share the dark card palette and direct gold typography. */
 .pixel-card::before{background:linear-gradient(90deg,#100c09d9,#100c0960 22%,transparent 48%)}
