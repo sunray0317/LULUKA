@@ -43,9 +43,11 @@ footer{padding:12px 0;border-top:.5px solid #b8995c30;display:flex;align-items:c
 .brand-card::after{content:'';position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(110deg,transparent 38%,#e9bd6920 44%,#fff0c273 49%,#fff9e6a6 50%,#ffe3a74d 52%,transparent 60%);mix-blend-mode:screen;opacity:0;transform:translateX(-130%)}
 .brand-card.is-brushing::after{animation:card-sheen-touch .46s ease-out 1}
 @keyframes card-sheen-touch{0%{opacity:0;transform:translateX(-130%)}15%,75%{opacity:.9}100%{opacity:0;transform:translateX(130%)}}
+.brand-card.is-in-view:not(:is(.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible)){animation:card-idle-breathe 4.8s ease-in-out infinite}
 .brand-card.is-in-view:not(:is(.is-revealed,.is-swipe-feedback,.is-pressed,:focus-visible)) .card-art{animation:card-art-breathe 4.8s ease-in-out infinite}
-@keyframes card-art-breathe{0%,100%{filter:brightness(.98)}50%{filter:brightness(1.09)}}
-@media(hover:hover) and (pointer:fine){.brand-card.is-in-view:hover .card-art{animation:none}}
+@keyframes card-idle-breathe{0%,100%{border-color:#d7b779;box-shadow:0 10px 30px #0006,0 0 4px #f5d69b7d,0 0 12px #d5b67645,inset 0 0 3px #f3cd851f}50%{border-color:#ffe2a3;box-shadow:0 10px 30px #0007,0 0 8px #ffe6aff0,0 0 22px #e4bd6f99,0 0 34px #c89d504d,inset 0 0 9px #f3cd8538}}
+@keyframes card-art-breathe{0%,100%{filter:brightness(.96)}50%{filter:brightness(1.11)}}
+@media(hover:hover) and (pointer:fine){.brand-card.is-in-view:hover,.brand-card.is-in-view:hover .card-art{animation:none}}
 .carousel-controls,.carousel-pagination{display:none}
 @media(max-width:900px),(hover:none) and (pointer:coarse){
 header{min-height:92px;padding:18px 0}.logo{font-size:38px}.footer-logo{font-size:16px}
@@ -63,7 +65,7 @@ header{min-height:92px;padding:18px 0}.logo{font-size:38px}.footer-logo{font-siz
 .carousel-dot{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;background:transparent;color:#c1ab7f;cursor:pointer}
 .carousel-dot::before{content:'';width:11px;height:11px;border:1px solid #b49d7166;border-radius:50%;background:#b49d7122;transition:background .2s,border-color .2s}
 .carousel-dot[aria-current=true]::before{background:#c1ab7f;border-color:#c1ab7f;box-shadow:0 0 8px #c1ab7f22}
-.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback){border-color:#e2c186;box-shadow:0 10px 30px #0006,0 0 5px #f5d69b9c,0 0 15px #d5b67655,inset 0 0 4px #f3cd8526;transition:none}
+.brand-cards.is-swipe-feedback .brand-card{animation:none}.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback){border-color:#e2c186;box-shadow:0 10px 30px #0006,0 0 5px #f5d69b9c,0 0 15px #d5b67655,inset 0 0 4px #f3cd8526;transition:none}
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) .card-art{opacity:.86}
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) .art-active{visibility:hidden}.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) .art-idle{visibility:visible}
 .brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) h2{color:#e5dcc9;text-shadow:0 1px 3px #080807,0 0 8px #080807;transition:none}.brand-cards.is-swipe-feedback .brand-card:not(.is-swipe-feedback) p{color:#c5b494;text-shadow:0 1px 4px #000,0 0 5px #000;transition:none}
@@ -74,4 +76,4 @@ header{min-height:92px;padding:18px 0}.logo{font-size:38px}.footer-logo{font-siz
 .pixel-card .card-art{opacity:.96}
 .pixel-card .card-art img{image-rendering:pixelated}
 .pixel-card .art-active{filter:none}
-@media(prefers-reduced-motion:reduce){.brand-card,.brand-card h2,.brand-card p,.carousel-arrow,.carousel-arrow svg{transition:none}.brand-card::after,.brand-card .card-art{animation:none!important}.brand-card .card-art{filter:none}.brand-card::after{opacity:0}}
+@media(prefers-reduced-motion:reduce){.brand-card,.brand-card h2,.brand-card p,.carousel-arrow,.carousel-arrow svg{transition:none}.brand-card,.brand-card::after,.brand-card .card-art{animation:none!important}.brand-card .card-art{filter:none}.brand-card::after{opacity:0}}
