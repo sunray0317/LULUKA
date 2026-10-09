@@ -337,7 +337,7 @@ function initializeThemeCarousel(track) {
 
 
 document.querySelectorAll('.brand-cards').forEach(initializeThemeCarousel);
-// One visible idle card at a time: four seconds up, four seconds down.
+// One visible idle card at a time: 1.5 seconds up, 1.5 seconds down.
 let breathingCard = null;
 let breathingUntil = 0;
 let breathingCursor = -1;
@@ -356,7 +356,7 @@ function advanceIdleBreathing() {
   if (breathingCard && (now >= breathingUntil || !eligible(breathingCard))) {
     breathingCard.classList.remove('is-idle-breathing');
     breathingCard = null;
-    breathingUntil = now + 250;
+    breathingUntil = now + 100;
   }
   if (!breathingCard && now >= breathingUntil) {
     for (let offset = 1; offset <= all.length; offset++) {
@@ -365,7 +365,7 @@ function advanceIdleBreathing() {
       breathingCursor = index;
       breathingCard = all[index];
       breathingCard.classList.add('is-idle-breathing');
-      breathingUntil = now + 8000;
+      breathingUntil = now + 3000;
       break;
     }
   }
