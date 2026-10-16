@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="640" viewBox="0 0 400 640" fill="none">
+  <defs>
+    <pattern id="weave" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M50 8 92 50 50 92 8 50Z M50 23 77 50 50 77 23 50Z" stroke="#af8453" stroke-width="1" opacity=".075"/>
+      <path d="M47 47h6v6h-6z" fill="#af8453" opacity=".07"/>
+    </pattern>
+  </defs>
+  <path fill="url(#weave)" d="M0 0h400v640H0z"/>
+  <g stroke="#a47a49" stroke-width="2.2" opacity=".23" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M156 29h22v20h24V29h24v20h24V29h24v20h24V29h24 M156 62h36l12 12h36l12-12h36l12 12h36"/>
+    <path d="m160 103 14-14 14 14-14 14Z m48 0 14-14 14 14-14 14Z m48 0 14-14 14 14-14 14Z"/>
+    <path d="M327 118V89a34 34 0 0 1 68 0v29 M338 118V89a23 23 0 0 1 46 0v29 M350 118V89a11 11 0 0 1 22 0v29"/>
+    <path d="M16 327h56v26H40v30h51v30H16 M16 339h44v2H28v54h51v6H16"/>
+    <path d="m26 433 14-14 14 14-14 14Z m0 45 14-14 14 14-14 14Z"/>
+    <path d="M20 573v-45h64v32H42v-15h25 M32 585v-69h64v56H54"/>
+    <path d="M114 623v-23h28v-21h29v21h29v-21h29v21h29v-21h29v21h29v-21h29v21h30 M114 612h15v-24h27v23h30v-23h29v23h29v-23h29v23h29v-23h29v23h44"/>
+    <path d="M341 510a27 27 0 1 1 27 27h-10a15 15 0 1 1 15-15v26 M339 563h47 M347 574h31"/>
+  </g>
+  <g fill="#a47a49" opacity=".12">
+    <path d="m128 81 6-6 6 6-6 6Z m160 0 6-6 6 6-6 6Z M15 296h6v6h-6z M27 296h6v6h-6z M39 296h6v6h-6z M51 296h6v6h-6z"/>
+    <path d="m118 551 10-10 10 10-10 10Z m32 0 10-10 10 10-10 10Z m32 0 10-10 10 10-10 10Z"/>
+  </g>
+</svg>

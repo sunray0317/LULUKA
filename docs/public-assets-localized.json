@@ -1,0 +1,458 @@
+[
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-fonts/010ee7bc82df85fd98818ce81281fe5e4fb363802efe4a5499c9b7d39a23f3ad/regular.woff2",
+    "path": "brands/assets/vendor/luluka-public-fonts/010ee7bc82df85fd98818ce81281fe5e4fb363802efe4a5499c9b7d39a23f3ad/regular.woff2",
+    "bytes": 143328,
+    "sha256": "010ee7bc82df85fd98818ce81281fe5e4fb363802efe4a5499c9b7d39a23f3ad"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-fonts/84ad1731b367646a872d7420aa5f68d0cdfc650bde3f79a54be5dfdf437cca7f/bold.woff",
+    "path": "brands/assets/vendor/luluka-public-fonts/84ad1731b367646a872d7420aa5f68d0cdfc650bde3f79a54be5dfdf437cca7f/bold.woff",
+    "bytes": 205928,
+    "sha256": "84ad1731b367646a872d7420aa5f68d0cdfc650bde3f79a54be5dfdf437cca7f"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-fonts/92cd0c3504751167074ff3216ab9c396d24a8f8ab4e62838690a78a41659a734/semibold.woff",
+    "path": "brands/assets/vendor/luluka-public-fonts/92cd0c3504751167074ff3216ab9c396d24a8f8ab4e62838690a78a41659a734/semibold.woff",
+    "bytes": 204840,
+    "sha256": "92cd0c3504751167074ff3216ab9c396d24a8f8ab4e62838690a78a41659a734"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-fonts/9ff5bb567e1b92c801fc1069e5fbf992ff8efccacb9db94e5959a5b3ba9bb903/source-han-serif-OFL.txt",
+    "path": "brands/assets/vendor/luluka-public-fonts/9ff5bb567e1b92c801fc1069e5fbf992ff8efccacb9db94e5959a5b3ba9bb903/source-han-serif-OFL.txt",
+    "bytes": 4463,
+    "sha256": "9ff5bb567e1b92c801fc1069e5fbf992ff8efccacb9db94e5959a5b3ba9bb903"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/02652977ea6f1db0f7c11db479c0bb46735b774c849235f990bdd235b0cc84ac/pixel-resident-dining-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/02652977ea6f1db0f7c11db479c0bb46735b774c849235f990bdd235b0cc84ac/pixel-resident-dining-active-320.webp",
+    "bytes": 166490,
+    "sha256": "02652977ea6f1db0f7c11db479c0bb46735b774c849235f990bdd235b0cc84ac"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/02a30f1bcb5910a1ecc3524c5075fe02d2cb479d8fb11e01ea9b47de09392576/pixel-brand-incubation-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/02a30f1bcb5910a1ecc3524c5075fe02d2cb479d8fb11e01ea9b47de09392576/pixel-brand-incubation-active-640.webp",
+    "bytes": 564442,
+    "sha256": "02a30f1bcb5910a1ecc3524c5075fe02d2cb479d8fb11e01ea9b47de09392576"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/04a26df558e26a8f8421152b77705366cc66343b5d6c982999d6dacff83edad0/ukiyo-advertising-publishing-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/04a26df558e26a8f8421152b77705366cc66343b5d6c982999d6dacff83edad0/ukiyo-advertising-publishing-idle-320.webp",
+    "bytes": 40924,
+    "sha256": "04a26df558e26a8f8421152b77705366cc66343b5d6c982999d6dacff83edad0"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/05000daf510c8dc3cd79d2f393d8dd3531d6baa0dc63bfe69eed8734719dd7f3/pixel-visual-design-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/05000daf510c8dc3cd79d2f393d8dd3531d6baa0dc63bfe69eed8734719dd7f3/pixel-visual-design-active-960.webp",
+    "bytes": 1160218,
+    "sha256": "05000daf510c8dc3cd79d2f393d8dd3531d6baa0dc63bfe69eed8734719dd7f3"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/085df8c33a0ba0668386e26b35f243166334f313a6aba6c9ca34fa5d7e37a9df/brand-incubation-social.png",
+    "path": "brands/assets/vendor/luluka-public-media/085df8c33a0ba0668386e26b35f243166334f313a6aba6c9ca34fa5d7e37a9df/brand-incubation-social.png",
+    "bytes": 12387,
+    "sha256": "085df8c33a0ba0668386e26b35f243166334f313a6aba6c9ca34fa5d7e37a9df"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/09d391fc752ac76e598e0f64a0e67366a00c2acea879a9e86557228e8cf96412/ukiyo-visual-design-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/09d391fc752ac76e598e0f64a0e67366a00c2acea879a9e86557228e8cf96412/ukiyo-visual-design-idle-640.webp",
+    "bytes": 145282,
+    "sha256": "09d391fc752ac76e598e0f64a0e67366a00c2acea879a9e86557228e8cf96412"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/0abcd3ebeaf34e04165d05ff1b9f8dd23f9ff2458c7eaaab094484984daea025/card-dark-geometric-totem.svg",
+    "path": "brands/assets/vendor/luluka-public-media/0abcd3ebeaf34e04165d05ff1b9f8dd23f9ff2458c7eaaab094484984daea025/card-dark-geometric-totem.svg",
+    "bytes": 1568,
+    "sha256": "0abcd3ebeaf34e04165d05ff1b9f8dd23f9ff2458c7eaaab094484984daea025"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/1349f86473fe0b98caf5c93ddc78bafd1a2f454a081e574032decc28c5c67894/ukiyo-brand-incubation-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/1349f86473fe0b98caf5c93ddc78bafd1a2f454a081e574032decc28c5c67894/ukiyo-brand-incubation-active-640.webp",
+    "bytes": 177760,
+    "sha256": "1349f86473fe0b98caf5c93ddc78bafd1a2f454a081e574032decc28c5c67894"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/15cbeea5c0f52ebe8497dbf6aaa5b38fe3b75c2e076461615b1c6b752a1022d4/pixel-advertising-publishing-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/15cbeea5c0f52ebe8497dbf6aaa5b38fe3b75c2e076461615b1c6b752a1022d4/pixel-advertising-publishing-active-320.webp",
+    "bytes": 145048,
+    "sha256": "15cbeea5c0f52ebe8497dbf6aaa5b38fe3b75c2e076461615b1c6b752a1022d4"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/172dabfcb610da84d911e2d20aa17319e7157a39d11671a3eda565e8f5382046/luluka-gold-background.png",
+    "path": "brands/assets/vendor/luluka-public-media/172dabfcb610da84d911e2d20aa17319e7157a39d11671a3eda565e8f5382046/luluka-gold-background.png",
+    "bytes": 1349037,
+    "sha256": "172dabfcb610da84d911e2d20aa17319e7157a39d11671a3eda565e8f5382046"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/18769d4973cad440dc0888d9d05230ce569e2941af1bfd8fb1522fdefd4e8997/pixel-fashion-lifestyle-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/18769d4973cad440dc0888d9d05230ce569e2941af1bfd8fb1522fdefd4e8997/pixel-fashion-lifestyle-active-960.webp",
+    "bytes": 967360,
+    "sha256": "18769d4973cad440dc0888d9d05230ce569e2941af1bfd8fb1522fdefd4e8997"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/19a2fc6003a8e76031a8c3d1dfc3900600db39f60a6acb2dc9e9d822199eb8e1/ukiyo-fashion-lifestyle-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/19a2fc6003a8e76031a8c3d1dfc3900600db39f60a6acb2dc9e9d822199eb8e1/ukiyo-fashion-lifestyle-idle-640.webp",
+    "bytes": 183976,
+    "sha256": "19a2fc6003a8e76031a8c3d1dfc3900600db39f60a6acb2dc9e9d822199eb8e1"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/1faa39a2ab14021bf9a568bc6c5cb4f44b2e85e967045b445201fe3e28251ae5/ukiyo-resident-dining-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/1faa39a2ab14021bf9a568bc6c5cb4f44b2e85e967045b445201fe3e28251ae5/ukiyo-resident-dining-idle-320.webp",
+    "bytes": 46364,
+    "sha256": "1faa39a2ab14021bf9a568bc6c5cb4f44b2e85e967045b445201fe3e28251ae5"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/1fe6788ceff1a87c33465e9724015c9c2fe7c9ad5ec93b71d7885ac0c35bac9a/ukiyo-visual-design-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/1fe6788ceff1a87c33465e9724015c9c2fe7c9ad5ec93b71d7885ac0c35bac9a/ukiyo-visual-design-active-640.webp",
+    "bytes": 150078,
+    "sha256": "1fe6788ceff1a87c33465e9724015c9c2fe7c9ad5ec93b71d7885ac0c35bac9a"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/21eefd679c0c4f622f4ab69dff46d52fdacfc8b0f1ab771218604318b57dfb6b/pixel-brand-incubation-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/21eefd679c0c4f622f4ab69dff46d52fdacfc8b0f1ab771218604318b57dfb6b/pixel-brand-incubation-active-960.webp",
+    "bytes": 1158896,
+    "sha256": "21eefd679c0c4f622f4ab69dff46d52fdacfc8b0f1ab771218604318b57dfb6b"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/24d73cd03bf5225184b7b4deac19236d3144e1a94fcae829a1fd0d1c25ad1222/resident-dining-social.png",
+    "path": "brands/assets/vendor/luluka-public-media/24d73cd03bf5225184b7b4deac19236d3144e1a94fcae829a1fd0d1c25ad1222/resident-dining-social.png",
+    "bytes": 15740,
+    "sha256": "24d73cd03bf5225184b7b4deac19236d3144e1a94fcae829a1fd0d1c25ad1222"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/26d222ad9672c07a802c2d2418d3116921003300139bf5d8393e79f1ee0b54b9/pixel-brand-incubation-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/26d222ad9672c07a802c2d2418d3116921003300139bf5d8393e79f1ee0b54b9/pixel-brand-incubation-idle-320.webp",
+    "bytes": 131882,
+    "sha256": "26d222ad9672c07a802c2d2418d3116921003300139bf5d8393e79f1ee0b54b9"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/330369b122f8ba461f83e8d1c95400dc46f05fb4d7cc811c910f2b30bcf78c2d/pixel-fashion-lifestyle-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/330369b122f8ba461f83e8d1c95400dc46f05fb4d7cc811c910f2b30bcf78c2d/pixel-fashion-lifestyle-idle-320.webp",
+    "bytes": 131578,
+    "sha256": "330369b122f8ba461f83e8d1c95400dc46f05fb4d7cc811c910f2b30bcf78c2d"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/35df5dbfff1a170e0598b8946203e51d1bdeee504d7b726e653dde9c8650d16e/pixel-resident-dining-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/35df5dbfff1a170e0598b8946203e51d1bdeee504d7b726e653dde9c8650d16e/pixel-resident-dining-idle-960.webp",
+    "bytes": 1040420,
+    "sha256": "35df5dbfff1a170e0598b8946203e51d1bdeee504d7b726e653dde9c8650d16e"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/35fe07a2b049336140f6ed62fb6a1b13e4a7bc5155554189dfbf7383559efb0d/ukiyo-advertising-publishing-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/35fe07a2b049336140f6ed62fb6a1b13e4a7bc5155554189dfbf7383559efb0d/ukiyo-advertising-publishing-active-320.webp",
+    "bytes": 44486,
+    "sha256": "35fe07a2b049336140f6ed62fb6a1b13e4a7bc5155554189dfbf7383559efb0d"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/384a4c17359ab85b03d763e697b86ed4696fbff59baed5f76a939d42deda0193/ukiyo-brand-incubation-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/384a4c17359ab85b03d763e697b86ed4696fbff59baed5f76a939d42deda0193/ukiyo-brand-incubation-idle-320.webp",
+    "bytes": 42214,
+    "sha256": "384a4c17359ab85b03d763e697b86ed4696fbff59baed5f76a939d42deda0193"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/3a00f458acc9085718cf2a359615669eb9ed5cec84d788b065e58b02a31353c9/pixel-fashion-lifestyle-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/3a00f458acc9085718cf2a359615669eb9ed5cec84d788b065e58b02a31353c9/pixel-fashion-lifestyle-active-320.webp",
+    "bytes": 147668,
+    "sha256": "3a00f458acc9085718cf2a359615669eb9ed5cec84d788b065e58b02a31353c9"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/3e16dfc41c06d300cabe0ad978e3fab99cdfa0abba3fab1a4ef6cb0e27dbb757/luluka-social.png",
+    "path": "brands/assets/vendor/luluka-public-media/3e16dfc41c06d300cabe0ad978e3fab99cdfa0abba3fab1a4ef6cb0e27dbb757/luluka-social.png",
+    "bytes": 12065,
+    "sha256": "3e16dfc41c06d300cabe0ad978e3fab99cdfa0abba3fab1a4ef6cb0e27dbb757"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/43ea3030df3e4ea2de663d58c840a04b2b119bbdbca75a6d5d26787e63c95e64/pixel-resident-dining-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/43ea3030df3e4ea2de663d58c840a04b2b119bbdbca75a6d5d26787e63c95e64/pixel-resident-dining-idle-320.webp",
+    "bytes": 158250,
+    "sha256": "43ea3030df3e4ea2de663d58c840a04b2b119bbdbca75a6d5d26787e63c95e64"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/44df324ad5e2303976a9bc9309b805ea8ad36bb4cf072c404849f69bac3dfbfb/ukiyo-fashion-lifestyle-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/44df324ad5e2303976a9bc9309b805ea8ad36bb4cf072c404849f69bac3dfbfb/ukiyo-fashion-lifestyle-idle-320.webp",
+    "bytes": 49980,
+    "sha256": "44df324ad5e2303976a9bc9309b805ea8ad36bb4cf072c404849f69bac3dfbfb"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/45cba2320a32fecff69be13f02e64f818763a18792c1e8e3a4c7e561a5708cd5/pixel-advertising-publishing-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/45cba2320a32fecff69be13f02e64f818763a18792c1e8e3a4c7e561a5708cd5/pixel-advertising-publishing-active-640.webp",
+    "bytes": 475094,
+    "sha256": "45cba2320a32fecff69be13f02e64f818763a18792c1e8e3a4c7e561a5708cd5"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/46ab85c1b8e8b3583b362613435e0d9ad036fbd0d4a2b637e210aa83e72aabe8/pixel-visual-design-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/46ab85c1b8e8b3583b362613435e0d9ad036fbd0d4a2b637e210aa83e72aabe8/pixel-visual-design-active-320.webp",
+    "bytes": 169346,
+    "sha256": "46ab85c1b8e8b3583b362613435e0d9ad036fbd0d4a2b637e210aa83e72aabe8"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/48fbf093e18ae06a7fe9cb567112d94c48050d0c1beeccea96e64ec5c9376c28/ukiyo-visual-design-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/48fbf093e18ae06a7fe9cb567112d94c48050d0c1beeccea96e64ec5c9376c28/ukiyo-visual-design-active-320.webp",
+    "bytes": 41280,
+    "sha256": "48fbf093e18ae06a7fe9cb567112d94c48050d0c1beeccea96e64ec5c9376c28"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/49669b7c7da9fca7e7cdbcd84fd22f7abc95a3320abbf939727b92bd7936da47/ukiyo-resident-dining-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/49669b7c7da9fca7e7cdbcd84fd22f7abc95a3320abbf939727b92bd7936da47/ukiyo-resident-dining-active-640.webp",
+    "bytes": 177054,
+    "sha256": "49669b7c7da9fca7e7cdbcd84fd22f7abc95a3320abbf939727b92bd7936da47"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/4fd8f2909950cf7c80d725b4752130c3208e57362b5e90fa588bb02c1cbcaca1/ukiyo-resident-dining-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/4fd8f2909950cf7c80d725b4752130c3208e57362b5e90fa588bb02c1cbcaca1/ukiyo-resident-dining-idle-640.webp",
+    "bytes": 169424,
+    "sha256": "4fd8f2909950cf7c80d725b4752130c3208e57362b5e90fa588bb02c1cbcaca1"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/536cd8dc325756ca6c30845e5cbd8e030d7d8b5130ec1a410fa6362cc6bdf004/lifeline-physical-display.png",
+    "path": "brands/assets/vendor/luluka-public-media/536cd8dc325756ca6c30845e5cbd8e030d7d8b5130ec1a410fa6362cc6bdf004/lifeline-physical-display.png",
+    "bytes": 1948044,
+    "sha256": "536cd8dc325756ca6c30845e5cbd8e030d7d8b5130ec1a410fa6362cc6bdf004"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/53848ac7e5f202d408e47672d61c86c5beb6a3d3a67dd8b607853262b691db54/ukiyo-fashion-lifestyle-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/53848ac7e5f202d408e47672d61c86c5beb6a3d3a67dd8b607853262b691db54/ukiyo-fashion-lifestyle-active-320.webp",
+    "bytes": 51728,
+    "sha256": "53848ac7e5f202d408e47672d61c86c5beb6a3d3a67dd8b607853262b691db54"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/540ebe00a2de44dcbaad17dd85c106426e84a363b418cee1bf1989c1bb9c70f4/pixel-fashion-lifestyle-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/540ebe00a2de44dcbaad17dd85c106426e84a363b418cee1bf1989c1bb9c70f4/pixel-fashion-lifestyle-idle-960.webp",
+    "bytes": 881868,
+    "sha256": "540ebe00a2de44dcbaad17dd85c106426e84a363b418cee1bf1989c1bb9c70f4"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/59622d06a8ab0cd21e414c27b510a231cf7b03b41da02621cf084f65638533a7/pixel-brand-incubation-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/59622d06a8ab0cd21e414c27b510a231cf7b03b41da02621cf084f65638533a7/pixel-brand-incubation-idle-640.webp",
+    "bytes": 424066,
+    "sha256": "59622d06a8ab0cd21e414c27b510a231cf7b03b41da02621cf084f65638533a7"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/5a070aa6efa56b7946ddca1ae868d839e5801502b1415e39403e92c49eef03f2/pixel-fashion-lifestyle-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/5a070aa6efa56b7946ddca1ae868d839e5801502b1415e39403e92c49eef03f2/pixel-fashion-lifestyle-idle-640.webp",
+    "bytes": 427908,
+    "sha256": "5a070aa6efa56b7946ddca1ae868d839e5801502b1415e39403e92c49eef03f2"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/5a92f183d8d08adf33bf782dfe1c2ad59eb77f47b7508f64948cf1d1860d0a00/ukiyo-visual-design-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/5a92f183d8d08adf33bf782dfe1c2ad59eb77f47b7508f64948cf1d1860d0a00/ukiyo-visual-design-idle-320.webp",
+    "bytes": 37942,
+    "sha256": "5a92f183d8d08adf33bf782dfe1c2ad59eb77f47b7508f64948cf1d1860d0a00"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/5da037b1be111df5429d65b51ba69e0e7c4dc3445f0cbca5728f9ec58d8e43e5/pixel-visual-design-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/5da037b1be111df5429d65b51ba69e0e7c4dc3445f0cbca5728f9ec58d8e43e5/pixel-visual-design-idle-320.webp",
+    "bytes": 155094,
+    "sha256": "5da037b1be111df5429d65b51ba69e0e7c4dc3445f0cbca5728f9ec58d8e43e5"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/5e34f9c14a70e48a55629008948fbdb1a1197a545362a1825729d8ad9a656437/ukiyo-visual-design-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/5e34f9c14a70e48a55629008948fbdb1a1197a545362a1825729d8ad9a656437/ukiyo-visual-design-idle-960.webp",
+    "bytes": 303202,
+    "sha256": "5e34f9c14a70e48a55629008948fbdb1a1197a545362a1825729d8ad9a656437"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/5e8da07c6e9e5d0a3fffe7d30371fa71ed0049dc0b2fc7ba12c80191ba28106d/pixel-resident-dining-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/5e8da07c6e9e5d0a3fffe7d30371fa71ed0049dc0b2fc7ba12c80191ba28106d/pixel-resident-dining-active-640.webp",
+    "bytes": 533466,
+    "sha256": "5e8da07c6e9e5d0a3fffe7d30371fa71ed0049dc0b2fc7ba12c80191ba28106d"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/60142c32bbca40531aefc028365d7e904344d48717a40531590067c94180a1de/pixel-advertising-publishing-idle-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/60142c32bbca40531aefc028365d7e904344d48717a40531590067c94180a1de/pixel-advertising-publishing-idle-320.webp",
+    "bytes": 126210,
+    "sha256": "60142c32bbca40531aefc028365d7e904344d48717a40531590067c94180a1de"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/620a9d44c0022e241e60602bf1a366b77d3c935b76fc4e1de088fa1196285ae4/ukiyo-advertising-publishing-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/620a9d44c0022e241e60602bf1a366b77d3c935b76fc4e1de088fa1196285ae4/ukiyo-advertising-publishing-active-640.webp",
+    "bytes": 156588,
+    "sha256": "620a9d44c0022e241e60602bf1a366b77d3c935b76fc4e1de088fa1196285ae4"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/69af3d756b22cb8669dacff2e1a35d19a6e14e0133ff58dcf88017e08322c6de/ukiyo-fashion-lifestyle-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/69af3d756b22cb8669dacff2e1a35d19a6e14e0133ff58dcf88017e08322c6de/ukiyo-fashion-lifestyle-active-960.webp",
+    "bytes": 358830,
+    "sha256": "69af3d756b22cb8669dacff2e1a35d19a6e14e0133ff58dcf88017e08322c6de"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/6e47c1db96cc7c9b475a614a05fe5fd5572bda76a28252d68057ef1e49302045/ukiyo-fashion-lifestyle-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/6e47c1db96cc7c9b475a614a05fe5fd5572bda76a28252d68057ef1e49302045/ukiyo-fashion-lifestyle-idle-960.webp",
+    "bytes": 374180,
+    "sha256": "6e47c1db96cc7c9b475a614a05fe5fd5572bda76a28252d68057ef1e49302045"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/720b459bfd9a3295cc2b394f321ec9b95485ac86c5a3c95c3f4e385ed9a18da3/pixel-advertising-publishing-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/720b459bfd9a3295cc2b394f321ec9b95485ac86c5a3c95c3f4e385ed9a18da3/pixel-advertising-publishing-idle-960.webp",
+    "bytes": 875166,
+    "sha256": "720b459bfd9a3295cc2b394f321ec9b95485ac86c5a3c95c3f4e385ed9a18da3"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/7416d3dfd7f8a219014bac59eb1532dd2a9b555c2c9bcb83cc7da5dffcb951ce/ukiyo-resident-dining-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/7416d3dfd7f8a219014bac59eb1532dd2a9b555c2c9bcb83cc7da5dffcb951ce/ukiyo-resident-dining-idle-960.webp",
+    "bytes": 341024,
+    "sha256": "7416d3dfd7f8a219014bac59eb1532dd2a9b555c2c9bcb83cc7da5dffcb951ce"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/7c3795c5496129ae52adb6a39a65bcb50e101b87c0fd339df27d5fedc0985890/ukiyo-resident-dining-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/7c3795c5496129ae52adb6a39a65bcb50e101b87c0fd339df27d5fedc0985890/ukiyo-resident-dining-active-960.webp",
+    "bytes": 342944,
+    "sha256": "7c3795c5496129ae52adb6a39a65bcb50e101b87c0fd339df27d5fedc0985890"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/7d6d85d66a33f99fcfcef09917c50953337950b6294b59b3e06582232abc8030/ukiyo-brand-incubation-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/7d6d85d66a33f99fcfcef09917c50953337950b6294b59b3e06582232abc8030/ukiyo-brand-incubation-idle-960.webp",
+    "bytes": 329236,
+    "sha256": "7d6d85d66a33f99fcfcef09917c50953337950b6294b59b3e06582232abc8030"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/800dbd0760d9941702ea2982bd5291c50865c5993f345d36e78ae965a6ed8ff9/advertising-publishing-social.png",
+    "path": "brands/assets/vendor/luluka-public-media/800dbd0760d9941702ea2982bd5291c50865c5993f345d36e78ae965a6ed8ff9/advertising-publishing-social.png",
+    "bytes": 13431,
+    "sha256": "800dbd0760d9941702ea2982bd5291c50865c5993f345d36e78ae965a6ed8ff9"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/80135b75badd2753f313ec8593dfc7d0b972929c3150308b0c3321baba66d0da/ukiyo-advertising-publishing-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/80135b75badd2753f313ec8593dfc7d0b972929c3150308b0c3321baba66d0da/ukiyo-advertising-publishing-idle-640.webp",
+    "bytes": 142612,
+    "sha256": "80135b75badd2753f313ec8593dfc7d0b972929c3150308b0c3321baba66d0da"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/8a306bc78cd4425b5db4eab6f02980ba0d09e32b129cc4c4a30bdf72f6e5d536/ukiyo-fashion-lifestyle-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/8a306bc78cd4425b5db4eab6f02980ba0d09e32b129cc4c4a30bdf72f6e5d536/ukiyo-fashion-lifestyle-active-640.webp",
+    "bytes": 183118,
+    "sha256": "8a306bc78cd4425b5db4eab6f02980ba0d09e32b129cc4c4a30bdf72f6e5d536"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/946b5b350ab41d727f5b3726e31ae12c869ddf4f3ce54bfa764ae6decc149498/pixel-brand-incubation-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/946b5b350ab41d727f5b3726e31ae12c869ddf4f3ce54bfa764ae6decc149498/pixel-brand-incubation-active-320.webp",
+    "bytes": 178376,
+    "sha256": "946b5b350ab41d727f5b3726e31ae12c869ddf4f3ce54bfa764ae6decc149498"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/985a5c9ba8d36d4d16f1c4ae2e48dcf370705388a2cc8df1d15ba85b34088959/ukiyo-advertising-publishing-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/985a5c9ba8d36d4d16f1c4ae2e48dcf370705388a2cc8df1d15ba85b34088959/ukiyo-advertising-publishing-active-960.webp",
+    "bytes": 306874,
+    "sha256": "985a5c9ba8d36d4d16f1c4ae2e48dcf370705388a2cc8df1d15ba85b34088959"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/a05f1ee8bca80781c0e3dbb73dab3b8717a67f1f808a5be4a17ab850ac3ee3d0/pixel-fashion-lifestyle-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/a05f1ee8bca80781c0e3dbb73dab3b8717a67f1f808a5be4a17ab850ac3ee3d0/pixel-fashion-lifestyle-active-640.webp",
+    "bytes": 465530,
+    "sha256": "a05f1ee8bca80781c0e3dbb73dab3b8717a67f1f808a5be4a17ab850ac3ee3d0"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/a4888c3b7890e577416a5b5c97cf1bec129e2a6c59833f3bf8e17b7a00f2b14e/pixel-visual-design-active-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/a4888c3b7890e577416a5b5c97cf1bec129e2a6c59833f3bf8e17b7a00f2b14e/pixel-visual-design-active-640.webp",
+    "bytes": 568236,
+    "sha256": "a4888c3b7890e577416a5b5c97cf1bec129e2a6c59833f3bf8e17b7a00f2b14e"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/abc74cf6b8bc2909910b6903eac89c8bd31d8a8e94b7457fd4d25bbe0f28d5f5/ukiyo-visual-design-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/abc74cf6b8bc2909910b6903eac89c8bd31d8a8e94b7457fd4d25bbe0f28d5f5/ukiyo-visual-design-active-960.webp",
+    "bytes": 298346,
+    "sha256": "abc74cf6b8bc2909910b6903eac89c8bd31d8a8e94b7457fd4d25bbe0f28d5f5"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/b0aeb0d444ae38ed8841b6881bb39eb838bdceb2c14a264c5cdad00907ef56de/pixel-advertising-publishing-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/b0aeb0d444ae38ed8841b6881bb39eb838bdceb2c14a264c5cdad00907ef56de/pixel-advertising-publishing-active-960.webp",
+    "bytes": 997954,
+    "sha256": "b0aeb0d444ae38ed8841b6881bb39eb838bdceb2c14a264c5cdad00907ef56de"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/b35b6434cc16bc99361b2d9231f37aa45a472f170b32f55f78f87635c369de46/pixel-advertising-publishing-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/b35b6434cc16bc99361b2d9231f37aa45a472f170b32f55f78f87635c369de46/pixel-advertising-publishing-idle-640.webp",
+    "bytes": 422606,
+    "sha256": "b35b6434cc16bc99361b2d9231f37aa45a472f170b32f55f78f87635c369de46"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/b47664959000dcb94c49178a308e013710c47440fb5f461d2584a5db01aa9baf/lifeline-project-views.png",
+    "path": "brands/assets/vendor/luluka-public-media/b47664959000dcb94c49178a308e013710c47440fb5f461d2584a5db01aa9baf/lifeline-project-views.png",
+    "bytes": 2425507,
+    "sha256": "b47664959000dcb94c49178a308e013710c47440fb5f461d2584a5db01aa9baf"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/baab28ac7daf56f0c9234cce0b39d590c1b9f260384e8db1469b42c4587e3a38/pixel-visual-design-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/baab28ac7daf56f0c9234cce0b39d590c1b9f260384e8db1469b42c4587e3a38/pixel-visual-design-idle-960.webp",
+    "bytes": 1104858,
+    "sha256": "baab28ac7daf56f0c9234cce0b39d590c1b9f260384e8db1469b42c4587e3a38"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/c6c1815d0ff6f99b4b679dc92866f235909131148fd03aebad8365693d6317e2/pixel-resident-dining-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/c6c1815d0ff6f99b4b679dc92866f235909131148fd03aebad8365693d6317e2/pixel-resident-dining-active-960.webp",
+    "bytes": 1107582,
+    "sha256": "c6c1815d0ff6f99b4b679dc92866f235909131148fd03aebad8365693d6317e2"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/c883ca07a985fca4f2c9b42a4e93429a47bbadbd26d3869d3b6fbebf03e3995b/fashion-lifestyle-social.png",
+    "path": "brands/assets/vendor/luluka-public-media/c883ca07a985fca4f2c9b42a4e93429a47bbadbd26d3869d3b6fbebf03e3995b/fashion-lifestyle-social.png",
+    "bytes": 11978,
+    "sha256": "c883ca07a985fca4f2c9b42a4e93429a47bbadbd26d3869d3b6fbebf03e3995b"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/d19d93d1567028e770b4c933fec31b239e1453c763889bb55b2a2736ab3448d0/favicon.svg",
+    "path": "brands/assets/vendor/luluka-public-media/d19d93d1567028e770b4c933fec31b239e1453c763889bb55b2a2736ab3448d0/favicon.svg",
+    "bytes": 166,
+    "sha256": "d19d93d1567028e770b4c933fec31b239e1453c763889bb55b2a2736ab3448d0"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/d6d746d420c2c97a940f62ec35d11df1d11cd576bd8cafeacffa5d5337c80e9d/pixel-resident-dining-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/d6d746d420c2c97a940f62ec35d11df1d11cd576bd8cafeacffa5d5337c80e9d/pixel-resident-dining-idle-640.webp",
+    "bytes": 520200,
+    "sha256": "d6d746d420c2c97a940f62ec35d11df1d11cd576bd8cafeacffa5d5337c80e9d"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/d81632d17ce2d0f044b4720f3ba39f045ed65abb1ce75e90a49f1459a60b1cd6/ukiyo-resident-dining-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/d81632d17ce2d0f044b4720f3ba39f045ed65abb1ce75e90a49f1459a60b1cd6/ukiyo-resident-dining-active-320.webp",
+    "bytes": 51112,
+    "sha256": "d81632d17ce2d0f044b4720f3ba39f045ed65abb1ce75e90a49f1459a60b1cd6"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/d97b36f01c91fb3a9e029168356bf27ea72ae370e976d3d2fa3f7c525ab923a2/ukiyo-brand-incubation-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/d97b36f01c91fb3a9e029168356bf27ea72ae370e976d3d2fa3f7c525ab923a2/ukiyo-brand-incubation-idle-640.webp",
+    "bytes": 159312,
+    "sha256": "d97b36f01c91fb3a9e029168356bf27ea72ae370e976d3d2fa3f7c525ab923a2"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/dae8791d47d1dcbc0a725fcfe4048b6fa30c77dd071c80a7031692456d067501/ukiyo-brand-incubation-active-320.webp",
+    "path": "brands/assets/vendor/luluka-public-media/dae8791d47d1dcbc0a725fcfe4048b6fa30c77dd071c80a7031692456d067501/ukiyo-brand-incubation-active-320.webp",
+    "bytes": 49236,
+    "sha256": "dae8791d47d1dcbc0a725fcfe4048b6fa30c77dd071c80a7031692456d067501"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/db3adb623cb6df2dec02a01cdfc846929c8bb76688281c8f62e2efbca3c800fd/ukiyo-advertising-publishing-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/db3adb623cb6df2dec02a01cdfc846929c8bb76688281c8f62e2efbca3c800fd/ukiyo-advertising-publishing-idle-960.webp",
+    "bytes": 280434,
+    "sha256": "db3adb623cb6df2dec02a01cdfc846929c8bb76688281c8f62e2efbca3c800fd"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/de90894d66acfc8800921dea94a2879ff17bb1eb6a6c740161457d58fc39e1de/pixel-visual-design-idle-640.webp",
+    "path": "brands/assets/vendor/luluka-public-media/de90894d66acfc8800921dea94a2879ff17bb1eb6a6c740161457d58fc39e1de/pixel-visual-design-idle-640.webp",
+    "bytes": 526820,
+    "sha256": "de90894d66acfc8800921dea94a2879ff17bb1eb6a6c740161457d58fc39e1de"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/e3b532e99e7fa375f856645ce8526191428a7c11f8d5f86ef0f77e8624813e66/ukiyo-brand-incubation-active-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/e3b532e99e7fa375f856645ce8526191428a7c11f8d5f86ef0f77e8624813e66/ukiyo-brand-incubation-active-960.webp",
+    "bytes": 349184,
+    "sha256": "e3b532e99e7fa375f856645ce8526191428a7c11f8d5f86ef0f77e8624813e66"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/e8972fd5362e01694d61ea9bc93104e18103e681ac6c859eea93ca6bd9ab27e2/visual-design-social.png",
+    "path": "brands/assets/vendor/luluka-public-media/e8972fd5362e01694d61ea9bc93104e18103e681ac6c859eea93ca6bd9ab27e2/visual-design-social.png",
+    "bytes": 13604,
+    "sha256": "e8972fd5362e01694d61ea9bc93104e18103e681ac6c859eea93ca6bd9ab27e2"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/e958a836d97d1bdde9d20d1a0e089b6f0d22fa638df12e6b91ccc210ff42d589/lifeline-concert-poster.png",
+    "path": "brands/assets/vendor/luluka-public-media/e958a836d97d1bdde9d20d1a0e089b6f0d22fa638df12e6b91ccc210ff42d589/lifeline-concert-poster.png",
+    "bytes": 2481178,
+    "sha256": "e958a836d97d1bdde9d20d1a0e089b6f0d22fa638df12e6b91ccc210ff42d589"
+  },
+  {
+    "source": "https://umstsvobrqgstsjdvpza.supabase.co/storage/v1/object/public/luluka-public-media/eace9e6d1b250e38394317a6f1b846573df8eca660f147561175716788a57d0e/pixel-brand-incubation-idle-960.webp",
+    "path": "brands/assets/vendor/luluka-public-media/eace9e6d1b250e38394317a6f1b846573df8eca660f147561175716788a57d0e/pixel-brand-incubation-idle-960.webp",
+    "bytes": 869160,
+    "sha256": "eace9e6d1b250e38394317a6f1b846573df8eca660f147561175716788a57d0e"
+  }
+]

@@ -6,11 +6,11 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / '.site'
-ALLOWED_SUFFIXES = {'.html', '.css', '.js', '.png', '.jpg', '.gif', '.txt', '.xml', '.svg'}
+ALLOWED_SUFFIXES = {'.html', '.css', '.js', '.png', '.jpg', '.gif', '.webp', '.txt', '.xml', '.svg', '.woff', '.woff2'}
 
 
 def build():
-    paths = json.loads((ROOT / 'scripts/public-files.json').read_text())
+    paths = json.loads((ROOT / 'scripts/public-files.json').read_text(encoding='utf-8'))
     if not isinstance(paths, list) or not paths or len(paths) != len(set(paths)):
         raise ValueError('Public manifest must be a nonempty list of unique paths')
     validated = []

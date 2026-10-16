@@ -6,6 +6,9 @@ import json
 import xml.etree.ElementTree as ET
 import tempfile
 import importlib.util
+import hashlib
+import os
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '.site'
@@ -53,13 +56,13 @@ class Page(HTMLParser):
 
 
 def check():
-    expected = set(json.loads((ROOT / 'scripts/public-files.json').read_text()))
+    expected = set(json.loads((ROOT / 'scripts/public-files.json').read_text(encoding='utf-8')))
     actual = {p.relative_to(SITE).as_posix() for p in SITE.rglob('*') if p.is_file()}
     assert actual == expected, f'Unexpected deployment files: {actual ^ expected}'
     pages = {}
     for path in SITE.rglob('*.html'):
         parser = Page()
-        parser.feed(path.read_text())
+        parser.feed(path.read_text(encoding='utf-8'))
         pages[path] = parser
         assert parser.language == 'zh-TW' and parser.h1 == 1, str(path)
         assert parser.meta.get('description') and parser.canonical, str(path)
@@ -86,12 +89,21 @@ def check():
             image = SITE / image_url.path.lstrip('/')
             assert image.is_file() and image.read_bytes().startswith(b'\x89PNG')
         else:
-            import re
             assert image_url.scheme == 'https' and image_url.hostname == 'umstsvobrqgstsjdvpza.supabase.co'
             assert re.fullmatch(r'/storage/v1/object/public/luluka-public-media/[a-f0-9]{64}/'+slug+r'-social\.png',image_url.path)
     locations = {x.text for x in ET.parse(SITE / 'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
     assert locations == {p.canonical for p in pages.values()}, 'Sitemap does not match canonical pages'
     assert 'Sitemap: https://luluka.org/sitemap.xml' in (SITE / 'robots.txt').read_text()
+    for path in SITE.rglob('*'):
+        if path.suffix in {'.html', '.css', '.js', '.svg', '.txt'}:
+            content = path.read_text(encoding='utf-8')
+            assert not re.search(r'https?://[^\s\"<>]+\.supabase\.co', content), f'External Supabase dependency: {path}'
+            for local in re.findall(r'/brands/assets/vendor/[^\s\"<>\x27()]+', content):
+                assert (SITE / local.lstrip('/')).is_file(), f'Missing vendored asset: {local}'
+    inventory = json.loads((ROOT / 'docs/public-assets-localized.json').read_text(encoding='utf-8'))
+    for row in inventory:
+        data = (SITE / row['path']).read_bytes()
+        assert len(data) == row['bytes'] and hashlib.sha256(data).hexdigest() == row['sha256'], row['path']
     # Exercise the builder in an isolated fixture, including unlisted sensitive files.
     spec = importlib.util.spec_from_file_location('public_builder', ROOT / 'scripts/build_public.py')
     builder = importlib.util.module_from_spec(spec)
@@ -117,14 +129,20 @@ def check():
                 pass
             else:
                 raise AssertionError(f'Builder accepted unsafe path: {bad}')
-        (fixture / 'leak.html').symlink_to(fixture / '.env')
-        manifest.write_text('["leak.html"]')
         try:
-            builder.build()
-        except ValueError:
-            pass
+            (fixture / 'leak.html').symlink_to(fixture / '.env')
+        except OSError:
+            if os.name != 'nt':
+                raise
+            print('Windows cannot create symlinks; Linux CI runs the symlink isolation check')
         else:
-            raise AssertionError('Builder published a symlink')
+            manifest.write_text('["leak.html"]')
+            try:
+                builder.build()
+            except ValueError:
+                pass
+            else:
+                raise AssertionError('Builder published a symlink')
     print(f'Passed: {len(pages)} pages, local links, brand SEO, sitemap and deployment isolation tests')
 
 
