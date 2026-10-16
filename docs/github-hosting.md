@@ -9,6 +9,9 @@ SHA-256 hashes. No private bucket was copied into this public repository.
 The gold homepage wordmark is `brands/assets/luluka-gold-wordmark.png`, a transparent
 PNG extracted using the built-in image tool. Edit prompt: remove only the black
 background; preserve LULUKA lettering, gold texture, spacing and all serif/tail shapes.
+The header presents it at 280px on desktop and up to 220px on mobile. A scoped CSS
+filter softens the original yellow/orange into champagne gold without regenerating
+the image or affecting the card artwork. The original PNG remains unchanged.
 
 Private source artwork and database exports belong only in the separate private
 `sunray0317/LULUKA-private-archive` repository. It has no Pages deployment. Supabase
