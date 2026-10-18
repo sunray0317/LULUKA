@@ -28,6 +28,12 @@ Private source artwork and database exports belong only in the separate private
 `sunray0317/LULUKA-private-archive` repository. It has no Pages deployment. Supabase
 must remain intact until every private object and record has been exported and checked.
 
+The homepage now shows only the five bronze rock-engraving theme cards (the former
+second row). The ukiyo and pixel rows were removed from homepage markup after their
+20 highest-resolution idle/feedback card images were exported as pixel-verified PNGs
+to the owner's Downloads folder. Source assets remain in Git for recovery; the
+homepage no longer preloads either removed row. Titles remain live HTML overlays.
+
 ## Build and validate (CMD, bash or other shell)
 
 ```text

@@ -66,6 +66,11 @@ def check():
         pages[path] = parser
         assert parser.language == 'zh-TW' and parser.h1 == 1, str(path)
         assert parser.meta.get('description') and parser.canonical, str(path)
+    home = (SITE / 'index.html').read_text(encoding='utf-8')
+    assert len(re.findall(r'<section\b', home)) == 1, 'Homepage must keep only the bronze card row'
+    assert len(re.findall(r'class="brand-card ', home)) == 5, 'Homepage must contain five original theme cards'
+    assert 'id="brands-glass"' in home and 'id="brands-pixel"' not in home and 'id="brands"' not in home
+    assert 'ukiyo-' not in home and 'pixel-' not in home, 'Removed rows must not remain preloaded'
     for path, page in pages.items():
         for link in page.links:
             url = urlsplit(link)
