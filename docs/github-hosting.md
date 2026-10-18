@@ -14,7 +14,12 @@ preserve the selected six letter outlines, kerning, flat serif A top, short K le
 warm honey/champagne faces and delicate highlights. No redesign or recoloring.
 Transparent canvas was trimmed and resized for delivery without further recoloring.
 The header is fixed at the viewport's top center with no black bar, blur or border.
-The logo is up to 220px on desktop and 180px on mobile, with no color filter.
+The logo is up to 180px on desktop and 150px on mobile, with no color filter.
+An alpha-masked CSS highlight adds a warm folded/refraction-like brush across only
+the letters: a 5.6-second loop with a brief eased sweep and a quiet pause. No new
+image or animation library is required. Both standard and WebKit mask properties
+are provided; browsers without masking keep the static PNG. Reduced-motion users
+receive the static wordmark without the sweep.
 Safe-area-aware main padding keeps the first cards clear at initial load. Only the
 logo link receives pointer input, so the rest of the transparent header passes through.
 

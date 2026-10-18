@@ -6,8 +6,13 @@ a{color:inherit;text-decoration:none}button{font:inherit}a,button{-webkit-tap-hi
 header,main,footer{width:100%;margin:0 auto}main{flex:1;padding-top:calc(68px + env(safe-area-inset-top,0px))}
 /* Only the wordmark receives input; the transparent fixed header never blocks cards. */
 header{position:fixed;inset:0 0 auto;z-index:30;padding:calc(12px + env(safe-area-inset-top,0px)) 0 12px;display:flex;align-items:center;justify-content:center;background:transparent;pointer-events:none}
-.logo{display:block;width:min(220px,60vw);line-height:0;pointer-events:auto}
+.logo{position:relative;isolation:isolate;display:block;width:min(180px,54vw);line-height:0;pointer-events:auto}
 .logo img{display:block;width:100%;height:auto}
+/* A folded warm highlight travels across the PNG alpha, never across a rectangle. */
+@supports (mask-image:linear-gradient(#000,#000)) or (-webkit-mask-image:linear-gradient(#000,#000)){
+.logo::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(108deg,transparent 39%,#b5712426 43%,#ffc9637a 46%,#fff8dcf2 48.5%,#fffff8 49.5%,#ffdc92b3 51%,#fff4d2cc 53%,transparent 57%);background-size:300% 100%;background-repeat:no-repeat;background-position:110% 0;-webkit-mask-image:url('/brands/assets/luluka-classic-wordmark-20261017.png');mask-image:url('/brands/assets/luluka-classic-wordmark-20261017.png');-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;mix-blend-mode:screen;animation:wordmark-refraction 5.6s cubic-bezier(.4,0,.2,1) infinite}
+}
+@keyframes wordmark-refraction{0%,6%{background-position:110% 0;opacity:0}12%{opacity:.9}36%{background-position:-10% 0;opacity:.9}42%,100%{background-position:-10% 0;opacity:0}}
 footer{padding:12px 0;border-top:.5px solid #b8995c30;display:flex;align-items:center;justify-content:center}
 .footer-logo{color:#c4b38c;letter-spacing:.22em;font-size:14px;line-height:1.3}
 .skip{position:absolute;left:20px;top:-100px;background:#e3c98c;color:#080807;padding:10px;z-index:10}.skip:focus{top:10px}
@@ -49,7 +54,7 @@ footer{padding:12px 0;border-top:.5px solid #b8995c30;display:flex;align-items:c
 @keyframes card-idle-breathe{0%,100%{border-color:#e2c186;box-shadow:0 10px 30px #0006,0 0 5px #f5d69b9c,0 0 15px #d5b67655,0 0 36px #bd914300,inset 0 0 4px #f3cd8526}50%{border-color:#fff6da;box-shadow:0 10px 30px #0006,0 0 14px #fff1caff,0 0 32px #ffd481eb,0 0 48px #e7af5599,inset 0 0 16px #ffe3a3b3}}
 .carousel-controls,.carousel-pagination{display:none}
 @media(max-width:900px),(hover:none) and (pointer:coarse){
-main{padding-top:calc(60px + env(safe-area-inset-top,0px))}.logo{width:min(180px,52vw)}.footer-logo{font-size:16px}
+main{padding-top:calc(60px + env(safe-area-inset-top,0px))}.logo{width:min(150px,46vw)}.footer-logo{font-size:16px}
 .brands{--carousel-card-width:min(72vw,360px);width:100%;padding:16px 0 8px;display:flex;flex-direction:column;gap:12px}.brands+.brands{padding-top:16px}
 .brand-cards{width:100%;display:flex;flex-wrap:nowrap;gap:20px;padding:14px calc((100vw - var(--carousel-card-width))/2);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:calc((100vw - var(--carousel-card-width))/2);overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none}
 .brand-cards::-webkit-scrollbar{display:none}
@@ -87,4 +92,4 @@ main{padding-top:calc(60px + env(safe-area-inset-top,0px))}.logo{width:min(180px
 .pixel-card .card-art{opacity:.96}
 .pixel-card .card-art img{image-rendering:pixelated}
 .pixel-card .art-active{filter:none}
-@media(prefers-reduced-motion:reduce){.brand-card,.brand-card h2,.brand-card p,.carousel-arrow,.carousel-arrow svg{transition:none}.brand-card,.brand-card::after,.brand-card .card-art{animation:none!important}.brand-card .card-art{filter:none}.brand-card::after{opacity:0}}
+@media(prefers-reduced-motion:reduce){.logo::after{animation:none;display:none}.brand-card,.brand-card h2,.brand-card p,.carousel-arrow,.carousel-arrow svg{transition:none}.brand-card,.brand-card::after,.brand-card .card-art{animation:none!important}.brand-card .card-art{filter:none}.brand-card::after{opacity:0}}
