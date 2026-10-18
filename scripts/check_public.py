@@ -25,6 +25,7 @@ class Page(HTMLParser):
         self.schema = []
         self.collect_schema = False
         self.language = None
+        self.images = []
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -35,6 +36,14 @@ class Page(HTMLParser):
             self.language = a.get('lang')
         if tag == 'h1':
             self.h1 += 1
+        if tag == 'img':
+            self.images.append(a)
+            if a.get('data-src'):
+                self.links.append(a['data-src'])
+            for key in ['srcset', 'data-srcset']:
+                for candidate in a.get(key, '').split(','):
+                    if candidate.strip():
+                        self.links.append(candidate.strip().split()[0])
         if tag == 'meta':
             self.meta[a.get('name', a.get('property'))] = a.get('content')
         if tag == 'link' and a.get('rel') == 'canonical':
@@ -71,6 +80,17 @@ def check():
     assert len(re.findall(r'class="brand-card ', home)) == 5, 'Homepage must contain five original theme cards'
     assert 'id="brands-glass"' in home and 'id="brands-pixel"' not in home and 'id="brands"' not in home
     assert 'ukiyo-' not in home and 'pixel-' not in home, 'Removed rows must not remain preloaded'
+    idle = [image for image in pages[SITE / 'index.html'].images if image.get('class') == 'art-idle']
+    feedback = [image for image in pages[SITE / 'index.html'].images if image.get('class') == 'art-active']
+    assert len(idle) == len(feedback) == 5
+    assert all(image.get('src', '').endswith('.webp') and image.get('srcset') and image.get('loading') == 'eager' for image in idle), 'Card faces must display without JavaScript'
+    assert all(not image.get('src') and image.get('data-src', '').endswith('.webp') for image in feedback), 'Feedback must remain on demand'
+    assert 'bronze-mural-' not in home, 'Homepage must not request full-size source PNGs'
+    delivery = json.loads((ROOT / 'docs/bronze-card-delivery.json').read_text(encoding='utf-8'))
+    assert len(delivery) == 30
+    for image in delivery:
+        assert (SITE / image['file']).stat().st_size == image['bytes']
+    assert sum(image['bytes'] for image in delivery if image['width'] == 640 and '-idle-' in image['file']) < 750_000, 'Card delivery exceeded the mobile size budget'
     for path, page in pages.items():
         for link in page.links:
             url = urlsplit(link)

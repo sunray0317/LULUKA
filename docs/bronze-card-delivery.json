@@ -1,0 +1,242 @@
+[
+  {
+    "source": "brands/assets/bronze-mural-visual-design-v2.png",
+    "sourceBytes": 2785641,
+    "file": "brands/assets/bronze-visual-design-idle-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 40524
+  },
+  {
+    "source": "brands/assets/bronze-mural-visual-design-v2.png",
+    "sourceBytes": 2785641,
+    "file": "brands/assets/bronze-visual-design-idle-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 147596
+  },
+  {
+    "source": "brands/assets/bronze-mural-visual-design-v2.png",
+    "sourceBytes": 2785641,
+    "file": "brands/assets/bronze-visual-design-idle-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 264222
+  },
+  {
+    "source": "brands/assets/bronze-mural-visual-design-feedback-v2.png",
+    "sourceBytes": 2529778,
+    "file": "brands/assets/bronze-visual-design-active-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 38838
+  },
+  {
+    "source": "brands/assets/bronze-mural-visual-design-feedback-v2.png",
+    "sourceBytes": 2529778,
+    "file": "brands/assets/bronze-visual-design-active-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 127908
+  },
+  {
+    "source": "brands/assets/bronze-mural-visual-design-feedback-v2.png",
+    "sourceBytes": 2529778,
+    "file": "brands/assets/bronze-visual-design-active-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 222130
+  },
+  {
+    "source": "brands/assets/bronze-mural-brand-incubation-v2.png",
+    "sourceBytes": 2609755,
+    "file": "brands/assets/bronze-brand-incubation-idle-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 34822
+  },
+  {
+    "source": "brands/assets/bronze-mural-brand-incubation-v2.png",
+    "sourceBytes": 2609755,
+    "file": "brands/assets/bronze-brand-incubation-idle-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 127574
+  },
+  {
+    "source": "brands/assets/bronze-mural-brand-incubation-v2.png",
+    "sourceBytes": 2609755,
+    "file": "brands/assets/bronze-brand-incubation-idle-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 225914
+  },
+  {
+    "source": "brands/assets/bronze-mural-brand-incubation-feedback-v2.png",
+    "sourceBytes": 2588950,
+    "file": "brands/assets/bronze-brand-incubation-active-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 32666
+  },
+  {
+    "source": "brands/assets/bronze-mural-brand-incubation-feedback-v2.png",
+    "sourceBytes": 2588950,
+    "file": "brands/assets/bronze-brand-incubation-active-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 115128
+  },
+  {
+    "source": "brands/assets/bronze-mural-brand-incubation-feedback-v2.png",
+    "sourceBytes": 2588950,
+    "file": "brands/assets/bronze-brand-incubation-active-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 207138
+  },
+  {
+    "source": "brands/assets/bronze-mural-advertising-publishing-v2.png",
+    "sourceBytes": 2627047,
+    "file": "brands/assets/bronze-advertising-publishing-idle-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 39374
+  },
+  {
+    "source": "brands/assets/bronze-mural-advertising-publishing-v2.png",
+    "sourceBytes": 2627047,
+    "file": "brands/assets/bronze-advertising-publishing-idle-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 139748
+  },
+  {
+    "source": "brands/assets/bronze-mural-advertising-publishing-v2.png",
+    "sourceBytes": 2627047,
+    "file": "brands/assets/bronze-advertising-publishing-idle-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 247020
+  },
+  {
+    "source": "brands/assets/bronze-mural-advertising-publishing-feedback-v2.png",
+    "sourceBytes": 2524782,
+    "file": "brands/assets/bronze-advertising-publishing-active-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 40538
+  },
+  {
+    "source": "brands/assets/bronze-mural-advertising-publishing-feedback-v2.png",
+    "sourceBytes": 2524782,
+    "file": "brands/assets/bronze-advertising-publishing-active-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 126844
+  },
+  {
+    "source": "brands/assets/bronze-mural-advertising-publishing-feedback-v2.png",
+    "sourceBytes": 2524782,
+    "file": "brands/assets/bronze-advertising-publishing-active-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 221486
+  },
+  {
+    "source": "brands/assets/bronze-mural-resident-dining-v2.png",
+    "sourceBytes": 2445925,
+    "file": "brands/assets/bronze-resident-dining-idle-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 29910
+  },
+  {
+    "source": "brands/assets/bronze-mural-resident-dining-v2.png",
+    "sourceBytes": 2445925,
+    "file": "brands/assets/bronze-resident-dining-idle-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 107512
+  },
+  {
+    "source": "brands/assets/bronze-mural-resident-dining-v2.png",
+    "sourceBytes": 2445925,
+    "file": "brands/assets/bronze-resident-dining-idle-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 189374
+  },
+  {
+    "source": "brands/assets/bronze-mural-resident-dining-feedback-v2.png",
+    "sourceBytes": 2359932,
+    "file": "brands/assets/bronze-resident-dining-active-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 30314
+  },
+  {
+    "source": "brands/assets/bronze-mural-resident-dining-feedback-v2.png",
+    "sourceBytes": 2359932,
+    "file": "brands/assets/bronze-resident-dining-active-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 101284
+  },
+  {
+    "source": "brands/assets/bronze-mural-resident-dining-feedback-v2.png",
+    "sourceBytes": 2359932,
+    "file": "brands/assets/bronze-resident-dining-active-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 175402
+  },
+  {
+    "source": "brands/assets/bronze-mural-fashion-lifestyle-v2.png",
+    "sourceBytes": 2552515,
+    "file": "brands/assets/bronze-fashion-lifestyle-idle-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 32602
+  },
+  {
+    "source": "brands/assets/bronze-mural-fashion-lifestyle-v2.png",
+    "sourceBytes": 2552515,
+    "file": "brands/assets/bronze-fashion-lifestyle-idle-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 119658
+  },
+  {
+    "source": "brands/assets/bronze-mural-fashion-lifestyle-v2.png",
+    "sourceBytes": 2552515,
+    "file": "brands/assets/bronze-fashion-lifestyle-idle-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 214420
+  },
+  {
+    "source": "brands/assets/bronze-mural-fashion-lifestyle-feedback-v2.png",
+    "sourceBytes": 2313077,
+    "file": "brands/assets/bronze-fashion-lifestyle-active-320.webp",
+    "width": 320,
+    "height": 509,
+    "bytes": 30394
+  },
+  {
+    "source": "brands/assets/bronze-mural-fashion-lifestyle-feedback-v2.png",
+    "sourceBytes": 2313077,
+    "file": "brands/assets/bronze-fashion-lifestyle-active-640.webp",
+    "width": 640,
+    "height": 1019,
+    "bytes": 96114
+  },
+  {
+    "source": "brands/assets/bronze-mural-fashion-lifestyle-feedback-v2.png",
+    "sourceBytes": 2313077,
+    "file": "brands/assets/bronze-fashion-lifestyle-active-960.webp",
+    "width": 960,
+    "height": 1528,
+    "bytes": 172492
+  }
+]

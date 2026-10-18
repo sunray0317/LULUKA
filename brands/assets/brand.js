@@ -59,16 +59,15 @@ const loadCardImage = (image) => {
     if (image.classList.contains('art-active') && image.naturalWidth) image.closest('.brand-card').classList.add('has-active-art');
   };
   image.addEventListener('load', ready, { once: true });
+  image.addEventListener('error', () => loadedImages.delete(image), { once: true });
   if (image.dataset.srcset) image.srcset = image.dataset.srcset;
   if (image.dataset.src) image.src = image.dataset.src;
   if (image.complete) ready();
 };
 const loadCardIdle = (card) => loadCardImage(card.querySelector('.art-idle'));
-const prepareActiveArt = (card) => loadCardImage(card.querySelector('.art-active'));
-const warmVisibleFeedback = (card) => {
-  if (!card.isConnected || !card.classList.contains('is-in-view')) return;
-  const track = card.closest('.brand-cards'),rect = card.getBoundingClientRect(),view = track.getBoundingClientRect();
-  if (!carouselLayout.matches || Math.abs(rect.left + rect.width / 2 - view.left - view.width / 2) < rect.width * .4) prepareActiveArt(card);
+// Touch carousels never display feedback artwork; do not download it in the background.
+const prepareActiveArt = (card) => {
+  if (!carouselLayout.matches) loadCardImage(card.querySelector('.art-active'));
 };
 const mediaObserver = new IntersectionObserver((entries) => {
   for (const entry of entries) {
@@ -76,10 +75,6 @@ const mediaObserver = new IntersectionObserver((entries) => {
     card.classList.toggle('is-in-view', entry.isIntersecting);
     if (!entry.isIntersecting) continue;
     loadCardIdle(card);
-    const idle = card.querySelector('.art-idle');
-    const warm = () => setTimeout(() => warmVisibleFeedback(card), 200);
-    if (idle.complete && idle.naturalWidth) warm();
-    else idle.addEventListener('load', warm, { once: true });
   }
 }, { rootMargin: '120px 0px', threshold: .01 });
 const observeCardMedia = (card) => {
@@ -301,7 +296,7 @@ function initializeThemeCarousel(track) {
     observer.observe(track);
   }
 
-  // Mobile taps show the active image for half a second before entering the theme.
+  // Mobile taps retain idle artwork and briefly breathe before entering the theme.
   let themeTapOrigin = null;
   track?.addEventListener('click', (event) => {
     const card = event.target.closest('.brand-card');
@@ -379,7 +374,7 @@ function advanceIdleBreathing() {
       break;
     }
   }
-  setTimeout(advanceIdleBreathing, 100);
+  setTimeout(advanceIdleBreathing, document.hidden ? 1000 : 250);
 }
 advanceIdleBreathing();
 carouselLayout.addEventListener('change', cancelThemeNavigation);

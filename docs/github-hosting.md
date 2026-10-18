@@ -34,6 +34,16 @@ second row). The ukiyo and pixel rows were removed from homepage markup after th
 to the owner's Downloads folder. Source assets remain in Git for recovery; the
 homepage no longer preloads either removed row. Titles remain live HTML overlays.
 
+Homepage delivery uses 320/640/960px WebP derivatives, not the source PNGs. All five
+idle faces have real src/srcset attributes and can display without JavaScript; the
+first face has a matching responsive preload. Desktop feedback loads only on pointer
+or keyboard contact. Touch carousels never fetch unused feedback artwork. Original
+PNGs remain unchanged. docs/bronze-card-delivery.json records measured file sizes.
+The five 640px idle faces total 642,088 bytes versus 13,020,883 source PNG bytes (95%
+less card-image data; this is not a measured page-load time). Rebuild derivatives
+with scripts/optimize_bronze_cards.cjs after installing sharp or configuring NODE_PATH
+to the bundled Node packages. The standard build does not need sharp.
+
 ## Build and validate (CMD, bash or other shell)
 
 ```text
