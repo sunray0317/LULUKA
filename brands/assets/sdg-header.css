@@ -1,7 +1,7 @@
 .has-sdg-header{overflow-x:clip}
 .sdg-navigation{position:sticky;top:0;z-index:100;width:100%;max-width:none;margin:0;padding:0;min-width:0;background:transparent;box-shadow:none;color:inherit;font:400 12px/1.8 Arial,'PingFang TC','Microsoft JhengHei',sans-serif}
 .sdg-navigation *{box-sizing:border-box}.sdg-filter-defs{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
-.sdg-navigation .sdg-strip{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:0;margin:0;padding:0;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#b3b5b7 transparent}
+.sdg-navigation .sdg-strip{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));gap:0;margin:0;padding:0;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#b3b5b7 transparent}
 .sdg-navigation .sdg-button{display:block;width:100%;min-width:0;aspect-ratio:1;border:0;padding:0;margin:0;background:transparent;cursor:pointer;position:relative;overflow:hidden;scroll-margin:6px;text-decoration:none}
 .sdg-navigation .sdg-button img{position:static;display:block;width:100%;height:100%;margin:0;padding:0;filter:url(#sdg-neutral);transition:filter .18s ease}
 .sdg-navigation .sdg-button.is-related img,.sdg-navigation[data-sdg-scope="collection"] .sdg-button img{filter:none}
@@ -11,4 +11,5 @@
 .sdg-navigation .sdg-button:hover::after,.sdg-navigation .sdg-button:focus-visible::after{transform:translateX(120%)}
 .sdg-navigation .sdg-button:active img{filter:brightness(.84)}.sdg-navigation .sdg-button:focus-visible{outline:2px solid currentColor;outline-offset:-2px}
 .sdg-navigation .sdg-button[aria-current="page"]::before{content:'';position:absolute;bottom:0;left:20%;right:20%;height:3px;background:#fff;z-index:1;pointer-events:none}
+@media(max-width:900px){.sdg-navigation .sdg-strip{grid-template-columns:repeat(18,minmax(64px,1fr))}}
 @media(prefers-reduced-motion:reduce){.sdg-navigation .sdg-button img,.sdg-navigation .sdg-button::after{transition:none}.sdg-navigation .sdg-button::after{display:none}}

@@ -4,7 +4,7 @@
 Use only confirmed associations. The overview keeps all 17 icons colored;
 project pages color the goals in that project's `goals` array.
 
-The sticky header has 18 square tiles in two rows of nine, without gaps.
+The sticky header has 18 square tiles in one row, without gaps; small screens scroll horizontally.
 The first is a black-and-gold 0/menu tile linking to the visual-design overview;
 the other 17 retain their goal colors, links and hover/press feedback.
 

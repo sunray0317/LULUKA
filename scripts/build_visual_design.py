@@ -75,7 +75,7 @@ def optimize_html(html, relative, delivery):
         variants = entry['variants']
         icon = original.startswith('/brands/assets/sdg/')
         if icon:
-            sizes = '(max-width:600px) 80px, 112px' if a.get('class') == 'sdg-lead-icon' else '11.1111vw'
+            sizes = '(max-width:600px) 80px, 112px' if a.get('class') == 'sdg-lead-icon' else '(max-width:900px) 64px, 5.5556vw'
         elif relative.startswith('visual-design/sdgs/') and '<article class="project ' not in html:
             ratio = entry['width'] / entry['height']
             sizes = f'(max-width:600px) min(calc(100vw - 40px), {240*ratio:.1f}px), (max-width:900px) min(calc((100vw - 96px)/2), {280*ratio:.1f}px), min(544px, calc((100vw - 128px)/2), {280*ratio:.1f}px)'

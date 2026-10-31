@@ -30,9 +30,9 @@
     {
       "viewport": 1440,
       "dpr": 2,
-      "imageBytes": 1138958,
+      "imageBytes": 1024866,
       "originalImageBytes": 26401964,
-      "reductionPercent": 95.7
+      "reductionPercent": 96.1
     }
   ],
   "note": "Static file-size estimates; no browser loading-time measurement."

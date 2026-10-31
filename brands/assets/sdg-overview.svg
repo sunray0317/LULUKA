@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><rect width="160" height="160" fill="#151310"/><g fill="#d4b36b"><text x="13" y="40" font-family="Arial,sans-serif" font-size="32" font-weight="700">0</text><rect x="40" y="64" width="80" height="7"/><rect x="40" y="85" width="80" height="7"/><rect x="40" y="106" width="80" height="7"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+<defs>
+<linearGradient id="black" x2="1" y2="1"><stop stop-color="#24201a"/><stop offset=".48" stop-color="#0a0908"/><stop offset="1" stop-color="#17130f"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#9b7746"/><stop offset=".23" stop-color="#e4c992"/><stop offset=".4" stop-color="#fff2d0"/><stop offset=".47" stop-color="#b69a65"/><stop offset=".67" stop-color="#735635"/><stop offset=".81" stop-color="#d7b67a"/><stop offset="1" stop-color="#f6e4b8"/></linearGradient>
+<linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff2d0"/><stop offset=".15" stop-color="#e4c992"/><stop offset=".48" stop-color="#b69a65"/><stop offset=".53" stop-color="#735635"/><stop offset=".87" stop-color="#d7b67a"/><stop offset="1" stop-color="#9b7746"/></linearGradient>
+</defs>
+<path fill="url(#black)" d="M0 0h160v160H0z"/>
+<path fill="url(#gold)" fill-rule="evenodd" d="M21 13.7c-6.1 0-9 3.7-9 9.6v12c0 5.9 2.9 9.6 9 9.6s9-3.7 9-9.6v-12c0-5.9-2.9-9.6-9-9.6Zm0 5.9c2 0 2.8 1.4 2.8 3.7v12c0 2.3-.8 3.7-2.8 3.7s-2.8-1.4-2.8-3.7v-12c0-2.3.8-3.7 2.8-3.7Z"/>
+<text x="41" y="32" fill="url(#gold)" font-family="Arial Narrow,Arial,sans-serif" font-size="17" font-weight="700" textLength="106" lengthAdjust="spacingAndGlyphs">NAVIGATION</text>
+<g fill="#000" opacity=".6"><rect x="35" y="74" width="90" height="9" rx="1"/><rect x="35" y="97" width="90" height="9" rx="1"/><rect x="35" y="120" width="90" height="9" rx="1"/></g>
+<g fill="url(#bar)" stroke="#c1a16c" stroke-width=".35"><rect x="35" y="72" width="90" height="8" rx="1"/><rect x="35" y="95" width="90" height="8" rx="1"/><rect x="35" y="118" width="90" height="8" rx="1"/></g>
+</svg>

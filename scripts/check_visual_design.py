@@ -88,7 +88,7 @@ def check(root=None):
         for image, row in delivered:
             source = image['data-original-src']
             if source.startswith('/brands/assets/sdg/'):
-                width = viewport/9
+                width = 64 if viewport <= 900 else viewport/18
             else:
                 group = next(key for key in ratios if key in row)
                 total, gaps = ratios[group]
@@ -104,7 +104,7 @@ def check(root=None):
     css = (site/'brands/assets/sdg-header.css').read_text(encoding='utf-8')
     assert '[data-sdg-scope="collection"] .sdg-button img{filter:none}' in css
     assert 'brightness(1.12)' in css and 'translateX(120%)' in css
-    assert 'grid-template-columns:repeat(9,minmax(0,1fr))' in css
+    assert 'grid-template-columns:repeat(18,minmax(0,1fr))' in css
     assert 'repeat(17,' not in css and '.sdg-home img{filter:none}' in css
     report = {'categories':17,'projectGoals':{row['id']:row['goals'] for row in registry},'overviewImageEstimates':estimates,'note':'Static file-size estimates; no browser loading-time measurement.'}
     (root/'docs/portfolio-performance.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
