@@ -4,6 +4,10 @@
 Use only confirmed associations. The overview keeps all 17 icons colored;
 project pages color the goals in that project's `goals` array.
 
+The sticky header has 18 square tiles in two rows of nine, without gaps.
+The first is a black-and-gold 0/menu tile linking to the visual-design overview;
+the other 17 retain their goal colors, links and hover/press feedback.
+
 Each icon is a normal link to `/visual-design/sdgs/<number>/`. The build creates
 all 17 pages, with every matching project presented using the overview artwork rows.
 A category colors only its own selected goal, even when no projects match.

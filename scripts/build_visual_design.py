@@ -34,7 +34,7 @@ def header(html, scope, related, current=None):
     html = strip_header(html)
     html = re.sub(r'<link rel="stylesheet" href="/brands/assets/sdg-header\.css[^\"]*">', '', html)
     html = re.sub(r'<script src="/brands/assets/(?:sdg-header|banner-trial)\.js[^\"]*" defer></script>', '', html)
-    links = []
+    links = ['<a class="sdg-button sdg-home" href="/visual-design/" aria-label="0／返回視覺設計總覽" title="視覺設計總覽"><img src="/brands/assets/sdg-overview.svg" alt="" width="160" height="160" loading="eager" decoding="async"></a>']
     for goal in goals():
         number = goal['id']
         active = number in related
@@ -75,7 +75,7 @@ def optimize_html(html, relative, delivery):
         variants = entry['variants']
         icon = original.startswith('/brands/assets/sdg/')
         if icon:
-            sizes = '(max-width:600px) 80px, 112px' if a.get('class') == 'sdg-lead-icon' else '(max-width:900px) 64px, 5.8824vw'
+            sizes = '(max-width:600px) 80px, 112px' if a.get('class') == 'sdg-lead-icon' else '11.1111vw'
         elif relative.startswith('visual-design/sdgs/') and '<article class="project ' not in html:
             ratio = entry['width'] / entry['height']
             sizes = f'(max-width:600px) min(calc(100vw - 40px), {240*ratio:.1f}px), (max-width:900px) min(calc((100vw - 96px)/2), {280*ratio:.1f}px), min(544px, calc((100vw - 128px)/2), {280*ratio:.1f}px)'
@@ -173,6 +173,8 @@ def build(root=None):
             manifest.append(relative)
     if 'brands/assets/sdg-projects.css' not in manifest:
         manifest.append('brands/assets/sdg-projects.css')
+    if 'brands/assets/sdg-overview.svg' not in manifest:
+        manifest.append('brands/assets/sdg-overview.svg')
     manifest = [file for file in manifest if file != 'brands/assets/sdg-header.js']
     if delivery_file.is_file():
         media_data = json.loads(delivery_file.read_text(encoding='utf-8'))

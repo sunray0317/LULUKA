@@ -11,10 +11,13 @@ class Page(HTMLParser):
     def __init__(self):
         super().__init__()
         self.goals, self.images, self.projects = [], [], []
+        self.home = []
         self.card = False
         self.row = None
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if tag == 'a' and 'sdg-home' in a.get('class', '').split():
+            self.home.append(a)
         if 'data-goal' in a:
             assert tag == 'a' and 'onclick' not in a
             assert a['href'] == f'/visual-design/sdgs/{a["data-goal"]}/'
@@ -40,8 +43,11 @@ def parse(file):
     parser = Page()
     parser.feed(html)
     assert [int(goal['data-goal']) for goal in parser.goals] == list(range(1, 18))
+    assert len(parser.home) == 1 and parser.home[0]['href'] == '/visual-design/'
     for image, _ in parser.images:
         assert image.get('width') and image.get('height')
+        if image.get('src') == '/brands/assets/sdg-overview.svg':
+            continue
         assert image.get('src', '').endswith('.webp'), image.get('src')
         assert image.get('srcset') and image.get('sizes')
     return parser
@@ -66,22 +72,23 @@ def check(root=None):
         assert '目前尚無對應作品' not in html and 'sdg-page-nav' not in html
         assert 'class="sdg-lead-icon"' in html
         assert 'grid-template-columns:var(--row-columns)' in (site/'brands/assets/visual-design.css').read_text(encoding='utf-8')
-    first_screen = next(image for image, _ in overview.images if not image['data-original-src'].startswith('/brands/assets/sdg/'))
+    delivered = [(image, row) for image, row in overview.images if 'data-original-src' in image]
+    first_screen = next(image for image, _ in delivered if not image['data-original-src'].startswith('/brands/assets/sdg/'))
     assert first_screen['fetchpriority'] == 'high' and first_screen['loading'] == 'eager'
     assert all(image.get('loading') == 'eager' for image, _ in overview.images)
     # Estimate request bytes with native srcset selection. This is a file-size
     # budget, not a network timing or browser paint measurement.
-    original = sum(delivery[src]['originalBytes'] for src in {image['data-original-src'] for image, _ in overview.images})
+    original = sum(delivery[src]['originalBytes'] for src in {image['data-original-src'] for image, _ in delivered})
     estimates = []
     for viewport, dpr in [(390, 2), (1440, 1), (1440, 2)]:
         gutter, gap = (20, 8) if viewport <= 600 else (32, 12) if viewport <= 900 else (48, 12)
         available = min(1680, viewport - gutter*2)
         ratios = {'lifeline-project':(5.396158809300389,3),'scouts-project':(6.297436358904954,3),'election-project':(4.232518568179475,5)}
         requests = {}
-        for image, row in overview.images:
+        for image, row in delivered:
             source = image['data-original-src']
             if source.startswith('/brands/assets/sdg/'):
-                width = 64 if viewport <= 900 else viewport/17
+                width = viewport/9
             else:
                 group = next(key for key in ratios if key in row)
                 total, gaps = ratios[group]
@@ -97,6 +104,8 @@ def check(root=None):
     css = (site/'brands/assets/sdg-header.css').read_text(encoding='utf-8')
     assert '[data-sdg-scope="collection"] .sdg-button img{filter:none}' in css
     assert 'brightness(1.12)' in css and 'translateX(120%)' in css
+    assert 'grid-template-columns:repeat(9,minmax(0,1fr))' in css
+    assert 'repeat(17,' not in css and '.sdg-home img{filter:none}' in css
     report = {'categories':17,'projectGoals':{row['id']:row['goals'] for row in registry},'overviewImageEstimates':estimates,'note':'Static file-size estimates; no browser loading-time measurement.'}
     (root/'docs/portfolio-performance.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))
