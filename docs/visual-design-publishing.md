@@ -5,7 +5,9 @@ Use only confirmed associations. The overview keeps all 17 icons colored;
 project pages color the goals in that project's `goals` array.
 
 Each icon is a normal link to `/visual-design/sdgs/<number>/`. The build creates
-all 17 pages, with every matching project or an explicit empty state.
+all 17 pages, with every matching project presented using the overview artwork rows.
+A category colors only its own selected goal, even when no projects match.
+The goal icon appears before its heading. Empty categories show no placeholder message.
 No popup or click-handler JavaScript is needed.
 
 When adding a project:

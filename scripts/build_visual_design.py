@@ -75,11 +75,11 @@ def optimize_html(html, relative, delivery):
         variants = entry['variants']
         icon = original.startswith('/brands/assets/sdg/')
         if icon:
-            sizes = '(max-width:900px) 64px, 5.8824vw'
-        elif relative.startswith('visual-design/sdgs/'):
+            sizes = '(max-width:600px) 80px, 112px' if a.get('class') == 'sdg-lead-icon' else '(max-width:900px) 64px, 5.8824vw'
+        elif relative.startswith('visual-design/sdgs/') and '<article class="project ' not in html:
             ratio = entry['width'] / entry['height']
             sizes = f'(max-width:600px) min(calc(100vw - 40px), {240*ratio:.1f}px), (max-width:900px) min(calc((100vw - 96px)/2), {280*ratio:.1f}px), min(544px, calc((100vw - 128px)/2), {280*ratio:.1f}px)'
-        elif overview:
+        elif overview or relative.startswith('visual-design/sdgs/'):
             # Twice the visible width is needed for the existing quarter-view crops.
             before = html[:match.start()]
             article = before.rsplit('<article', 1)[-1]
@@ -118,7 +118,7 @@ def optimize_html(html, relative, delivery):
             a.pop('fetchpriority', None)
         else:
             first = image_index == 0
-            a['loading'] = 'eager' if overview or first or a.get('fetchpriority') == 'high' else 'lazy'
+            a['loading'] = 'eager' if overview or relative.startswith('visual-design/sdgs/') or first or a.get('fetchpriority') == 'high' else 'lazy'
             a['fetchpriority'] = 'high' if first else 'auto'
             image_index += 1
             if first:
@@ -139,10 +139,12 @@ def category(goal, matching):
     digest = hashlib.sha256(schema.encode()).digest()
     import base64
     sha = base64.b64encode(digest).decode()
-    cards = ''.join(f'<article class="sdg-project"><a href="{row["url"]}"><figure><img src="{row["cover"]}" alt="{escape(row["title"])}" width="1120" height="720" loading="eager" decoding="async"></figure><h2>{escape(row["title"])}</h2><p>{escape(row["organization"])}</p><span class="sdg-open">查看作品 ↗</span></a></article>' for row in matching)
-    results = f'<div class="sdg-project-grid">{cards}</div>' if matching else '<p class="sdg-empty">目前尚無對應作品。</p>'
-    html = f'<!doctype html><html lang="zh-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SDG {number} {name}｜LULUKA 設計作品</title><meta name="description" content="{description}"><meta name="theme-color" content="#ffffff"><link rel="canonical" href="{canonical}"><meta property="og:type" content="website"><meta property="og:title" content="SDG {number} {name}｜LULUKA"><meta property="og:description" content="{description}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="https://luluka.org/brands/assets/sdg/sdg-{number:02}.png"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/brands/assets/sdg-projects.css?v={VERSION}"><script type="application/ld+json">{schema}</script><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'sha256-{sha}\'; style-src \'self\'; img-src \'self\'; object-src \'none\'; base-uri \'none\'; form-action \'none\'"></head><body class="sdg-project-page" id="top"><div class="sdg-page-nav"><a href="/">LULUKA</a><a href="/visual-design/">← 視覺設計總覽</a></div><main class="sdg-results"><header><p class="sdg-number">SDG {number:02}</p><h1>{name}</h1><p>{goal["summary"]}</p><p class="sdg-count">{len(matching)} 件對應設計作品</p></header>{results}<footer><a href="/visual-design/">← 所有視覺設計作品</a><a href="https://sdgs.un.org/goals/goal{number}" target="_blank" rel="noopener noreferrer">聯合國目標說明 ↗</a></footer></main></body></html>'
-    return header(html, 'goal', sorted({n for row in matching for n in row['goals']}), current=number)
+    overview = (ROOT / 'visual-design/index.html').read_text(encoding='utf-8')
+    articles = re.findall(r'<article class="project\b[\s\S]*?</article>', overview)
+    cards = ''.join(next(article for article in articles if f'href="{row["url"]}"' in article) for row in matching)
+    results = f'<div class="sdg-project-rows">{cards}</div>' if matching else ''
+    html = f'<!doctype html><html lang="zh-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SDG {number} {name}｜LULUKA 設計作品</title><meta name="description" content="{description}"><meta name="theme-color" content="#ffffff"><link rel="canonical" href="{canonical}"><meta property="og:type" content="website"><meta property="og:title" content="SDG {number} {name}｜LULUKA"><meta property="og:description" content="{description}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="https://luluka.org/brands/assets/sdg/sdg-{number:02}.png"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/brands/assets/visual-design.css?v={VERSION}"><link rel="stylesheet" href="/brands/assets/sdg-projects.css?v={VERSION}"><script type="application/ld+json">{schema}</script><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'sha256-{sha}\'; style-src \'self\'; img-src \'self\'; object-src \'none\'; base-uri \'none\'; form-action \'none\'"></head><body class="sdg-project-page" id="top"><main class="sdg-results"><header class="sdg-intro"><img class="sdg-lead-icon" src="/brands/assets/sdg/sdg-{number:02}.png" alt="SDG {number} {name}" width="160" height="160" loading="eager"><div><p class="sdg-number">SDG {number:02}</p><h1>{name}</h1><p>{goal["summary"]}</p><p class="sdg-count">{len(matching)} 件對應設計作品</p></div></header>{results}<footer><a href="https://sdgs.un.org/goals/goal{number}" target="_blank" rel="noopener noreferrer">聯合國目標說明 ↗</a></footer></main></body></html>'
+    return header(html, 'goal', [number], current=number)
 
 
 def build(root=None):

@@ -20,10 +20,12 @@ class Page(HTMLParser):
             assert a['href'] == f'/visual-design/sdgs/{a["data-goal"]}/'
             self.goals.append(a)
         if tag == 'article':
-            self.card = 'sdg-project' in a.get('class', '').split()
+            self.card = 'project' in a.get('class', '').split()
             self.row = a.get('class', '')
         if tag == 'a' and self.card:
-            self.projects.append(a['href'])
+            
+            if a['href'] not in self.projects:
+                self.projects.append(a['href'])
         if tag == 'img':
             self.images.append((a, self.row))
     def handle_endtag(self, tag):
@@ -58,10 +60,12 @@ def check(root=None):
         p = parse(site / f'visual-design/sdgs/{number}/index.html')
         expected = [row['url'] for row in registry if number in row['goals']]
         assert p.projects == expected, (number, p.projects, expected)
-        related = sorted({n for row in registry if number in row['goals'] for n in row['goals']})
+        related = [number]
         assert [int(goal['data-goal']) for goal in p.goals if goal['data-related'] == 'true'] == related
-        if not expected:
-            assert '目前尚無對應作品' in (site / f'visual-design/sdgs/{number}/index.html').read_text(encoding='utf-8')
+        html = (site / f'visual-design/sdgs/{number}/index.html').read_text(encoding='utf-8')
+        assert '目前尚無對應作品' not in html and 'sdg-page-nav' not in html
+        assert 'class="sdg-lead-icon"' in html
+        assert 'grid-template-columns:var(--row-columns)' in (site/'brands/assets/visual-design.css').read_text(encoding='utf-8')
     first_screen = next(image for image, _ in overview.images if not image['data-original-src'].startswith('/brands/assets/sdg/'))
     assert first_screen['fetchpriority'] == 'high' and first_screen['loading'] == 'eager'
     assert all(image.get('loading') == 'eager' for image, _ in overview.images)
