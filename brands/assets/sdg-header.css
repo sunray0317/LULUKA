@@ -1,18 +1,14 @@
 .has-sdg-header{overflow-x:clip}
-.sdg-navigation{--sdg-content-width:1120px;--sdg-gutter:48px;position:sticky;top:0;z-index:100;width:100%;max-width:none;margin:0;padding:0;min-width:0;background:transparent;box-shadow:none;color:inherit;font:400 12px/1.8 Arial,'PingFang TC','Microsoft JhengHei',sans-serif}
+.sdg-navigation{position:sticky;top:0;z-index:100;width:100%;max-width:none;margin:0;padding:0;min-width:0;background:transparent;box-shadow:none;color:inherit;font:400 12px/1.8 Arial,'PingFang TC','Microsoft JhengHei',sans-serif}
 .sdg-navigation *{box-sizing:border-box}.sdg-filter-defs{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
 .sdg-navigation .sdg-strip{display:grid;grid-template-columns:repeat(17,minmax(0,1fr));gap:0;margin:0;padding:0;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#b3b5b7 transparent}
-.sdg-navigation .sdg-button{display:block;font:inherit;width:100%;min-width:0;aspect-ratio:1;border:0;padding:0;margin:0;background:transparent;cursor:pointer;position:relative;scroll-margin:6px}
-.sdg-navigation .sdg-button img{position:static;display:block;width:100%;height:100%;margin:0;padding:0;filter:url(#sdg-neutral)}
-.sdg-navigation .sdg-button.is-related img,.sdg-navigation .sdg-button:hover img,.sdg-navigation .sdg-button:focus-visible img{filter:none}
-.sdg-navigation[data-sdg-scope="collection"] .sdg-button img{filter:none}
-.sdg-navigation .sdg-button:focus-visible,.sdg-navigation .sdg-button[aria-expanded="true"]{outline:2px solid currentColor;outline-offset:-2px}
-.sdg-navigation .sdg-detail[hidden]{display:none}
-.sdg-navigation .sdg-detail{position:relative;display:flex;align-items:center;justify-content:space-between;gap:32px;width:min(var(--sdg-content-width),calc(100% - var(--sdg-gutter)*2));border-top:1px solid #7c7c7c40;padding:20px 36px 20px 0;margin:12px auto 0;background:transparent}
-.sdg-navigation .sdg-detail h2{font:400 14px/1.6 Arial,'PingFang TC','Microsoft JhengHei',sans-serif;letter-spacing:0;color:inherit;margin:3px 0 7px}
-.sdg-navigation .sdg-detail p{font-size:12px;line-height:1.8;margin:0}.sdg-navigation .sdg-detail .sdg-detail-status{font-size:10px;line-height:1.5;opacity:.7}
-.sdg-navigation .sdg-detail>a{display:inline-block;color:inherit;font-size:11px;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
-.sdg-navigation .sdg-close{position:absolute;right:0;top:14px;width:28px;height:28px;margin:0;padding:0;border:0;background:transparent;cursor:pointer;font:300 22px/1 Arial,sans-serif;color:inherit}
-.sdg-navigation .sdg-close:focus-visible,.sdg-navigation .sdg-detail>a:focus-visible{outline:1px solid currentColor;outline-offset:2px}
-@media(max-width:900px){.sdg-navigation{--sdg-gutter:32px}.sdg-navigation .sdg-strip{grid-template-columns:repeat(17,minmax(64px,1fr))}}
-@media(max-width:600px){.sdg-navigation{--sdg-gutter:20px}.sdg-navigation .sdg-detail{display:block;padding:18px 30px 20px 0}.sdg-navigation .sdg-detail>a{margin-top:10px}}
+.sdg-navigation .sdg-button{display:block;width:100%;min-width:0;aspect-ratio:1;border:0;padding:0;margin:0;background:transparent;cursor:pointer;position:relative;overflow:hidden;scroll-margin:6px;text-decoration:none}
+.sdg-navigation .sdg-button img{position:static;display:block;width:100%;height:100%;margin:0;padding:0;filter:url(#sdg-neutral);transition:filter .18s ease}
+.sdg-navigation .sdg-button.is-related img,.sdg-navigation[data-sdg-scope="collection"] .sdg-button img{filter:none}
+.sdg-navigation .sdg-button::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 28%,#ffffff10 40%,#ffffff75 50%,#ffffff10 60%,transparent 72%);transform:translateX(-120%);transition:transform .4s ease;pointer-events:none}
+.sdg-navigation .sdg-button:hover img,.sdg-navigation .sdg-button:focus-visible img{filter:brightness(1.12) saturate(1.08)}
+.sdg-navigation .sdg-button:hover::after,.sdg-navigation .sdg-button:focus-visible::after{transform:translateX(120%)}
+.sdg-navigation .sdg-button:active img{filter:brightness(.84)}.sdg-navigation .sdg-button:focus-visible{outline:2px solid currentColor;outline-offset:-2px}
+.sdg-navigation .sdg-button[aria-current="page"]::before{content:'';position:absolute;bottom:0;left:20%;right:20%;height:3px;background:#fff;z-index:1;pointer-events:none}
+@media(max-width:900px){.sdg-navigation .sdg-strip{grid-template-columns:repeat(17,minmax(64px,1fr))}}
+@media(prefers-reduced-motion:reduce){.sdg-navigation .sdg-button img,.sdg-navigation .sdg-button::after{transition:none}.sdg-navigation .sdg-button::after{display:none}}

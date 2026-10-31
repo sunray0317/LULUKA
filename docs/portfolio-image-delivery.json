@@ -1,0 +1,759 @@
+{
+  "images": {
+    "/brands/assets/luluka-classic-wordmark-20261017.png": {
+      "width": 1400,
+      "height": 229,
+      "originalBytes": 371147,
+      "sourceSHA256": "8b1e9a15868affdd8bee4a688c431d57ae6dd978329550278ec780306cf60a4f",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/8b1e9a15868a-1400.webp",
+          "width": 1400,
+          "bytes": 204478
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-01.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 46295,
+      "sourceSHA256": "af3086006daf2a7b27c74debc18c747e59ad647640dd77276fb53acebc1dbbd0",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/af3086006daf-160.webp",
+          "width": 160,
+          "bytes": 6294
+        },
+        {
+          "url": "/brands/assets/portfolio-media/af3086006daf-320.webp",
+          "width": 320,
+          "bytes": 12036
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-02.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 35579,
+      "sourceSHA256": "3c10852a5267a66117a1b08de9cf07399abd3f34ba1d89d9cd3bd92e41a72ef4",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/3c10852a5267-160.webp",
+          "width": 160,
+          "bytes": 5076
+        },
+        {
+          "url": "/brands/assets/portfolio-media/3c10852a5267-320.webp",
+          "width": 320,
+          "bytes": 9822
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-03.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 48444,
+      "sourceSHA256": "9ab2d6444d7bd16c6d30b0367c4b0b8523be36c2465ee0928abda217d628eaab",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/9ab2d6444d7b-160.webp",
+          "width": 160,
+          "bytes": 7014
+        },
+        {
+          "url": "/brands/assets/portfolio-media/9ab2d6444d7b-320.webp",
+          "width": 320,
+          "bytes": 14216
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-04.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 33830,
+      "sourceSHA256": "508e4d0f886e35fd91c3fbc794a4668ca8e9d6bddba71e0560ba916b8d863ade",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/508e4d0f886e-160.webp",
+          "width": 160,
+          "bytes": 5958
+        },
+        {
+          "url": "/brands/assets/portfolio-media/508e4d0f886e-320.webp",
+          "width": 320,
+          "bytes": 11586
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-05.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 32306,
+      "sourceSHA256": "806d8d32874e2056b0c90875abef0b88f220088776d1b7c37df6bebbb4e6a4da",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/806d8d32874e-160.webp",
+          "width": 160,
+          "bytes": 5112
+        },
+        {
+          "url": "/brands/assets/portfolio-media/806d8d32874e-320.webp",
+          "width": 320,
+          "bytes": 9178
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-06.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 44033,
+      "sourceSHA256": "c723057cc3343673f59f7b427e9258422be9168f0687cc2402bd8e9faf7ccbf2",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/c723057cc334-160.webp",
+          "width": 160,
+          "bytes": 6212
+        },
+        {
+          "url": "/brands/assets/portfolio-media/c723057cc334-320.webp",
+          "width": 320,
+          "bytes": 12426
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-07.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 50772,
+      "sourceSHA256": "10b748d181d4460648cbb7f3a2aac83a87b3b154516a2380e86319a3e8e8e521",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/10b748d181d4-160.webp",
+          "width": 160,
+          "bytes": 7090
+        },
+        {
+          "url": "/brands/assets/portfolio-media/10b748d181d4-320.webp",
+          "width": 320,
+          "bytes": 13846
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-08.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 46106,
+      "sourceSHA256": "7fd38656e611a7ee44a8c83b33b59e222d315e176faf9fb746429784df13a787",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/7fd38656e611-160.webp",
+          "width": 160,
+          "bytes": 7524
+        },
+        {
+          "url": "/brands/assets/portfolio-media/7fd38656e611-320.webp",
+          "width": 320,
+          "bytes": 14704
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-09.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 59600,
+      "sourceSHA256": "37f0699c5c887ee0cf6c4f63f38c98c3d0d516ccfba42ffb01d0354a98a5e63f",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/37f0699c5c88-160.webp",
+          "width": 160,
+          "bytes": 8138
+        },
+        {
+          "url": "/brands/assets/portfolio-media/37f0699c5c88-320.webp",
+          "width": 320,
+          "bytes": 17010
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-10.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 29602,
+      "sourceSHA256": "b8a484da2e71820db315b68f65baf3d03822d5693e1c96d460edbc289dc8b57d",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/b8a484da2e71-160.webp",
+          "width": 160,
+          "bytes": 4812
+        },
+        {
+          "url": "/brands/assets/portfolio-media/b8a484da2e71-320.webp",
+          "width": 320,
+          "bytes": 8624
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-11.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 42414,
+      "sourceSHA256": "b7117233067876ae36961257e7750ae60baf93be3533f7a361e56a14f0db5ce3",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/b71172330678-160.webp",
+          "width": 160,
+          "bytes": 7334
+        },
+        {
+          "url": "/brands/assets/portfolio-media/b71172330678-320.webp",
+          "width": 320,
+          "bytes": 13550
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-12.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 63079,
+      "sourceSHA256": "7463d94b42437843db53e07813fe2f11866dad6ed629004292e10d89fc5210a1",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/7463d94b4243-160.webp",
+          "width": 160,
+          "bytes": 11162
+        },
+        {
+          "url": "/brands/assets/portfolio-media/7463d94b4243-320.webp",
+          "width": 320,
+          "bytes": 22288
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-13.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 55183,
+      "sourceSHA256": "319681dd7603324172922dd6708ec3fa45ec095d513f20416cb4e33fc7fc5ced",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/319681dd7603-160.webp",
+          "width": 160,
+          "bytes": 6778
+        },
+        {
+          "url": "/brands/assets/portfolio-media/319681dd7603-320.webp",
+          "width": 320,
+          "bytes": 13638
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-14.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 45702,
+      "sourceSHA256": "ad472d0e678ee90e05875dedc0b010dae9f68e51f019c681c06db7ca4cdf233c",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/ad472d0e678e-160.webp",
+          "width": 160,
+          "bytes": 7904
+        },
+        {
+          "url": "/brands/assets/portfolio-media/ad472d0e678e-320.webp",
+          "width": 320,
+          "bytes": 15380
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-15.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 32438,
+      "sourceSHA256": "2d98d3bc6794f52f9a530c7f3bc084b00a9fd8c6f6a3e8b88c096822e953524d",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/2d98d3bc6794-160.webp",
+          "width": 160,
+          "bytes": 4842
+        },
+        {
+          "url": "/brands/assets/portfolio-media/2d98d3bc6794-320.webp",
+          "width": 320,
+          "bytes": 8648
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-16.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 57251,
+      "sourceSHA256": "0d42e94daa09e45966df5f592bca09a88bbf534e50d2096616246bc4b733f372",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/0d42e94daa09-160.webp",
+          "width": 160,
+          "bytes": 9162
+        },
+        {
+          "url": "/brands/assets/portfolio-media/0d42e94daa09-320.webp",
+          "width": 320,
+          "bytes": 18014
+        }
+      ]
+    },
+    "/brands/assets/sdg/sdg-17.png": {
+      "width": 1500,
+      "height": 1500,
+      "originalBytes": 67641,
+      "sourceSHA256": "1d427046430b332eee51babfd7629d1550d2d91a2bd9a686f9a44b81640780ec",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/1d427046430b-160.webp",
+          "width": 160,
+          "bytes": 9586
+        },
+        {
+          "url": "/brands/assets/portfolio-media/1d427046430b-320.webp",
+          "width": 320,
+          "bytes": 19124
+        }
+      ]
+    },
+    "/brands/assets/election-2026-poster.png": {
+      "width": 1125,
+      "height": 3600,
+      "originalBytes": 2764236,
+      "sourceSHA256": "9e5a44d51a697ccc03644009773179c94a0a9ce28ffb77a6dd8b2d5ef3a8728d",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/9e5a44d51a69-320.webp",
+          "width": 320,
+          "bytes": 41318
+        },
+        {
+          "url": "/brands/assets/portfolio-media/9e5a44d51a69-640.webp",
+          "width": 640,
+          "bytes": 95206
+        },
+        {
+          "url": "/brands/assets/portfolio-media/9e5a44d51a69-960.webp",
+          "width": 960,
+          "bytes": 154144
+        },
+        {
+          "url": "/brands/assets/portfolio-media/9e5a44d51a69-1125.webp",
+          "width": 1125,
+          "bytes": 185970
+        }
+      ]
+    },
+    "/brands/assets/election-2026-entrance.png": {
+      "width": 1125,
+      "height": 3600,
+      "originalBytes": 2775997,
+      "sourceSHA256": "c64e98b839049a43b05ac154ad3f72308c63547c6cf8fe637946a6765349f5e3",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/c64e98b83904-320.webp",
+          "width": 320,
+          "bytes": 40676
+        },
+        {
+          "url": "/brands/assets/portfolio-media/c64e98b83904-640.webp",
+          "width": 640,
+          "bytes": 93580
+        },
+        {
+          "url": "/brands/assets/portfolio-media/c64e98b83904-960.webp",
+          "width": 960,
+          "bytes": 150128
+        },
+        {
+          "url": "/brands/assets/portfolio-media/c64e98b83904-1125.webp",
+          "width": 1125,
+          "bytes": 183170
+        }
+      ]
+    },
+    "/brands/assets/election-2026-credential.png": {
+      "width": 1182,
+      "height": 1654,
+      "originalBytes": 1250956,
+      "sourceSHA256": "645180370c003da1d5a0fd05d6659cc8d8d82a18ecffb12346b97692d08815ac",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/645180370c00-320.webp",
+          "width": 320,
+          "bytes": 26906
+        },
+        {
+          "url": "/brands/assets/portfolio-media/645180370c00-640.webp",
+          "width": 640,
+          "bytes": 62804
+        },
+        {
+          "url": "/brands/assets/portfolio-media/645180370c00-960.webp",
+          "width": 960,
+          "bytes": 101158
+        },
+        {
+          "url": "/brands/assets/portfolio-media/645180370c00-1182.webp",
+          "width": 1182,
+          "bytes": 131048
+        }
+      ]
+    },
+    "/brands/assets/election-2026-delegation.png": {
+      "width": 1754,
+      "height": 2481,
+      "originalBytes": 1668444,
+      "sourceSHA256": "e048d81c12fe93a70b9fff67abeef657c48f90fe47b7be6d7b8e1335f3eada2d",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/e048d81c12fe-320.webp",
+          "width": 320,
+          "bytes": 21238
+        },
+        {
+          "url": "/brands/assets/portfolio-media/e048d81c12fe-640.webp",
+          "width": 640,
+          "bytes": 51834
+        },
+        {
+          "url": "/brands/assets/portfolio-media/e048d81c12fe-960.webp",
+          "width": 960,
+          "bytes": 86712
+        },
+        {
+          "url": "/brands/assets/portfolio-media/e048d81c12fe-1600.webp",
+          "width": 1600,
+          "bytes": 168372
+        },
+        {
+          "url": "/brands/assets/portfolio-media/e048d81c12fe-1754.webp",
+          "width": 1754,
+          "bytes": 196114
+        }
+      ]
+    },
+    "/brands/assets/election-2026-nameplate.png": {
+      "width": 827,
+      "height": 473,
+      "originalBytes": 275804,
+      "sourceSHA256": "5710758d64288e6f63f8a2dd97a6c12517ada82ea0f913bffc9f5112beb6d1e4",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/5710758d6428-320.webp",
+          "width": 320,
+          "bytes": 8390
+        },
+        {
+          "url": "/brands/assets/portfolio-media/5710758d6428-640.webp",
+          "width": 640,
+          "bytes": 19412
+        },
+        {
+          "url": "/brands/assets/portfolio-media/5710758d6428-827.webp",
+          "width": 827,
+          "bytes": 25200
+        }
+      ]
+    },
+    "/brands/assets/election-2026-seating.png": {
+      "width": 1575,
+      "height": 3600,
+      "originalBytes": 3472227,
+      "sourceSHA256": "d767a0778a642f0ce8c9fe2e04faafe2e0f188aff22be835809908feaf3067a0",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/d767a0778a64-320.webp",
+          "width": 320,
+          "bytes": 51984
+        },
+        {
+          "url": "/brands/assets/portfolio-media/d767a0778a64-640.webp",
+          "width": 640,
+          "bytes": 198070
+        },
+        {
+          "url": "/brands/assets/portfolio-media/d767a0778a64-960.webp",
+          "width": 960,
+          "bytes": 396620
+        },
+        {
+          "url": "/brands/assets/portfolio-media/d767a0778a64-1575.webp",
+          "width": 1575,
+          "bytes": 901158
+        }
+      ]
+    },
+    "/brands/assets/girl-scouts-banner-centered.png": {
+      "width": 2172,
+      "height": 724,
+      "originalBytes": 2851286,
+      "sourceSHA256": "9d8d0df1e5e3fdd0e1a22c20439372f5509148854e21df9bdaea38af4f7669c2",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/9d8d0df1e5e3-320.webp",
+          "width": 320,
+          "bytes": 9766
+        },
+        {
+          "url": "/brands/assets/portfolio-media/9d8d0df1e5e3-640.webp",
+          "width": 640,
+          "bytes": 34542
+        },
+        {
+          "url": "/brands/assets/portfolio-media/9d8d0df1e5e3-960.webp",
+          "width": 960,
+          "bytes": 74314
+        },
+        {
+          "url": "/brands/assets/portfolio-media/9d8d0df1e5e3-1600.webp",
+          "width": 1600,
+          "bytes": 197952
+        },
+        {
+          "url": "/brands/assets/portfolio-media/9d8d0df1e5e3-2172.webp",
+          "width": 2172,
+          "bytes": 324704
+        }
+      ]
+    },
+    "/brands/assets/girl-scouts-2026-group.jpg": {
+      "width": 998,
+      "height": 508,
+      "originalBytes": 386682,
+      "sourceSHA256": "719eaa10f6a94a0b82402967b0d5960565f90b53fa04e23ace2861680642570e",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/719eaa10f6a9-320.webp",
+          "width": 320,
+          "bytes": 20768
+        },
+        {
+          "url": "/brands/assets/portfolio-media/719eaa10f6a9-640.webp",
+          "width": 640,
+          "bytes": 57286
+        },
+        {
+          "url": "/brands/assets/portfolio-media/719eaa10f6a9-960.webp",
+          "width": 960,
+          "bytes": 93982
+        },
+        {
+          "url": "/brands/assets/portfolio-media/719eaa10f6a9-998.webp",
+          "width": 998,
+          "bytes": 99180
+        }
+      ]
+    },
+    "/brands/assets/girl-scouts-2026-forum.jpg": {
+      "width": 999,
+      "height": 535,
+      "originalBytes": 313158,
+      "sourceSHA256": "2047b298f778a2b09cf709d8633bce67f55b5eb6b3a01db14bb2e35e21942f88",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/2047b298f778-320.webp",
+          "width": 320,
+          "bytes": 14012
+        },
+        {
+          "url": "/brands/assets/portfolio-media/2047b298f778-640.webp",
+          "width": 640,
+          "bytes": 34528
+        },
+        {
+          "url": "/brands/assets/portfolio-media/2047b298f778-960.webp",
+          "width": 960,
+          "bytes": 55918
+        },
+        {
+          "url": "/brands/assets/portfolio-media/2047b298f778-999.webp",
+          "width": 999,
+          "bytes": 59688
+        }
+      ]
+    },
+    "/brands/assets/girl-scouts-2026-scouts.jpg": {
+      "width": 809,
+      "height": 552,
+      "originalBytes": 355785,
+      "sourceSHA256": "c49d411aac1cbe15f07aaf2076e494afdc415a28f4d78d9c99c320c4bc1e571b",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/c49d411aac1c-320.webp",
+          "width": 320,
+          "bytes": 23688
+        },
+        {
+          "url": "/brands/assets/portfolio-media/c49d411aac1c-640.webp",
+          "width": 640,
+          "bytes": 59784
+        },
+        {
+          "url": "/brands/assets/portfolio-media/c49d411aac1c-809.webp",
+          "width": 809,
+          "bytes": 80170
+        }
+      ]
+    },
+    "/brands/assets/vendor/luluka-public-media/b47664959000dcb94c49178a308e013710c47440fb5f461d2584a5db01aa9baf/lifeline-project-views.png": {
+      "width": 1673,
+      "height": 940,
+      "originalBytes": 2425507,
+      "sourceSHA256": "b47664959000dcb94c49178a308e013710c47440fb5f461d2584a5db01aa9baf",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/b47664959000-320.webp",
+          "width": 320,
+          "bytes": 14514
+        },
+        {
+          "url": "/brands/assets/portfolio-media/b47664959000-640.webp",
+          "width": 640,
+          "bytes": 47230
+        },
+        {
+          "url": "/brands/assets/portfolio-media/b47664959000-960.webp",
+          "width": 960,
+          "bytes": 94630
+        },
+        {
+          "url": "/brands/assets/portfolio-media/b47664959000-1600.webp",
+          "width": 1600,
+          "bytes": 210890
+        },
+        {
+          "url": "/brands/assets/portfolio-media/b47664959000-1673.webp",
+          "width": 1673,
+          "bytes": 227748
+        }
+      ]
+    },
+    "/brands/assets/vendor/luluka-public-media/e958a836d97d1bdde9d20d1a0e089b6f0d22fa638df12e6b91ccc210ff42d589/lifeline-concert-poster.png": {
+      "width": 1191,
+      "height": 1684,
+      "originalBytes": 2481178,
+      "sourceSHA256": "e958a836d97d1bdde9d20d1a0e089b6f0d22fa638df12e6b91ccc210ff42d589",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/e958a836d97d-320.webp",
+          "width": 320,
+          "bytes": 33674
+        },
+        {
+          "url": "/brands/assets/portfolio-media/e958a836d97d-640.webp",
+          "width": 640,
+          "bytes": 104828
+        },
+        {
+          "url": "/brands/assets/portfolio-media/e958a836d97d-960.webp",
+          "width": 960,
+          "bytes": 196278
+        },
+        {
+          "url": "/brands/assets/portfolio-media/e958a836d97d-1191.webp",
+          "width": 1191,
+          "bytes": 269392
+        }
+      ]
+    },
+    "/brands/assets/vendor/luluka-public-media/536cd8dc325756ca6c30845e5cbd8e030d7d8b5130ec1a410fa6362cc6bdf004/lifeline-physical-display.png": {
+      "width": 1334,
+      "height": 1179,
+      "originalBytes": 1948044,
+      "sourceSHA256": "536cd8dc325756ca6c30845e5cbd8e030d7d8b5130ec1a410fa6362cc6bdf004",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/536cd8dc3257-320.webp",
+          "width": 320,
+          "bytes": 11870
+        },
+        {
+          "url": "/brands/assets/portfolio-media/536cd8dc3257-640.webp",
+          "width": 640,
+          "bytes": 37584
+        },
+        {
+          "url": "/brands/assets/portfolio-media/536cd8dc3257-960.webp",
+          "width": 960,
+          "bytes": 75134
+        },
+        {
+          "url": "/brands/assets/portfolio-media/536cd8dc3257-1334.webp",
+          "width": 1334,
+          "bytes": 125380
+        }
+      ]
+    },
+    "/brands/assets/girl-scouts-2026.png": {
+      "width": 1920,
+      "height": 1920,
+      "originalBytes": 5493671,
+      "sourceSHA256": "a8b7f72f4394031a69beb962326ae2f37d0118082a4e04df2987fa08e2eb87ba",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/a8b7f72f4394-320.webp",
+          "width": 320,
+          "bytes": 13318
+        },
+        {
+          "url": "/brands/assets/portfolio-media/a8b7f72f4394-640.webp",
+          "width": 640,
+          "bytes": 51208
+        },
+        {
+          "url": "/brands/assets/portfolio-media/a8b7f72f4394-960.webp",
+          "width": 960,
+          "bytes": 139394
+        },
+        {
+          "url": "/brands/assets/portfolio-media/a8b7f72f4394-1600.webp",
+          "width": 1600,
+          "bytes": 372732
+        },
+        {
+          "url": "/brands/assets/portfolio-media/a8b7f72f4394-1920.webp",
+          "width": 1920,
+          "bytes": 487464
+        }
+      ]
+    },
+    "/brands/assets/bg.jpg": {
+      "width": 1920,
+      "height": 1080,
+      "originalBytes": 681320,
+      "sourceSHA256": "180602ad65ba4425ceff5c5c8d04e7cc6227772e89ab05077020822b3e940d41",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/180602ad65ba-1920.webp",
+          "width": 1920,
+          "bytes": 88422
+        }
+      ]
+    },
+    "/brands/assets/vendor/luluka-public-media/172dabfcb610da84d911e2d20aa17319e7157a39d11671a3eda565e8f5382046/luluka-gold-background.png": {
+      "width": 1920,
+      "height": 1080,
+      "originalBytes": 1349037,
+      "sourceSHA256": "172dabfcb610da84d911e2d20aa17319e7157a39d11671a3eda565e8f5382046",
+      "variants": [
+        {
+          "url": "/brands/assets/portfolio-media/172dabfcb610-1920.webp",
+          "width": 1920,
+          "bytes": 88422
+        }
+      ]
+    }
+  },
+  "backgrounds": {
+    "/brands/assets/luluka-classic-wordmark-20261017.png": "/brands/assets/portfolio-media/8b1e9a15868a-1400.webp",
+    "/brands/assets/bg.jpg": "/brands/assets/portfolio-media/180602ad65ba-1920.webp",
+    "/brands/assets/vendor/luluka-public-media/172dabfcb610da84d911e2d20aa17319e7157a39d11671a3eda565e8f5382046/luluka-gold-background.png": "/brands/assets/portfolio-media/172dabfcb610-1920.webp"
+  },
+  "originalBytes": 31654754,
+  "representativeBytes": 1449216,
+  "description": "Responsive WebP delivery only; source artwork files remain untouched. Regenerate locally when adding or replacing originals."
+}

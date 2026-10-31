@@ -168,6 +168,11 @@ def check():
                 pass
             else:
                 raise AssertionError('Builder published a symlink')
+    if (ROOT / 'data/visual-design-projects.json').is_file():
+        spec = importlib.util.spec_from_file_location('visual_design_checks', ROOT / 'scripts/check_visual_design.py')
+        checker = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(checker)
+        checker.check(ROOT)
     print(f'Passed: {len(pages)} pages, local links, brand SEO, sitemap and deployment isolation tests')
 
 

@@ -1,7 +1,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:auto;scroll-padding-top:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{min-height:100svh;display:flex;flex-direction:column;margin:0;position:relative;isolation:isolate;background:#080807;color:#e8e0d1;font-family:'LULUKA Songti TC','Noto Serif CJK TC',serif;line-height:1.8}
-body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:#080807 url('/brands/assets/bg.jpg') center/cover no-repeat}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:#080807 url('/brands/assets/portfolio-media/180602ad65ba-1920.webp') center/cover no-repeat}
 a{color:inherit;text-decoration:none}button{font:inherit}a,button{-webkit-tap-highlight-color:transparent}
 header,main,footer{width:100%;margin:0 auto}main{flex:1}
 /* The compact transparent header stays in document flow and scrolls out of view. */
@@ -10,7 +10,7 @@ header{position:relative;z-index:30;padding:calc(12px + env(safe-area-inset-top,
 .logo img{display:block;width:100%;height:auto}
 /* A folded warm highlight travels across the PNG alpha, never across a rectangle. */
 @supports (mask-image:linear-gradient(#000,#000)) or (-webkit-mask-image:linear-gradient(#000,#000)){
-.logo::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(108deg,transparent 39%,#b5712426 43%,#ffc9637a 46%,#fff8dcf2 48.5%,#fffff8 49.5%,#ffdc92b3 51%,#fff4d2cc 53%,transparent 57%);background-size:300% 100%;background-repeat:no-repeat;background-position:110% 0;-webkit-mask-image:url('/brands/assets/luluka-classic-wordmark-20261017.png');mask-image:url('/brands/assets/luluka-classic-wordmark-20261017.png');-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;mix-blend-mode:screen;animation:wordmark-refraction 5.6s cubic-bezier(.4,0,.2,1) infinite}
+.logo::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(108deg,transparent 39%,#b5712426 43%,#ffc9637a 46%,#fff8dcf2 48.5%,#fffff8 49.5%,#ffdc92b3 51%,#fff4d2cc 53%,transparent 57%);background-size:300% 100%;background-repeat:no-repeat;background-position:110% 0;-webkit-mask-image:url('/brands/assets/portfolio-media/8b1e9a15868a-1400.webp');mask-image:url('/brands/assets/portfolio-media/8b1e9a15868a-1400.webp');-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;mix-blend-mode:screen;animation:wordmark-refraction 5.6s cubic-bezier(.4,0,.2,1) infinite}
 }
 @keyframes wordmark-refraction{0%,6%{background-position:110% 0;opacity:0}12%{opacity:.9}36%{background-position:-10% 0;opacity:.9}42%,100%{background-position:-10% 0;opacity:0}}
 footer{padding:12px 0;border-top:.5px solid #b8995c30;display:flex;align-items:center;justify-content:center}

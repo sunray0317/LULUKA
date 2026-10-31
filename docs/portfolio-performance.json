@@ -1,0 +1,39 @@
+{
+  "categories": 17,
+  "projectGoals": {
+    "lifeline": [
+      3
+    ],
+    "girl-scouts-2026": [
+      4,
+      17
+    ],
+    "election-supervision-2026": [
+      16
+    ]
+  },
+  "overviewImageEstimates": [
+    {
+      "viewport": 390,
+      "dpr": 2,
+      "imageBytes": 475070,
+      "originalImageBytes": 26401964,
+      "reductionPercent": 98.2
+    },
+    {
+      "viewport": 1440,
+      "dpr": 1,
+      "imageBytes": 590526,
+      "originalImageBytes": 26401964,
+      "reductionPercent": 97.8
+    },
+    {
+      "viewport": 1440,
+      "dpr": 2,
+      "imageBytes": 1138958,
+      "originalImageBytes": 26401964,
+      "reductionPercent": 95.7
+    }
+  ],
+  "note": "Static file-size estimates; no browser loading-time measurement."
+}

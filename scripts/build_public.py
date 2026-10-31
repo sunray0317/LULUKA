@@ -10,6 +10,12 @@ ALLOWED_SUFFIXES = {'.html', '.css', '.js', '.png', '.jpg', '.gif', '.webp', '.t
 
 
 def build():
+    if (ROOT / 'data/visual-design-projects.json').is_file():
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('visual_design_builder', ROOT / 'scripts/build_visual_design.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        module.build(ROOT)
     paths = json.loads((ROOT / 'scripts/public-files.json').read_text(encoding='utf-8'))
     if not isinstance(paths, list) or not paths or len(paths) != len(set(paths)):
         raise ValueError('Public manifest must be a nonempty list of unique paths')
