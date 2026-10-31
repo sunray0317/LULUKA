@@ -1,16 +1,24 @@
-/* One project per row. The same token controls horizontal and vertical gaps. */
+/* Each project fits its own image proportions. All gaps share one token. */
 *{box-sizing:border-box}html,body{width:100%;min-height:100%;margin:0;background:#fff;color-scheme:light}body{min-height:100svh;overflow-x:clip}body::before{display:none}
-:root{--portfolio-gutter:48px;--portfolio-gap:24px;--portfolio-art-height:clamp(160px,calc((100vw - var(--portfolio-gutter)*2 - var(--portfolio-gap)*3)/6.3),240px)}
+html{scrollbar-gutter:stable}
+:root{--portfolio-gutter:48px;--portfolio-gap:24px;--portfolio-row-width:min(1680px,calc(100vw - var(--portfolio-gutter)*2))}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .portfolio-main{display:flex;flex-direction:column;gap:var(--portfolio-gap);width:min(1680px,calc(100% - var(--portfolio-gutter)*2));margin:0 auto;padding:var(--portfolio-gap) 0;min-height:0}
-.project{width:100%;min-width:0;margin:0;padding:0;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;background:transparent}
+.project{--portfolio-art-height:clamp(160px,calc((var(--portfolio-row-width) - var(--portfolio-gap)*var(--row-gaps))/var(--row-ratio)),400px);width:100%;min-width:0;margin:0;padding:0;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;background:transparent}
+@supports(width:1cqw){.portfolio-main{container-type:inline-size}.project{--portfolio-row-width:100cqw}}
 .project::-webkit-scrollbar{display:none}.project:focus-visible{outline:1px solid #383c40;outline-offset:4px}
 .project-grid{display:flex;flex-flow:row nowrap;align-items:flex-start;gap:var(--portfolio-gap);width:max-content;height:var(--portfolio-art-height);margin:0;padding:0}
 .artwork-button{display:block;flex:0 0 auto;width:calc(var(--portfolio-art-height)*var(--image-ratio));height:var(--portfolio-art-height);margin:0;padding:0;border:0;background:transparent;text-decoration:none;cursor:pointer;scroll-snap-align:start}
 .artwork-button:focus-visible{outline:2px solid #383c40;outline-offset:-2px}
 .visual-window{position:relative;width:100%;height:100%;margin:0;padding:0;overflow:hidden;background:transparent}
-.visual-window img{position:static;display:block;width:100%;height:100%;max-width:none;object-fit:contain}
+.visual-window img{position:static;display:block;width:100%;height:100%;max-width:none;object-fit:contain;transition:filter .2s ease}
+@media(hover:hover) and (pointer:fine){.project-grid:hover .visual-window img{filter:brightness(.76)}.project-grid .artwork-button:hover .visual-window img{filter:brightness(1)}}
+.project-grid:has(.artwork-button:focus-visible) .visual-window img{filter:brightness(.76)}.project-grid .artwork-button:focus-visible .visual-window img{filter:brightness(1)}
+.project-grid .artwork-button:active .visual-window img{filter:brightness(.84)}
 .artwork-crop img{position:absolute;width:200%;height:200%;object-fit:fill}.quadrant-0 img{left:0;top:0}.quadrant-3 img{left:-100%;top:-100%}
+.lifeline-project{--row-ratio:5.396158809300389;--row-gaps:3}
+.scouts-project{--row-ratio:6.297436358904954;--row-gaps:3}
+.election-project{--row-ratio:4.232518568179475;--row-gaps:5}
 .art-lifeline-key{--image-ratio:1.778723404255319}
 .art-lifeline-poster{--image-ratio:0.7072446555819477}
 .art-lifeline-display{--image-ratio:1.1314673452078032}
@@ -27,3 +35,4 @@
 .art-election-seating{--image-ratio:0.4375}
 @media(max-width:900px){:root{--portfolio-gutter:32px}}
 @media(max-width:600px){:root{--portfolio-gutter:20px;--portfolio-gap:16px}}
+@media(prefers-reduced-motion:reduce){.visual-window img{transition:none}}
