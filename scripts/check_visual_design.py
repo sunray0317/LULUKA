@@ -101,7 +101,7 @@ def check(root=None):
         total = sum(requests.values())
         assert total < 2_000_000, (viewport, dpr, total)
         estimates.append({'viewport':viewport,'dpr':dpr,'imageBytes':total,'originalImageBytes':original,'reductionPercent':round((1-total/original)*100,1)})
-    css = (site/'brands/assets/sdg-header.css').read_text(encoding='utf-8')
+    css = (site/'brands/assets/sdg-navigation.css').read_text(encoding='utf-8')
     assert '[data-sdg-scope="collection"] .sdg-button img{filter:none}' in css
     assert 'brightness(1.12)' in css and 'translateX(120%)' in css
     assert 'grid-template-columns:repeat(18,minmax(0,1fr))' in css

@@ -32,7 +32,7 @@ def strip_header(html):
 
 def header(html, scope, related, current=None):
     html = strip_header(html)
-    html = re.sub(r'<link rel="stylesheet" href="/brands/assets/sdg-header\.css[^\"]*">', '', html)
+    html = re.sub(r'<link rel="stylesheet" href="/brands/assets/sdg-(?:header|navigation)\.css[^\"]*">', '', html)
     html = re.sub(r'<script src="/brands/assets/(?:sdg-header|banner-trial)\.js[^\"]*" defer></script>', '', html)
     links = ['<a class="sdg-button sdg-home" href="/visual-design/" aria-label="0／返回視覺設計總覽" title="視覺設計總覽"><img src="/brands/assets/sdg-overview.svg" alt="" width="160" height="160" loading="eager" decoding="async"></a>']
     for goal in goals():
@@ -52,7 +52,7 @@ def header(html, scope, related, current=None):
             attrs += ' class="has-sdg-header"'
         return '<body' + attrs + '>' + navigation
     html = re.sub(r'<body\b([^>]*)>', body, html, count=1)
-    return html.replace('</head>', f'<link rel="stylesheet" href="/brands/assets/sdg-header.css?v={VERSION}"></head>')
+    return html.replace('</head>', f'<link rel="stylesheet" href="/brands/assets/sdg-navigation.css?v={VERSION}"></head>')
 
 
 def attrs(tag):
@@ -175,7 +175,9 @@ def build(root=None):
         manifest.append('brands/assets/sdg-projects.css')
     if 'brands/assets/sdg-overview.svg' not in manifest:
         manifest.append('brands/assets/sdg-overview.svg')
-    manifest = [file for file in manifest if file != 'brands/assets/sdg-header.js']
+    manifest = [file for file in manifest if file not in ('brands/assets/sdg-header.js', 'brands/assets/sdg-header.css')]
+    if 'brands/assets/sdg-navigation.css' not in manifest:
+        manifest.append('brands/assets/sdg-navigation.css')
     if delivery_file.is_file():
         media_data = json.loads(delivery_file.read_text(encoding='utf-8'))
         for entry in media_data['images'].values():
