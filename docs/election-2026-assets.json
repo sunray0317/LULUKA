@@ -1,0 +1,74 @@
+[
+  {
+    "id": "poster",
+    "file": "活動海報(50x160cm).png",
+    "label": "活動海報",
+    "size": "50 × 160 cm",
+    "asset": "election-2026-poster.png",
+    "width": 1125,
+    "height": 3600,
+    "originalWidth": 1418,
+    "originalHeight": 4536,
+    "sourceSHA256": "09a5af42610f042f254cca0cad447d7e1bd05841794445a142cfce62a7a66aff"
+  },
+  {
+    "id": "entrance",
+    "file": "1樓入口(50x160cm).png",
+    "label": "一樓入口導引",
+    "size": "50 × 160 cm",
+    "asset": "election-2026-entrance.png",
+    "width": 1125,
+    "height": 3600,
+    "originalWidth": 1418,
+    "originalHeight": 4536,
+    "sourceSHA256": "0ca6948a466a9a9b3318c1f60a80da85fe8d096536f7b87f5de115cd352589ea"
+  },
+  {
+    "id": "delegation",
+    "file": "各縣市選委會桌牌-04.png",
+    "label": "各縣市選委會桌牌",
+    "size": "",
+    "asset": "election-2026-delegation.png",
+    "width": 1754,
+    "height": 2481,
+    "originalWidth": 1754,
+    "originalHeight": 2481,
+    "sourceSHA256": "92198f7604b73a5fc073aea1bc90302439cf499dabb9b1b0298542c739a774e7"
+  },
+  {
+    "id": "credential",
+    "file": "個人出席證-01.png",
+    "label": "個人出席證",
+    "size": "",
+    "asset": "election-2026-credential.png",
+    "width": 1182,
+    "height": 1654,
+    "originalWidth": 1182,
+    "originalHeight": 1654,
+    "sourceSHA256": "6438b371942381890df979c0fd5f21871e7836ba12c5e380ec5fcd094c2fe461"
+  },
+  {
+    "id": "nameplate",
+    "file": "個人姓名小桌牌_01.png",
+    "label": "個人姓名桌牌",
+    "size": "",
+    "asset": "election-2026-nameplate.png",
+    "width": 827,
+    "height": 473,
+    "originalWidth": 827,
+    "originalHeight": 473,
+    "sourceSHA256": "7fe88c97a4a9acddb4daf2a6deae6135e008fa91b89ba96cd381662f0cbd60ed"
+  },
+  {
+    "id": "seating",
+    "file": "桌位圖-03.png",
+    "label": "會場桌位圖",
+    "size": "",
+    "asset": "election-2026-seating.png",
+    "width": 1575,
+    "height": 3600,
+    "originalWidth": 8268,
+    "originalHeight": 18898,
+    "sourceSHA256": "03ddbb644b9a4ba9275fe5528aa45f07ec3c268d68ea5e6a27ad4fba3b9420fc"
+  }
+]

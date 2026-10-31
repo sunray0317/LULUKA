@@ -1,0 +1,19 @@
+:root{--trial-width:1120px;--trial-gutter:48px;--trial-section:64px;--trial-group:28px;--trial-detail:12px;--trial-background:#ffffff}
+.project-nav,main,.site-footer{width:min(var(--trial-width),calc(100% - var(--trial-gutter)*2));margin-left:auto;margin-right:auto}
+.project-nav{padding:0;margin-top:32px;gap:36px}main{margin-top:40px;margin-bottom:0}
+.trial-banner{margin:0;width:100%}.trial-banner img{width:100%;height:auto;display:block}
+.trial-info{padding:48px 0 var(--trial-section)}.trial-info h1{font-size:clamp(16px,1.65vw,22px);line-height:1.7;letter-spacing:0;margin:0 0 var(--trial-group);white-space:normal;text-wrap:pretty}
+.trial-info .project-credit-row{display:block;width:100%}
+.trial-info .credits{font-size:12px;line-height:1.8;margin:0}.trial-info .credits>div{display:grid;grid-template-columns:86px minmax(0,1fr);gap:var(--trial-detail);margin:0 0 20px;align-items:start}.trial-info .credits>div:last-child{margin-bottom:0}.trial-info .credits>div:first-child dd{white-space:normal}
+.credit-label-en,.credit-value-zh,.credit-value-en{display:block}.credit-label-en{font-size:10px;line-height:1.98}.credit-value-en{font-size:11px;line-height:1.8;color:#626568;overflow-wrap:break-word}
+.event-photos{margin:0;padding-top:32px;border-top:1px solid #a8956e35}.event-photos header{margin:0 0 var(--trial-group);display:block}.event-photos h2{font-size:16px;line-height:1.5}
+.event-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start;max-width:none;margin:0}.event-photo-grid figure:first-child{grid-column:auto;max-width:none;justify-self:stretch}.event-photo-grid img{height:220px;width:100%;object-fit:cover}.event-photo-grid figcaption{margin-top:var(--trial-detail);font-size:11px;line-height:1.8}
+.project-footer{grid-template-columns:minmax(0,1fr) auto;margin-top:var(--trial-section);border-top:1px solid #a8956e35;padding:32px 0 64px;gap:40px;font-size:11px;line-height:1.8}.site-footer{padding:24px 0 32px}
+@media(max-width:900px){:root{--trial-gutter:32px;--trial-section:56px}.project-nav{gap:24px}.event-photo-grid{gap:20px}.event-photo-grid img{height:190px}.project-footer{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:600px){:root{--trial-gutter:20px;--trial-section:44px;--trial-group:24px}.project-nav{margin-top:24px;font-size:10px;gap:24px}main{margin-top:40px}.trial-info{padding:28px 0 var(--trial-section)}.trial-info h1{font-size:16px;line-height:1.8}.trial-info .project-credit-row{grid-template-columns:1fr;gap:24px}.trial-info .credits{font-size:12px}.trial-info .sdg-marks{justify-self:start;gap:12px}.trial-info .sdg-marks img{width:44px;height:44px}.event-photos{padding-top:28px}.event-photo-grid{grid-template-columns:1fr;gap:28px}.event-photo-grid img{height:220px}.event-photo-grid figcaption{font-size:11px}.project-footer{grid-template-columns:1fr;gap:28px;padding:28px 0 44px}.project-footer .back-link{grid-column:auto;justify-self:start}}
+
+/* A pure white page with a transparent sticky SDG strip. */
+html,body{background:var(--trial-background);color:#303234;color-scheme:light}body::before{display:none}
+.trial-info h1,.event-photos h2{color:#222426}.trial-info .credits dt,.event-photo-grid figcaption,.project-footer>div>p:first-child{color:#626568}.event-photos,.project-footer,.site-footer{border-color:#24262824}
+body>svg[aria-hidden="true"]{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+@media(max-width:600px){.trial-banner{aspect-ratio:5/3;overflow:hidden}.trial-banner img{height:100%;width:100%;object-fit:cover;object-position:center}}
