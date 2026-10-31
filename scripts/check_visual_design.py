@@ -46,7 +46,7 @@ def parse(file):
     assert len(parser.home) == 1 and parser.home[0]['href'] == '/visual-design/'
     for image, _ in parser.images:
         assert image.get('width') and image.get('height')
-        if image.get('src') == '/brands/assets/sdg-overview.svg':
+        if image.get('src', '').split('?')[0] == '/brands/assets/sdg-overview.svg':
             continue
         assert image.get('src', '').endswith('.webp'), image.get('src')
         assert image.get('srcset') and image.get('sizes')
@@ -71,6 +71,7 @@ def check(root=None):
         html = (site / f'visual-design/sdgs/{number}/index.html').read_text(encoding='utf-8')
         assert '目前尚無對應作品' not in html and 'sdg-page-nav' not in html
         assert 'class="sdg-lead-icon"' in html
+        assert 'sdg-count' not in html and '件對應設計作品' not in html
         assert 'grid-template-columns:var(--row-columns)' in (site/'brands/assets/visual-design.css').read_text(encoding='utf-8')
     delivered = [(image, row) for image, row in overview.images if 'data-original-src' in image]
     first_screen = next(image for image, _ in delivered if not image['data-original-src'].startswith('/brands/assets/sdg/'))
